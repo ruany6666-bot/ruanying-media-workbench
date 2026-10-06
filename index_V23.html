@@ -1,0 +1,1333 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>阮嘤 · 自媒体AI工作台</title><style>
+:root{--bg:#071015;--panel:#0b171e;--panel2:#0e2027;--line:#17343b;--mint:#47e2c3;--text:#e9f5f2;--muted:#77939a;--hot:#ffb86b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#0d2730 0,#071015 32%);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;padding:22px 14px;border-right:1px solid #12262d;background:#071016}.brand{font-weight:800;font-size:18px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:5px}.account{margin:24px 0;padding:13px;border:1px solid #1a343d;border-radius:10px;background:#0b1820}.avatar{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--mint);color:#06201b;font-weight:900;margin-right:8px}.nav{display:grid;gap:6px}.nav button{width:100%;text-align:left;border:1px solid transparent;background:transparent;color:#9ab0b6;padding:11px 12px;border-radius:8px;cursor:pointer}.nav button.active,.nav button:hover{color:#fff;background:#0d2028;border-color:#1b4c50}.sidefoot{position:absolute;bottom:20px;color:#628087;font-size:12px}.main{padding:26px 32px 60px;max-width:1600px;width:100%}.top{display:flex;justify-content:space-between;align-items:center}.eyebrow{color:var(--mint);font-size:12px}.top h1{font-size:25px;margin:5px 0 20px}.btn{border:0;border-radius:7px;padding:10px 15px;background:var(--mint);font-weight:800;color:#06221c;cursor:pointer}.btn.ghost{background:#10242c;color:#b9d0d4;border:1px solid #24424a}.hero{border:1px solid #1d4c50;background:linear-gradient(90deg,#0b302d99,#0b1820);border-radius:8px;padding:18px 20px;display:flex;justify-content:space-between;gap:20px}.hero b{font-size:18px}.hero p{margin:7px 0 0;color:#7f9ba0}.tags span{display:inline-block;border:1px solid #25525a;border-radius:5px;padding:5px 8px;margin:3px;font-size:12px;color:#b8d9d8}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}.stat{padding:16px;background:#0b1820;border:1px solid #142c35;border-radius:8px}.stat small{color:#78949a}.stat strong{display:block;font-size:28px;margin-top:5px}.hint{font-size:12px;color:#90a7ab;border:1px dashed #1d3b42;padding:10px;margin:10px 0 18px}.section{display:none}.section.active{display:block}.tabs{display:flex;gap:22px;border-bottom:1px solid #142b32;margin-bottom:12px}.tabs button{background:none;border:0;color:#809ba1;padding:12px 0;cursor:pointer}.tabs button.active{color:#fff;border-bottom:2px solid var(--mint)}.grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.card{background:#0b1820;border:1px solid #142c35;border-radius:9px;padding:16px;margin-bottom:12px}.card h3{margin:0 0 8px}.muted{color:#7f9ba0}.rec{display:grid;grid-template-columns:42px 1fr 80px;gap:12px;padding:17px 0;border-bottom:1px solid #152c34}.rank{font-size:18px;color:#5f8189}.score{text-align:right;font-size:26px;font-weight:800}.score small{display:block;font-size:10px;color:#728f95}.reason{margin:10px 0;padding:10px;border-left:3px solid var(--mint);background:#0c2126;color:#bcd0d1}.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font-size:11px}.meter div{height:4px;background:#173039;margin-top:5px}.meter i{display:block;height:100%;background:var(--mint)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:11px;border-bottom:1px solid #173039;text-align:left}th{color:#78969d}input,textarea,select{width:100%;background:#071319;border:1px solid #1e3c44;color:#e8f5f2;border-radius:6px;padding:9px}textarea{min-height:100px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.chips button{margin:3px;background:#10252c;border:1px solid #21434b;color:#c7d9dc;border-radius:5px;padding:6px 8px;cursor:pointer}.idea{border-left:3px solid #254f58;padding-left:12px}.idea.hot{border-color:var(--hot)}.pill{display:inline-block;font-size:11px;padding:3px 7px;border-radius:99px;background:#123029;color:#6fe5c9}.kpi{font-size:22px;font-weight:800}.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.flow div{text-align:center;padding:12px 5px;border:1px solid #1b3a42;background:#0c1c23;border-radius:7px;font-size:12px}.flow div:not(:last-child):after{content:'→';float:right;color:#3b666d}.empty{text-align:center;padding:35px;color:#68868d}.status{display:inline-block;font-size:11px;padding:4px 8px;border-radius:5px;border:1px solid #28505a;color:#bfe0df}.status.strong{border-color:#47e2c3;color:#47e2c3}.status.warn{border-color:#ffb86b;color:#ffb86b}.mini{font-size:11px;color:#77939a}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.bar{height:6px;background:#142d34;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:#47e2c3}.decision{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start}.planDay{border-left:3px solid #47e2c3;padding:12px 14px;margin:10px 0;background:#0a1c22}.danger{border-color:#6d3e35!important;color:#ffb0a0!important}.empty{text-align:center;padding:35px;color:#68868d}@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.nav{grid-template-columns:repeat(3,1fr)}.sidefoot{display:none}.main{padding:18px}.stats,.formgrid,.meters,.flow{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{display:block}}
+</style>
+<style>
+.os-focus{position:relative;overflow:hidden}
+.os-focus:before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,#52e0c4,transparent)}
+.sidebar .nav-group-label{font-size:10px;letter-spacing:.14em;opacity:.45;margin:18px 12px 7px;text-transform:uppercase}
+@media(max-width:800px){#oshome .grid3{grid-template-columns:1fr}}
+</style>
+
+<style>
+.primary-nav{display:grid;gap:6px;margin:8px 8px 14px;padding:8px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}
+.primary-nav button{width:100%;text-align:left}
+.legacy-toggle{margin:4px 8px 12px;width:calc(100% - 16px);opacity:.72}
+.sidebar.legacy-hidden > button[data-page]:not(.primary-clone){display:none!important}
+.sidebar.legacy-hidden .nav-group-label{display:none!important}
+.sidebar.legacy-hidden .primary-nav button{display:block!important}
+@media(max-width:800px){.primary-nav{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<style>
+#activeProjectBar{position:sticky;top:0;z-index:20;margin:0 0 12px;padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(7,27,31,.92);backdrop-filter:blur(12px);display:flex;gap:12px;align-items:center;justify-content:space-between}
+#activeProjectBar .ap-main{min-width:0}
+#activeProjectBar .ap-title{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#activeProjectBar .ap-meta{font-size:11px;opacity:.62;margin-top:2px}
+#activeProjectBar .ap-actions{display:flex;gap:6px;flex-shrink:0}
+@media(max-width:700px){#activeProjectBar{align-items:flex-start;flex-direction:column}.ap-actions{width:100%;overflow:auto}}
+</style>
+
+<style>
+.legacy-obsolete{display:none!important}
+.health-ok{border-left:3px solid currentColor;padding-left:10px}
+.health-warn{border-left:3px solid currentColor;padding-left:10px}
+</style>
+</head><body><div class="app"><aside class="side"><div class="brand">◫ 阮嘤自媒体助手<small>本地版 · 数据只保存在你的浏览器</small></div><div class="account"><span class="avatar">阮</span><b>抖音 · 发现型账号</b><div class="muted" style="font-size:11px;margin-top:7px">从互联网挖出「原来还有这个」</div></div><div class="nav" id="nav"><button class="active" data-page="home">◫ 今日工作台</button><button data-page="data">◈ 账号数据库</button><button data-page="radar">✦ 选题雷达</button><button data-page="lab">🔥 爆款分析库</button><button data-page="genes">🧬 爆款基因库</button><button data-page="matrix">▦ 内容矩阵</button><button data-page="script">✎ 内容生产</button><button data-page="review">↻ 数据复盘</button><button data-page="strategy">⌘ 账号操盘</button><button data-page="experiment">⚗ 内容实验室</button><button data-page="profile">◎ 阮嘤资料库</button><button data-page="audience">◉ 人群研究</button><button data-page="materials">▣ 素材知识库</button><button data-page="learning">◇ 7天学习</button><button data-page="backup">⇩ 数据备份</button></div><div class="sidefoot">● 本地运行　<span style="color:#48d7bd">数据未上传</span></div></aside><main class="main">
+<section id="home" class="section active"><div class="top"><div><div class="eyebrow">今天，不要凭感觉发内容</div><h1>把你的数据、全网素材和个人判断，变成今天能执行的选题</h1></div><button class="btn" onclick="refreshBrief()">更新今日情报</button></div><div class="hero"><div><div class="eyebrow">当前账号结论</div><b>优先强化：发现感 × 实用价值 × 女性友好表达</b><p>不把账号锁死成书籍号。书、网站、APP、AI工具、GitHub、纪录片、官方资源，都可以成为“发现源”。</p></div><div class="tags"><span>宝藏发现</span><span>省时间</span><span>普通人可用</span><span>女性视角</span><span>真实体验</span></div></div><div class="stats"><div class="stat"><small>账号运行</small><strong id="days">7</strong><small>天 · 10/01 起</small></div><div class="stat"><small>涨粉</small><strong>100+</strong><small>首周已验证</small></div><div class="stat"><small>今日候选</small><strong id="ideaCount">6</strong><small>按账号匹配排序</small></div><div class="stat"><small>待复盘作品</small><strong id="pending">0</strong><small>录入数据后自动出现</small></div></div><div class="hint"><b>V6 判断原则：</b> 不再使用没有证据的“推荐分”。候选内容按「来源是否可信、需求是否明确、是否符合账号承诺、有没有可展示证据、执行成本」给出判断状态；没有数据就明确写“待验证”。当前版本不伪装实时联网。</div><div class="grid2"><div class="card"><h3>今日优先做</h3><div id="recs"></div></div><div><div class="card"><h3>你的内容公式</h3><p class="muted">发现一个多数人不知道、但立刻能用的东西 → 先制造“我怎么现在才知道” → 用证据/截图证明 → 给出具体使用场景 → 留一个可讨论的问题。</p><div class="flow"><div>发现</div><div>核源</div><div>判断</div><div>转译</div><div>发布</div><div>录数</div><div>复盘</div></div></div><div class="card"><h3>灵感收件箱</h3><textarea id="inbox" placeholder="看到任何书、网站、APP、帖子、GitHub、论文、产品……先丢这里，一字不改也可以。"></textarea><button class="btn ghost" style="margin-top:8px" onclick="saveInbox()">存进灵感箱</button><div id="inboxList"></div></div></div></div></section>
+<section id="data" class="section"><div class="top"><div><div class="eyebrow">账号数据库</div><h1>每发一条，就让系统更懂你的账号</h1></div><button class="btn" onclick="addPost()">保存作品</button></div><div class="card"><div class="formgrid"><div><small>发布时间</small><input id="date" type="date"></div><div><small>标题/选题</small><input id="title" placeholder="例如：我怎么现在才发现这个网站"></div><div><small>内容类型</small><select id="type"><option>书/资料</option><option>网站/工具</option><option>AI/科技</option><option>方法/经验</option><option>产品/生活</option></select></div><div><small>播放</small><input id="views" type="number"></div><div><small>点赞</small><input id="likes" type="number"></div><div><small>收藏</small><input id="saves" type="number"></div><div><small>评论</small><input id="comments" type="number"></div><div><small>涨粉</small><input id="follows" type="number"></div><div><small>首图/前3秒钩子</small><input id="hook" placeholder="一句话记录"></div><div><small>内容母题</small><input id="postMother" placeholder="如：早点知道 / 免费低成本 / 替你筛"></div><div><small>系列包装</small><input id="postSeries" placeholder="如：我怎么现在才发现"></div><div><small>证据方式</small><select id="postProof"><option>实测/截图</option><option>原始来源</option><option>前后对比</option><option>个人经历</option><option>清单整理</option><option>暂无明显证据</option></select></div><div><small>主要目标</small><select id="postGoal"><option>涨粉</option><option>收藏</option><option>播放</option><option>评论</option></select></div><div><small>这条只想验证什么</small><input id="postTest" placeholder="例：同类选题换首图，停留会不会更好"></div><div><small>关联假设</small><select id="postHypothesis"><option value="">不关联实验</option></select></div><div><small>实验版本</small><select id="postVariant"><option value="">无</option><option>A</option><option>B</option></select></div></div></div><div class="card"><table><thead><tr><th>日期</th><th>标题</th><th>类型</th><th>播放</th><th>赞</th><th>藏</th><th>评</th><th>涨粉</th><th>收藏率</th><th>互动率</th></tr></thead><tbody id="postRows"></tbody></table></div></section>
+<section id="radar" class="section"><div class="top"><div><div class="eyebrow">选题雷达</div><h1>先搜“东西”，再决定它值不值得变成内容</h1></div><button class="btn" onclick="addIdea()">新增候选</button></div><div class="card"><div class="formgrid"><div><small>候选东西</small><input id="ideaName" placeholder="书 / 网站 / APP / 工具 / 资源"></div><div><small>来源</small><input id="ideaSource" placeholder="X / 小红书 / GitHub / 官网 / 朋友"></div><div><small>为什么值得讲</small><input id="ideaWhy" placeholder="解决什么问题"></div></div></div><div id="ideaList"></div></section>
+
+
+
+<section id="simplehome" class="section">
+  <div class="top">
+    <div><div class="eyebrow">V23 · 精简工作流</div><h1>6 个入口，覆盖账号从发现到学习</h1></div>
+    <button class="btn" onclick="simpleRoute('today')">进入今天</button>
+  </div>
+  <div class="hero"><div><b>旧页面没有删除，先从主工作流里隐藏。</b><p>真正每天需要操作的只保留：今天、发现、决策、生产、学习、账号大脑。旧模块继续作为底层数据库和高级工具，避免功能丢失。</p></div><div class="tags"><span>6个主入口</span><span>旧功能保留</span><span>减少跳转</span><span>不破坏历史数据</span></div></div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">01 · TODAY</div><h2>今天</h2><p>告诉你上一条做到哪、现在最该干什么、有哪些数据欠账。</p><button class="btn" onclick="showPage('oshome')">打开今日 OS</button></div>
+    <div class="card"><div class="eyebrow">02 · DISCOVER</div><h2>发现</h2><p>看外部爆款案例、提取爆款基因，找到值得测试而不是值得照抄的东西。</p><button onclick="simpleRoute('discover')">进入发现</button></div>
+    <div class="card"><div class="eyebrow">03 · DECIDE</div><h2>决策</h2><p>把外部机会、账号规律、实验假设压缩成一个 Content ID 项目。</p><button onclick="simpleRoute('decide')">进入决策</button></div>
+    <div class="card"><div class="eyebrow">04 · CREATE</div><h2>生产</h2><p>标题、前三秒、脚本、逐页、证据、发布检查都在一条流水线上完成。</p><button onclick="showPage('pipeline')">进入生产</button></div>
+    <div class="card"><div class="eyebrow">05 · LEARN</div><h2>数据学习</h2><p>2h / 24h / 7d 数据、同类基准和实验变量累计，判断到底什么变好了。</p><button onclick="showPage('datacenter')">进入数据学习</button></div>
+    <div class="card"><div class="eyebrow">06 · BRAIN</div><h2>账号大脑</h2><p>事实、观察、假设、支持与反驳沉淀成可更新的账号认知。</p><button onclick="showPage('brain')">打开账号大脑</button></div>
+  </div>
+  <div class="card">
+    <h3>当前主工作流</h3>
+    <div id="simpleFlow" class="empty">读取中…</div>
+  </div>
+  
+  <div class="card">
+    <div class="eyebrow">1.0 PREP · 真实账号初始化</div>
+    <h2>把阮嘤账号的真实历史作品喂给系统</h2>
+    <p class="muted">不需要一次补齐所有数据。先录真实标题、发布时间和已有指标；不知道的字段留空，不允许系统猜。</p>
+    <div class="formgrid">
+      <div><small>标题</small><input id="seedTitle" placeholder="作品真实标题"></div>
+      <div><small>发布日期</small><input id="seedDate" type="date"></div>
+      <div><small>播放</small><input id="seedPlay" type="number"></div>
+      <div><small>点赞</small><input id="seedLike" type="number"></div>
+      <div><small>收藏</small><input id="seedSave" type="number"></div>
+      <div><small>评论</small><input id="seedComment" type="number"></div>
+      <div><small>分享</small><input id="seedShare" type="number"></div>
+      <div><small>涨粉</small><input id="seedFollow" type="number"></div>
+    </div>
+    <div class="formgrid">
+      <div><small>内容类型</small><select id="seedType"><option>发现/宝藏</option><option>书籍</option><option>AI工具</option><option>网站/APP</option><option>避坑</option><option>清单</option><option>故事</option><option>其他</option></select></div>
+      <div><small>备注 / 已知变量</small><input id="seedNote" placeholder="例如：高性价比人生指南；7天数据"></div>
+      <div><small>开头钩子</small><select id="seedHook"><option value="">未知/不填</option><option>信息差</option><option>结果前置</option><option>反常识</option><option>避坑警告</option><option>清单承诺</option><option>身份共鸣</option><option>低成本承诺</option></select></div>
+      <div><small>核心情绪</small><select id="seedEmotion"><option value="">未知/不填</option><option>发现感</option><option>获得感</option><option>后悔没早知道</option><option>省钱快感</option><option>焦虑</option><option>被理解</option><option>安全感</option><option>猎奇</option><option>反常识</option></select></div>
+      <div><small>内容结构</small><select id="seedStructure"><option value="">未知/不填</option><option>清单</option><option>故事</option><option>避坑</option><option>干货步骤</option><option>测评/实测</option><option>资源推荐</option></select></div>
+      <div><small>主要证据</small><select id="seedProof"><option value="">未知/不填</option><option>原始来源</option><option>截图</option><option>实测</option><option>数据</option><option>前后对比</option><option>个人经历</option><option>评论口碑</option></select></div>
+    </div>
+    <div class="actions"><button class="btn" onclick="seedAdd()">加入真实历史作品</button><button onclick="seedExportTemplate()">下载批量导入模板</button><label class="buttonlike">导入CSV<input id="seedCsv" type="file" accept=".csv,text/csv" style="display:none" onchange="seedImportCsv(event)"></label></div>
+    <div id="seedStatus" class="empty">历史作品会直接进入作品数据中心，并自动建立 Content ID。</div>
+  </div>
+<div class="grid2">
+    <div class="card">
+      <h3>系统健康检查</h3>
+      <div id="formalHealth" class="empty">检查中…</div>
+      <div class="actions"><button onclick="formalAudit()">重新检查</button><button onclick="formalRepair()">安全整理重复记录</button></div>
+    </div>
+    <div class="card">
+      <h3>正式版数据原则</h3>
+      <div class="reason"><b>一个 Content ID = 一条内容。</b> 标题可以改，但身份不变。</div>
+      <div class="reason"><b>制作单与作品数据不再各自建身份。</b> 它们只能挂到 Content ID。</div>
+      <div class="reason"><b>自动修复只合并明显重复。</b> 无法确认的记录不擅自删除。</div>
+    </div>
+  </div>
+
+</section>
+<section id="oshome" class="section">
+  <div class="top">
+    <div><div class="eyebrow">阮嘤 CONTENT OS · HOME</div><h1>今天只看这一页，也能把账号往前推</h1></div>
+    <div class="actions"><button onclick="osRefresh()">刷新今日状态</button><button class="btn" onclick="osStartToday()">开始今天</button></div>
+  </div>
+
+  <div class="hero">
+    <div><b>首页不再展示一堆“看起来很专业”的数字，而是把它们压缩成行动。</b>
+    <p>先处理未完成内容，再决定是否开新选题；先补关键数据，再谈规律；外部爆款只负责给方向，账号自己的数据负责做决定。</p></div>
+    <div class="tags"><span>先完成</span><span>再开新坑</span><span>证据优先</span><span>一个变量</span><span>每天闭环</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card os-focus">
+      <div class="eyebrow">NOW · 现在最该做</div>
+      <h2 id="osActionTitle">读取中…</h2>
+      <div id="osActionBody" class="empty">正在检查内容项目。</div>
+      <div id="osActionButtons" class="actions"></div>
+    </div>
+    <div class="card">
+      <h3>为什么是这件事</h3>
+      <div id="osWhy" class="empty">等待判断。</div>
+      <h3 style="margin-top:18px">做完以后</h3>
+      <div id="osAfter" class="empty">等待判断。</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><small>进行中项目</small><strong id="osOpen">0</strong></div>
+    <div class="stat"><small>待补数据</small><strong id="osNeedData">0</strong></div>
+    <div class="stat"><small>待验证假设</small><strong id="osNeedTest">0</strong></div>
+    <div class="stat"><small>已支持规律</small><strong id="osRules">0</strong></div>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><h3>① 内容队列</h3><div id="osQueue" class="empty">暂无。</div><div class="actions"><button onclick="showPage('hub')">内容总控台</button></div></div>
+    <div class="card"><h3>② 今天的实验</h3><div id="osExperiment" class="empty">暂无。</div><div class="actions"><button onclick="showPage('experiments')">实验室</button></div></div>
+    <div class="card"><h3>③ 外部机会</h3><div id="osExternal" class="empty">暂无。</div><div class="actions"><button onclick="showPage('genes')">爆款基因库</button></div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>④ 数据欠账</h3><div id="osDebt" class="empty">没有需要补录的数据。</div></div>
+    <div class="card"><h3>⑤ 账号现在知道什么</h3><div id="osKnowledge" class="empty">还没有稳定认知。</div><div class="actions"><button onclick="showPage('brain')">账号大脑</button></div></div>
+  </div>
+
+  <div class="card">
+    <h3>完整工作流</h3>
+    <div class="reason"><b>发现：</b>爆款分析库 → 爆款基因库，只负责发现值得测试的外部变量。</div>
+    <div class="reason"><b>决定：</b>今日决策台 → 内容总控台，把外部机会和账号内部证据合并成一个内容项目。</div>
+    <div class="reason"><b>生产：</b>发布流水线，把项目做到可发布，同时只验证一个主要变量。</div>
+    <div class="reason"><b>学习：</b>作品数据中心 → 内容实验室 → 账号大脑，用2h/24h/7d真实数据更新认知。</div>
+  </div>
+</section>
+<section id="command" class="section">
+  <div class="top">
+    <div><div class="eyebrow">核心引擎 00 · 今日决策台</div><h1>今天到底做什么，不靠拍脑袋</h1></div>
+    <button class="btn" onclick="renderCommandCenter()">重新计算今日决策</button>
+  </div>
+
+  <div class="hero">
+    <div>
+      <b>把外部爆款、账号数据、待验证假设和选题池压缩成今天的一次行动。</b>
+      <p>这里不给“必爆预测”。它只回答五件事：今天优先做什么、为什么现在做、借哪个爆款基因、验证什么变量、发完重点看什么。</p>
+    </div>
+    <div class="tags"><span>外部信号</span><span>账号证据</span><span>实验优先</span><span>单变量</span><span>发布后复盘</span></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><small>待验证假设</small><strong id="cmdHyp">0</strong></div>
+    <div class="stat"><small>可用选题</small><strong id="cmdIdeas">0</strong></div>
+    <div class="stat"><small>近期爆款基因</small><strong id="cmdGenes">0</strong></div>
+    <div class="stat"><small>账号样本</small><strong id="cmdPosts">0</strong></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="eyebrow">TODAY · PRIORITY 01</div>
+      <h2 id="cmdTitle">等待计算</h2>
+      <div id="cmdWhy" class="empty">录入选题、爆款案例或实验假设后，系统会组合今日优先动作。</div>
+      <div class="actions">
+        <button class="btn" onclick="commandToProduction()">进入内容生产</button>
+        <button onclick="commandToExperiment()">建立/关联实验</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>为什么是现在</h3>
+      <div id="cmdNow" class="empty">等待外部信号和账号证据。</div>
+      <h3 style="margin-top:18px">风险提醒</h3>
+      <div id="cmdRisk" class="empty">系统会提醒样本量、时效性和因果风险。</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>🧬 今天借哪个爆款基因</h3><div id="cmdGene" class="empty">等待爆款基因库。</div></div>
+    <div class="card"><h3>🧪 今天只验证什么</h3><div id="cmdTest" class="empty">等待内容实验室。</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>🎬 怎么做</h3><div id="cmdMake" class="empty">等待今日选题。</div></div>
+    <div class="card"><h3>📊 发完看什么</h3><div id="cmdMetrics" class="empty">等待实验目标。</div></div>
+  </div>
+
+  <div class="card">
+    <h3>候选动作排序</h3>
+    <p class="muted">排序依据不是虚构的“92分”，而是证据标签：近期外部重复、是否已有账号证据、是否能验证当前假设、执行成本与信息完整度。</p>
+    <div id="cmdCandidates" class="empty">还没有足够候选。</div>
+  </div>
+
+  <div class="card">
+    <h3>发布后回流</h3>
+    <p class="muted">发布后不要只记播放量。把本条作品关联到“选题 + 爆款基因 + 假设”，再用真实数据决定这条规律是否值得保留。</p>
+    <div class="actions"><button onclick="showPage('database')">录入作品数据</button><button onclick="showPage('review')">去数据复盘</button><button onclick="showPage('genes')">回看爆款基因</button></div>
+  </div>
+</section>
+
+<section id="hub" class="section">
+  <div class="top">
+    <div><div class="eyebrow">V23 · 整合自动化层</div><h1>一条内容，只建一次档案</h1></div>
+    <div class="actions"><button onclick="hubMigrate()">整理旧数据</button><button class="btn" onclick="hubNew()">新建内容项目</button></div>
+  </div>
+
+  <div class="hero"><div><b>Content ID = 一条内容从出生到复盘的唯一身份证。</b><p>选题、爆款来源、实验假设、制作单、发布链接、2h/24h/7d数据和最终认知都挂在同一个项目下面。以后不再在不同页面重复输入标题和变量。</p></div><div class="tags"><span>一次建档</span><span>自动继承</span><span>全链路追踪</span><span>旧数据迁移</span><span>今日待办</span></div></div>
+
+  <div class="stats">
+    <div class="stat"><small>内容项目</small><strong id="hubN">0</strong></div>
+    <div class="stat"><small>制作中</small><strong id="hubMaking">0</strong></div>
+    <div class="stat"><small>已发布待复盘</small><strong id="hubReview">0</strong></div>
+    <div class="stat"><small>已完成闭环</small><strong id="hubDone">0</strong></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>今天先做什么</h3>
+      <div id="hubToday" class="empty">系统会从未完成项目里找下一步动作。</div>
+    </div>
+    <div class="card">
+      <h3>数据完整度</h3>
+      <div id="hubIntegrity" class="empty">等待内容项目。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>内容项目</h3>
+    <div class="formgrid">
+      <div><small>状态</small><select id="hubFilter" onchange="renderHub()"><option value="all">全部</option><option>选题中</option><option>制作中</option><option>待发布</option><option>已发布</option><option>复盘中</option><option>已闭环</option></select></div>
+      <div><small>搜索</small><input id="hubSearch" oninput="renderHub()" placeholder="标题 / Content ID / 变量"></div>
+    </div>
+    <div id="hubList" class="empty">还没有内容项目。</div>
+  </div>
+
+  <div class="card">
+    <h3>当前项目档案</h3>
+    <input id="hubEditId" type="hidden">
+    <div class="formgrid">
+      <div><small>Content ID</small><input id="hubContentId" readonly placeholder="保存后自动生成"></div>
+      <div><small>标题/选题</small><input id="hubTitle"></div>
+      <div><small>状态</small><select id="hubStatus"><option>选题中</option><option>制作中</option><option>待发布</option><option>已发布</option><option>复盘中</option><option>已闭环</option></select></div>
+      <div><small>平台</small><select id="hubPlatform"><option>抖音</option><option>小红书</option><option>公众号</option><option>其他</option></select></div>
+    </div>
+    <div class="formgrid">
+      <div><small>实验变量</small><input id="hubVariable"></div>
+      <div><small>爆款基因</small><input id="hubGene"></div>
+      <div><small>假设</small><input id="hubHyp"></div>
+      <div><small>来源案例</small><input id="hubSource"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="hubSave()">保存项目</button>
+      <button onclick="hubPushPipeline()">去制作</button>
+      <button onclick="hubPushData()">去录数据</button>
+      <button onclick="hubCloseLoop()">标记闭环</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>全链路轨迹</h3>
+    <div id="hubTimeline" class="empty">选择一个项目查看。</div>
+  </div>
+</section>
+<section id="lab" class="section"><div class="top"><div><div class="eyebrow">核心引擎 01 · 全网爆款分析库</div><h1>不是抄爆款，而是拆出可迁移的传播变量</h1></div><button class="btn" onclick="addViralCase()">保存完整拆解</button></div>
+<div class="hero"><div><b>全网规律 ≠ 阮嘤规律</b><p>先拆标题、结构、受众、情绪与传播动机，再把“可能有效的变量”转成你的实验选题。只有经过你自己的发布数据验证，才升级为账号规律。</p></div><div class="tags"><span>标题钩子</span><span>底层逻辑</span><span>受众</span><span>情绪</span><span>Tag</span><span>评论信号</span><span>迁移实验</span></div></div>
+<div class="stats"><div class="stat"><small>已拆爆款</small><strong id="viralCount">0</strong></div><div class="stat"><small>近7天案例</small><strong id="viralFresh">0</strong></div><div class="stat"><small>可迁移案例</small><strong id="viralTransfer">0</strong></div><div class="stat"><small>待验证外部规律</small><strong id="viralPatterns">0</strong></div></div><div class="grid2"><div class="card"><h3>🔥 今日外部情报判断</h3><p class="muted">不是“哪个视频播放高”，而是今天外部内容里，哪些变量值得拿到阮嘤账号测试。</p><div id="viralTodayDecision" class="empty">录入案例后，这里会自动汇总近7天最值得关注的情绪、受众需求、标题钩子和证据方式。</div></div><div class="card"><h3>🧭 爆款 → 阮嘤机会</h3><p class="muted">同时参考外部重复信号和你的账号认知，优先找“外面已出现、你还没验证”的机会。</p><div id="viralOpportunity" class="empty">当前还没有足够案例形成机会判断。</div></div></div>
+<div class="card"><h3>① 今日爆款雷达 / 案例录入</h3><p class="muted">当前版本先建立结构化爆款库。真实联网抓取尚未接入，所以不会伪装成“自动搜到”。你看到真实案例后可直接录入，后续联网层接入时沿用同一数据结构。</p><div class="formgrid"><div><small>平台</small><select id="vcPlatform"><option>抖音</option><option>小红书</option><option>B站</option><option>视频号</option><option>其他</option></select></div><div><small>发布日期</small><input id="vcDate" type="date"></div><div><small>原始链接/来源</small><input id="vcLink" placeholder="可核验链接 / 账号名"></div><div><small>原始标题</small><input id="vcTitle" placeholder="保留原始标题，方便研究"></div><div><small>内容对象/主题</small><input id="vcObject" placeholder="书 / APP / 网站 / 方法 / 产品…"></div><div><small>Tag / 搜索关键词</small><input id="vcTags" placeholder="#信息差 #女生成长…"></div></div></div>
+<div class="grid2"><div class="card"><h3>② 包装与内容结构</h3><small>标题公式 / 封面钩子</small><textarea id="vcHook" placeholder="它用什么承诺、冲突、结果、信息差让人停下？"></textarea><small>前三秒</small><textarea id="vcFirst3" placeholder="第一句话/第一个画面释放了什么？"></textarea><small>信息释放顺序</small><textarea id="vcStructure" placeholder="结果→解释→证据→场景→行动…"></textarea><small>证据方式</small><textarea id="vcProof" placeholder="实测、截图、原始来源、前后对比、个人经历…"></textarea></div><div class="card"><h3>③ 人群 × 情绪 × 需求</h3><small>核心受众</small><textarea id="vcAudience" placeholder="不要只写年龄，写她正处于什么场景"></textarea><small>触发情绪</small><input id="vcEmotion" placeholder="惊喜 / 后悔没早知道 / 省钱快感 / 焦虑 / 被理解…"><small>痛点 / 欲望 / 用户任务</small><textarea id="vcNeed" placeholder="她为什么此刻需要它？"></textarea><small>评论区信号</small><textarea id="vcComments" placeholder="大家反复问什么、质疑什么、想要什么？"></textarea></div></div>
+<div class="grid2"><div class="card"><h3>④ 底层传播逻辑</h3><small>为什么可能获得播放</small><textarea id="vcPlay"></textarea><small>为什么可能被收藏</small><textarea id="vcSave"></textarea><small>为什么可能被评论/转发</small><textarea id="vcShare"></textarea><small>为什么可能让人关注作者</small><textarea id="vcFollow"></textarea><small>一句话底层逻辑</small><textarea id="vcLogic" placeholder="例：低认知门槛 + 强结果展示 + 可立即保存的实用价值"></textarea></div><div class="card"><h3>⑤ 迁移，不照搬</h3><small>真正值得复刻的变量</small><textarea id="vcCopy" placeholder="只写结构/机制，不抄原文"></textarea><small>不能照搬的部分</small><textarea id="vcNoCopy" placeholder="依赖作者身份、热点时机、独家经历…"></textarea><small>改造成阮嘤选题</small><textarea id="vcAdapt" placeholder="换对象、换场景，但保留底层机制"></textarea><small>准备验证什么</small><textarea id="vcTest" placeholder="例：‘后悔没早知道’情绪是否提高收藏率"></textarea><label><input id="vcTransfer" type="checkbox" style="width:auto"> 值得进入阮嘤实验池</label></div></div>
+<div class="card"><h3>⑥ 爆款规律库：跨案例找重复变量</h3><p class="muted">系统只统计重复出现的“外部信号”。它们不会自动成为你的账号规律，而是进入内容实验室等待验证。</p><div class="formgrid"><div><small>观察窗口</small><select id="viralWindow" onchange="renderViralCases()"><option value="7">近7天</option><option value="30">近30天</option><option value="9999">全部</option></select></div><div><small>规律维度</small><select id="viralDimension" onchange="renderViralCases()"><option value="all">全部维度</option><option value="emotion">情绪</option><option value="audience">受众</option><option value="need">需求</option><option value="tags">Tag/关键词</option><option value="proof">证据方式</option><option value="logic">底层逻辑</option><option value="hook">标题/钩子</option></select></div><div><small>研究原则</small><div class="mini" style="padding-top:10px">重复 ≠ 因果；外部规律 ≠ 阮嘤规律。</div></div></div><div id="viralPatternList" class="empty">至少录入2条案例后开始寻找重复变量。</div></div>
+<div class="grid2"><div class="card"><h3>⑦ 情绪 × 需求地图</h3><p class="muted">看爆款到底在满足什么心理，而不只看内容题材。</p><div id="viralEmotionMap" class="empty">等待案例。</div></div><div class="card"><h3>⑧ 受众 × 关注动机</h3><p class="muted">区分“这条内容有用”和“这个账号值得长期关注”。</p><div id="viralAudienceMap" class="empty">等待案例。</div></div></div>
+<div class="card"><h3>⑨ 今日值得测试的3个方向</h3><p class="muted">由近7天外部重复信号生成实验方向。这里只给“测试建议”，不会冒充已经验证的账号规律。</p><div id="viralTests" class="empty">录入足够案例后自动生成。</div></div>
+<div class="card"><h3>⑩ 案例库</h3><div class="formgrid"><div><small>平台筛选</small><select id="viralFilter" onchange="renderViralCases()"><option>全部</option><option>抖音</option><option>小红书</option><option>B站</option><option>视频号</option><option>其他</option></select></div><div><small>关键词</small><input id="viralSearch" oninput="renderViralCases()" placeholder="搜标题 / 情绪 / Tag / 受众"></div><div><small>用途</small><div class="mini" style="padding-top:10px">点“转成我的选题”后会进入选题雷达；点“建立假设”进入内容实验室。</div></div></div><div id="viralCaseList"></div></div></section>
+
+<section id="genes" class="section">
+<div class="top"><div><div class="eyebrow">核心引擎 02 · 爆款基因库</div><h1>从“看过爆款”升级到“知道什么变量反复有效”</h1></div><button class="btn" onclick="renderGeneLibrary()">重新计算</button></div>
+<div class="hero"><div><b>案例是样本，基因才是资产</b><p>把爆款库里的标题钩子、情绪、需求、受众、证据、Tag和底层逻辑拆成变量，跟踪重复次数、新鲜度、生命周期和阮嘤验证状态。</p></div><div class="tags"><span>标题公式</span><span>情绪公式</span><span>需求母题</span><span>受众场景</span><span>证据结构</span><span>生命周期</span></div></div>
+<div class="stats"><div class="stat"><small>识别基因</small><strong id="geneCount">0</strong></div><div class="stat"><small>重复≥2次</small><strong id="geneRepeat">0</strong></div><div class="stat"><small>近7天活跃</small><strong id="geneFresh">0</strong></div><div class="stat"><small>阮嘤已验证</small><strong id="geneVerified">0</strong></div></div>
+<div class="grid2"><div class="card"><h3>🧬 今日基因判断</h3><p class="muted">优先找“近期活跃 + 多案例重复 + 阮嘤尚未验证”的变量。</p><div id="geneDecision" class="empty">录入案例后生成。</div></div><div class="card"><h3>⏱ 爆款生命周期</h3><p class="muted">区分萌芽、持续/上升、降温和单点信号，避免追已经过时的模板。</p><div id="lifeCycle" class="empty">等待时间序列。</div></div></div>
+<div class="card"><h3>① 基因筛选器</h3><div class="formgrid"><div><small>类型</small><select id="geneType" onchange="renderGeneLibrary()"><option value="all">全部</option><option value="hook">标题/钩子</option><option value="emotion">情绪</option><option value="need">用户需求</option><option value="audience">受众</option><option value="proof">证据方式</option><option value="tags">Tag</option><option value="logic">底层逻辑</option></select></div><div><small>最低重复</small><select id="geneMin" onchange="renderGeneLibrary()"><option value="1">≥1</option><option value="2" selected>≥2</option><option value="3">≥3</option></select></div><div><small>验证状态</small><select id="geneStatus" onchange="renderGeneLibrary()"><option value="all">全部</option><option value="external">仅外部信号</option><option value="testing">阮嘤验证中</option><option value="verified">阮嘤已支持</option></select></div></div></div>
+<div class="grid2"><div class="card"><h3>② 标题公式库</h3><div id="titleFormulaList" class="empty">等待重复标题结构。</div></div><div class="card"><h3>③ 情绪 × 需求公式库</h3><div id="emotionFormulaList" class="empty">等待组合信号。</div></div></div>
+<div class="grid2"><div class="card"><h3>④ 受众场景库</h3><div id="audienceGeneList" class="empty">等待重复受众。</div></div><div class="card"><h3>⑤ 证据结构库</h3><div id="proofGeneList" class="empty">等待重复证据结构。</div></div></div>
+<div class="card"><h3>⑥ 全部爆款基因</h3><p class="muted">外部重复只代表“值得测试”；必须经过阮嘤自己的作品数据验证，才能成为账号规律。</p><div id="geneList" class="empty">还没有足够数据。</div></div>
+</section>
+<section id="matrix" class="section"><div class="top"><div><div class="eyebrow">内容方向公式</div><h1>赛道 × 选题 × 系列：批量长出内容，而不是每天从零想</h1></div><button class="btn" onclick="buildMatrix()">生成30个方向</button></div><div class="hero"><div><b>默认公式：3 个赛道 × 3 个选题 × 3 个系列</b><p>三者自由交叉。你的账号不是固定书籍号，所以赛道建议控制在 3 个以内，避免内容太散。</p></div><div class="tags"><span>发现型</span><span>女性友好</span><span>可收藏</span><span>可持续更新</span></div></div><div class="grid2" style="margin-top:12px"><div class="card"><h3>① 赛道（建议 ≤ 3）</h3><textarea id="mxTracks">宝藏资源/网站/APP
+书籍/公开资料/方法
+AI工具/互联网新东西</textarea><h3>② 选题母题</h3><textarea id="mxTopics">普通人早点知道就好了
+免费/低成本但非常好用
+替你筛掉90%没用的信息</textarea><h3>③ 系列包装</h3><textarea id="mxSeries">我怎么现在才发现
+普通人信息差清单
+阮嘤替你试过了</textarea></div><div class="card"><h3>批量方向</h3><div id="matrixOut" class="muted">点“生成30个方向”。系统会把三层自由交叉，并优先保留符合“发现感 × 实用 × 收藏欲”的组合。</div></div></div></section><section id="script" class="section"><div class="top"><div><div class="eyebrow">内容生产</div><h1>把一个选题，压缩成可以直接拍/发的方案</h1></div><button class="btn" onclick="generateScript()">生成结构</button></div><div class="grid2"><div class="card"><small>今天要讲什么</small><input id="topic" placeholder="例如：一个能把长视频自动整理成笔记的工具"><small style="display:block;margin-top:10px">它真正帮用户省什么</small><textarea id="value" placeholder="不要写功能，写用户得到的结果"></textarea><small>你有什么证据/体验</small><textarea id="proof" placeholder="截图、实际操作、前后对比、原始来源"></textarea><small>主要目标</small><select id="scriptGoal"><option>涨粉</option><option>收藏</option><option>播放</option><option>评论</option></select><small>想验证的变量</small><input id="scriptTest" placeholder="例：强结果开头是否提高播放；原始来源是否提高收藏"></div><div class="card"><h3>成品骨架</h3><div id="scriptOut" class="muted">填左边三个框，再点“生成结构”。会同时给你 5 个标题、前3秒、完整脚本框架、拍摄/配图清单。</div></div></div></section>
+
+<section id="pipeline" class="section">
+  <div class="top">
+    <div><div class="eyebrow">核心引擎 04 · 内容生产流水线</div><h1>从一个选题，做到“可以直接发布”</h1></div>
+    <div class="actions"><button onclick="pipeLoadDecision()">载入今日决策</button><button class="btn" onclick="pipeSave()">保存制作单</button></div>
+  </div>
+  <div class="hero"><div><b>不再只生成一段文案。</b><p>一条内容按“标题实验 → 前3秒 → 主体结构 → 逐页/逐镜头 → 证据 → Tag → 评论区 → 发布检查 → 2h/24h/7d复盘”完整推进，并始终保留本条要验证的单一变量。</p></div><div class="tags"><span>可发布</span><span>单变量</span><span>证据优先</span><span>逐页设计</span><span>阶段复盘</span></div></div>
+
+  <div class="card">
+    <h3>0. 本条内容任务书</h3>
+    <div class="formgrid">
+      <div><small>选题</small><input id="pipeTopic" placeholder="今天具体做什么"></div>
+      <div><small>目标受众</small><input id="pipeAudience" placeholder="谁最需要它"></div>
+      <div><small>内容目标</small><select id="pipeGoal"><option>收藏</option><option>涨粉</option><option>播放</option><option>评论</option><option>转发</option></select></div>
+      <div><small>今天只验证的变量</small><input id="pipeVariable" placeholder="例如：我怎么现在才知道型标题"></div>
+    </div>
+    <div class="formgrid">
+      <div><small>借用的爆款基因</small><input id="pipeGene" placeholder="只借底层变量，不照搬"></div>
+      <div><small>核心用户需求</small><input id="pipeNeed" placeholder="省时间 / 信息差 / 避坑…"></div>
+      <div><small>核心情绪</small><input id="pipeEmotion" placeholder="捡到宝 / 后悔没早知道…"></div>
+      <div><small>主指标</small><input id="pipeMetric" placeholder="收藏率 / 涨粉率 / 停留…"></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>1. 标题实验室</h3>
+      <p class="muted">不是给5个同义句，而是做不同机制的标题候选，并明确今天真正测试哪一个。</p>
+      <textarea id="pipeTitles" rows="9" placeholder="A｜结果前置：&#10;B｜信息差：&#10;C｜反常识：&#10;D｜避坑：&#10;E｜身份/场景："></textarea>
+      <div class="formgrid"><div><small>最终标题</small><input id="pipeFinalTitle"></div><div><small>封面大字</small><input id="pipeCover"></div></div>
+    </div>
+    <div class="card">
+      <h3>2. 前3秒设计</h3>
+      <textarea id="pipeHook" rows="5" placeholder="第一句话/第一画面直接给什么？"></textarea>
+      <small>为什么用户会继续看</small><textarea id="pipeHookWhy" rows="4" placeholder="好奇缺口、结果证明、强场景、反差…"></textarea>
+      <small>禁止</small><div class="reason">不要“哈喽大家好”“今天给大家分享…”；不要在前三秒解释背景；不要提前把所有答案说完。</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>3A. 视频脚本 / 镜头</h3>
+      <textarea id="pipeVideo" rows="14" placeholder="镜头1｜0-3s｜画面｜口播/字幕｜目的&#10;镜头2｜3-8s｜证据展示…&#10;镜头3…"></textarea>
+    </div>
+    <div class="card">
+      <h3>3B. 图文逐页</h3>
+      <textarea id="pipeSlides" rows="14" placeholder="P1 封面｜只负责点击&#10;P2 痛点/场景｜为什么和我有关&#10;P3 核心发现1｜一页一个信息点&#10;…&#10;P8 总结/收藏理由"></textarea>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>4. 证据与素材清单</h3>
+      <textarea id="pipeEvidence" rows="10" placeholder="□ 原始来源链接&#10;□ 实测截图&#10;□ 产品/网站真实界面&#10;□ 对比证据&#10;□ 使用前后&#10;□ 评论区真实需求&#10;□ 需要补拍的画面"></textarea>
+      <div id="pipeEvidenceWarn" class="reason">原则：没有证据支持的数字、效果和结论，不写成确定事实。</div>
+    </div>
+    <div class="card">
+      <h3>5. Tag 与搜索词策略</h3>
+      <textarea id="pipeTags" rows="6" placeholder="核心主题Tag：&#10;用户搜索词：&#10;场景词：&#10;不使用的泛Tag："></textarea>
+      <h3>6. 评论区钩子</h3>
+      <textarea id="pipeComment" rows="5" placeholder="不是“你们怎么看”，而是让目标用户有具体表达入口。"></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>7. 发布前检查</h3>
+    <div id="pipeChecklist" class="checkgrid">
+      <label><input type="checkbox" data-pcheck="topic"> 一眼知道讲什么</label>
+      <label><input type="checkbox" data-pcheck="hook"> 前3秒无废话</label>
+      <label><input type="checkbox" data-pcheck="proof"> 关键结论有证据</label>
+      <label><input type="checkbox" data-pcheck="one"> 一条只测一个主要变量</label>
+      <label><input type="checkbox" data-pcheck="save"> 有明确收藏理由</label>
+      <label><input type="checkbox" data-pcheck="follow"> 用户知道为什么要关注阮嘤</label>
+      <label><input type="checkbox" data-pcheck="visual"> 每页/镜头只有一个核心任务</label>
+      <label><input type="checkbox" data-pcheck="source"> 来源可追溯</label>
+    </div>
+    <div class="actions"><button class="btn" onclick="pipePreflight()">发布前体检</button><span id="pipeCheckResult" class="muted"></span></div>
+  </div>
+
+  <div class="card">
+    <h3>8. 发布记录</h3>
+    <div class="formgrid">
+      <div><small>平台</small><select id="pipePlatform"><option>抖音</option><option>小红书</option><option>公众号</option><option>其他</option></select></div>
+      <div><small>发布时间</small><input id="pipePublishTime" type="datetime-local"></div>
+      <div><small>作品链接</small><input id="pipeUrl" placeholder="发布后补"></div>
+      <div><small>制作状态</small><select id="pipeStatus"><option>制作中</option><option>待发布</option><option>已发布</option></select></div>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><h3>9A. 2小时复盘</h3><p class="muted">看第一轮分发与钩子，不急着判内容生死。</p><textarea id="pipe2h" rows="8" placeholder="播放：&#10;点赞：&#10;收藏：&#10;评论：&#10;涨粉：&#10;观察："></textarea></div>
+    <div class="card"><h3>9B. 24小时复盘</h3><p class="muted">看收藏/评论/涨粉结构，判断用户价值。</p><textarea id="pipe24h" rows="8" placeholder="播放：&#10;点赞：&#10;收藏：&#10;评论：&#10;涨粉：&#10;观察："></textarea></div>
+    <div class="card"><h3>9C. 7天复盘</h3><p class="muted">才适合讨论长尾、搜索和是否值得复刻。</p><textarea id="pipe7d" rows="8" placeholder="最终数据：&#10;搜索/长尾：&#10;变量结论：支持/反驳/证据不足&#10;下一条怎么改："></textarea></div>
+  </div>
+
+  <div class="card">
+    <h3>10. 结论回流</h3>
+    <div class="formgrid">
+      <div><small>本条实验结论</small><select id="pipeConclusion"><option>证据不足</option><option>支持</option><option>反驳</option></select></div>
+      <div><small>下一步</small><select id="pipeNext"><option>再测1条</option><option>保持变量继续测</option><option>换变量</option><option>加入可复刻结构</option><option>停止复刻</option></select></div>
+    </div>
+    <textarea id="pipeLearning" rows="5" placeholder="这条内容真正学到了什么？不要写“数据不好”，要写哪个变量得到什么证据。"></textarea>
+    <div class="actions"><button class="btn" onclick="pipeCommitLearning()">把结论写回实验账本</button><button onclick="pipeExportText()">导出发布制作单</button></div>
+  </div>
+
+  <div class="card"><h3>制作单历史</h3><div id="pipeHistory" class="empty">还没有保存过制作单。</div></div>
+</section>
+
+<section id="datacenter" class="section">
+  <div class="top">
+    <div><div class="eyebrow">核心引擎 05 · 作品数据中心</div><h1>发布以后，不再靠“感觉这条好像不错”</h1></div>
+    <div class="actions"><button onclick="dcImportPipeline()">同步已发布制作单</button><button class="btn" onclick="renderDataCenter()">重新分析</button></div>
+  </div>
+
+  <div class="hero"><div><b>同一条作品分 2h / 24h / 7d 三个阶段观察。</b><p>播放只是触达。收藏看长期价值，评论看表达欲，涨粉看用户是否认可“阮嘤这个筛选者”。系统优先与账号自己的中位数和同类型内容比较，不用虚构行业平均值。</p></div><div class="tags"><span>中位数基准</span><span>同类型比较</span><span>阶段数据</span><span>变量归因</span><span>实验累计</span></div></div>
+
+  <div class="stats">
+    <div class="stat"><small>作品样本</small><strong id="dcPostN">0</strong></div>
+    <div class="stat"><small>有24h数据</small><strong id="dc24N">0</strong></div>
+    <div class="stat"><small>有7d数据</small><strong id="dc7N">0</strong></div>
+    <div class="stat"><small>可比较实验</small><strong id="dcExpN">0</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>① 新增 / 更新作品</h3>
+    <div class="formgrid">
+      <div><small>作品标题</small><input id="dcTitle" placeholder="实际发布标题"></div>
+      <div><small>平台</small><select id="dcPlatform"><option>抖音</option><option>小红书</option><option>公众号</option><option>其他</option></select></div>
+      <div><small>内容类型</small><select id="dcType"><option>发现/宝藏</option><option>书籍</option><option>AI工具</option><option>网站/APP</option><option>避坑</option><option>清单</option><option>故事</option><option>其他</option></select></div>
+      <div><small>发布时间</small><input id="dcPublished" type="datetime-local"></div>
+    </div>
+    <div class="formgrid">
+      <div><small>验证变量</small><input id="dcVariable" placeholder="本条主要改了什么"></div>
+      <div><small>爆款基因</small><input id="dcGene" placeholder="借用了哪个外部变量"></div>
+      <div><small>实验/假设</small><input id="dcHyp" placeholder="关联哪个假设"></div>
+      <div><small>作品链接</small><input id="dcUrl"></div>
+    </div>
+    <input id="dcEditId" type="hidden">
+    <div class="actions"><button class="btn" onclick="dcSaveMeta()">保存作品基础信息</button><button onclick="dcClearForm()">清空</button></div>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>2小时数据</h3><p class="muted">观察第一轮分发、点击/停留信号。不要在这里直接宣布“爆了/废了”。</p>
+      <div class="formgrid"><div><small>播放</small><input id="dc2Play" type="number"></div><div><small>点赞</small><input id="dc2Like" type="number"></div><div><small>收藏</small><input id="dc2Save" type="number"></div><div><small>评论</small><input id="dc2Comment" type="number"></div><div><small>分享</small><input id="dc2Share" type="number"></div><div><small>涨粉</small><input id="dc2Follow" type="number"></div></div>
+      <small>阶段观察</small><textarea id="dc2Note" rows="4"></textarea>
+    </div>
+    <div class="card">
+      <h3>24小时数据</h3><p class="muted">作为主要比较窗口之一，开始看价值结构，而不只看播放。</p>
+      <div class="formgrid"><div><small>播放</small><input id="dc24Play" type="number"></div><div><small>点赞</small><input id="dc24Like" type="number"></div><div><small>收藏</small><input id="dc24Save" type="number"></div><div><small>评论</small><input id="dc24Comment" type="number"></div><div><small>分享</small><input id="dc24Share" type="number"></div><div><small>涨粉</small><input id="dc24Follow" type="number"></div></div>
+      <small>阶段观察</small><textarea id="dc24Note" rows="4"></textarea>
+    </div>
+    <div class="card">
+      <h3>7天数据</h3><p class="muted">看长尾、搜索和最终转粉，更适合决定要不要复刻。</p>
+      <div class="formgrid"><div><small>播放</small><input id="dc7Play" type="number"></div><div><small>点赞</small><input id="dc7Like" type="number"></div><div><small>收藏</small><input id="dc7Save" type="number"></div><div><small>评论</small><input id="dc7Comment" type="number"></div><div><small>分享</small><input id="dc7Share" type="number"></div><div><small>涨粉</small><input id="dc7Follow" type="number"></div></div>
+      <small>阶段观察</small><textarea id="dc7Note" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="actions"><button class="btn" onclick="dcSaveAll()">保存三个阶段数据并分析</button></div>
+
+  <div class="grid2">
+    <div class="card"><h3>② 账号24h中位数基准</h3><div id="dcBaseline" class="empty">至少录入3条24h数据后更有参考意义。</div></div>
+    <div class="card"><h3>③ 当前作品诊断</h3><div id="dcDiagnosis" class="empty">选择一条作品后查看。</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>④ 同类型内容比较</h3><div id="dcTypeCompare" class="empty">等待同类型样本。</div></div>
+    <div class="card"><h3>⑤ 实验变量累计</h3><div id="dcVariableCompare" class="empty">同一个变量至少需要多个样本。</div></div>
+  </div>
+
+  <div class="card">
+    <h3>⑥ 作品数据库</h3>
+    <div class="formgrid">
+      <div><small>阶段</small><select id="dcStageFilter" onchange="renderDataCenter()"><option value="24">优先24h</option><option value="7">优先7d</option><option value="2">2h</option></select></div>
+      <div><small>内容类型</small><select id="dcTypeFilter" onchange="renderDataCenter()"><option value="all">全部</option><option>发现/宝藏</option><option>书籍</option><option>AI工具</option><option>网站/APP</option><option>避坑</option><option>清单</option><option>故事</option><option>其他</option></select></div>
+    </div>
+    <div id="dcList" class="empty">暂无作品数据。</div>
+  </div>
+
+  
+  <div class="card">
+    <div class="eyebrow">ACCOUNT LEARNING · 账号学习报告</div>
+    <h2>不是找“最高播放”，而是找哪些内容特征反复带来什么结果</h2>
+    <p class="muted">下面只基于你录入的真实账号数据。样本不足时明确写“证据不足”，不会把相关性写成因果。</p>
+    <div class="stats">
+      <div class="stat"><small>长期样本</small><strong id="learnLongN">0</strong></div>
+      <div class="stat"><small>可分析类型</small><strong id="learnTypeN">0</strong></div>
+      <div class="stat"><small>可分析变量</small><strong id="learnVarN">0</strong></div>
+      <div class="stat"><small>高价值样本</small><strong id="learnValueN">0</strong></div>
+    </div>
+    <div class="grid2">
+      <div><h3>什么题材更容易获得播放</h3><div id="learnReach" class="empty">等待真实数据。</div></div>
+      <div><h3>什么内容更值得收藏</h3><div id="learnSave" class="empty">等待真实数据。</div></div>
+    </div>
+    <div class="grid2">
+      <div><h3>什么内容真正带粉</h3><div id="learnFollow" class="empty">等待真实数据。</div></div>
+      <div><h3>值得迁移的变量</h3><div id="learnTransfer" class="empty">等待真实数据。</div></div>
+    </div>
+    <div class="grid2">
+      <div><h3>高性价比人生指南 · 案例定位</h3><div id="learnBookCase" class="empty">录入对应作品后自动分析。</div></div>
+      <div><h3>下一条应该验证什么</h3><div id="learnNextTest" class="empty">等待足够数据。</div></div>
+    </div>
+    <div class="grid2">
+      <div><h3>表达结构学习</h3><div id="learnExpression" class="empty">等待结构化样本。</div></div>
+      <div><h3>题材 × 表达拆分</h3><div id="learnCross" class="empty">等待结构化样本。</div></div>
+    </div>
+    
+    <div class="card">
+      <div class="eyebrow">REAL RUN · 闭环体检</div>
+      <h2>这套系统现在能不能真的跑一条内容？</h2>
+      <p class="muted">体检不制造数据，只检查一条 Content ID 从“选题 → 制作 → 发布 → 数据 → 学习”还缺什么。</p>
+      <div class="formgrid">
+        <div><small>选择内容项目</small><select id="runProject" onchange="runInspect()"></select></div>
+        <div><small>目标</small><input value="完成一条真实闭环" disabled></div>
+      </div>
+      <div id="runSteps" class="empty">请选择内容项目。</div>
+      <div id="runBlocker" class="empty">等待检查。</div>
+      <div class="actions"><button class="btn" onclick="runNext()">去处理当前阻塞</button><button onclick="runInspect()">重新体检</button></div>
+    </div>
+<div class="card">
+      <div class="eyebrow">NEXT CONTENT · 下一条内容实验</div>
+      <h2>把“学到了什么”直接变成下一条怎么做</h2>
+      <div id="nextExperiment" class="empty">等待真实数据。</div>
+      <div class="actions"><button class="btn" onclick="nextBuild()">重新生成下一条实验</button><button onclick="nextCreateProject()">创建 Content ID 并进入生产</button></div>
+    </div>
+
+
+  </div>
+<div class="card">
+    <h3>⑦ 归因纪律</h3>
+    <div class="reason"><b>一条爆，不等于变量有效。</b> 同一条内容里同时变了标题、选题、画面、发布时间，就不能把结果全部归给标题。</div>
+    <div class="reason"><b>优先比较率，而不是只比较绝对量。</b> 收藏率、评论率、分享率、涨粉率能帮助区分“触达高”与“内容价值高”。</div>
+    <div class="reason"><b>同类型优先于全账号。</b> 一本书和一个AI工具天然分发空间不同，先跟相似内容比，再看全账号。</div>
+  </div>
+</section>
+
+<section id="brain" class="section">
+  <div class="top">
+    <div><div class="eyebrow">核心引擎 06 · 阮嘤账号大脑</div><h1>把“我感觉这个有效”变成有证据等级的账号认知</h1></div>
+    <div class="actions"><button onclick="brainRebuild()">从现有数据重建认知</button><button class="btn" onclick="brainSaveManual()">新增人工认知</button></div>
+  </div>
+
+  <div class="hero"><div><b>事实 → 观察 → 假设 → 已支持规律 / 已反驳规律</b><p>外部爆款只能提供“值得测试”的线索；自己的作品数据才能形成账号证据。每条认知保留来源、样本量、最后验证时间和反例，不允许一条爆款直接升级成稳定规律。</p></div><div class="tags"><span>证据等级</span><span>反例</span><span>样本量</span><span>来源追踪</span><span>最后验证</span><span>可降级</span></div></div>
+
+  <div class="stats">
+    <div class="stat"><small>事实</small><strong id="brainFactN">0</strong></div>
+    <div class="stat"><small>观察/假设</small><strong id="brainHypN">0</strong></div>
+    <div class="stat"><small>已支持规律</small><strong id="brainRuleN">0</strong></div>
+    <div class="stat"><small>已反驳</small><strong id="brainRejectN">0</strong></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>① 当前账号认知摘要</h3>
+      <div id="brainSummary" class="empty">点击“从现有数据重建认知”。</div>
+    </div>
+    <div class="card">
+      <h3>② 证据健康度</h3>
+      <div id="brainHealth" class="empty">等待作品和实验数据。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>③ 新增人工认知</h3>
+    <p class="muted">人工判断也可以记录，但必须标明它只是“观察”或“假设”，不能直接写成已验证规律。</p>
+    <div class="formgrid">
+      <div><small>内容</small><input id="brainManualText" placeholder="例如：用户似乎更喜欢能立刻使用的网站工具"></div>
+      <div><small>类型</small><select id="brainManualLevel"><option>观察</option><option>假设</option><option>事实</option></select></div>
+      <div><small>证据/来源</small><input id="brainManualEvidence" placeholder="来自哪些作品、评论或外部案例"></div>
+      <div><small>下一步验证</small><input id="brainManualNext" placeholder="下一批内容怎么验证"></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>④ 已支持规律</h3><p class="muted">只有账号自身多样本证据支持，才进入这里；以后出现反例仍可降级。</p><div id="brainRules" class="empty">暂无。</div></div>
+    <div class="card"><h3>⑤ 待验证认知</h3><p class="muted">这里才是下一批内容实验的主要来源。</p><div id="brainPending" class="empty">暂无。</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>⑥ 已反驳 / 暂停复刻</h3><div id="brainRejected" class="empty">暂无。</div></div>
+    <div class="card"><h3>⑦ 外部信号 ≠ 账号规律</h3><div id="brainExternal" class="empty">等待爆款基因库。</div></div>
+  </div>
+
+  <div class="card">
+    <h3>⑧ 认知账本</h3>
+    <div class="formgrid">
+      <div><small>筛选等级</small><select id="brainFilter" onchange="renderBrain()"><option value="all">全部</option><option>事实</option><option>观察</option><option>假设</option><option>已支持规律</option><option>已反驳规律</option></select></div>
+      <div><small>关键词</small><input id="brainSearch" oninput="renderBrain()" placeholder="搜索变量/认知"></div>
+    </div>
+    <div id="brainLedger" class="empty">暂无认知记录。</div>
+  </div>
+
+  <div class="card">
+    <h3>升级规则</h3>
+    <div class="reason"><b>事实：</b>可以直接从真实作品数据计算出来，例如“过去5条24h收藏率中位数为X%”。</div>
+    <div class="reason"><b>观察：</b>出现了某种现象，但还没有明确变量或样本不足。</div>
+    <div class="reason"><b>假设：</b>明确提出“某变量可能影响某指标”，等待下一批内容验证。</div>
+    <div class="reason"><b>已支持规律：</b>同一变量至少3个账号样本，且主要目标指标整体高于账号/同类基准，才允许暂时升级。</div>
+    <div class="reason"><b>已反驳规律：</b>多样本未显示预期改善，或出现稳定反方向信号。规律不是永久真理，后续证据变化可以重新评估。</div>
+  </div>
+</section>
+<section id="review" class="section"><div class="top"><div><div class="eyebrow">数据复盘</div><h1>复盘不是解释过去，而是决定下一条怎么改</h1></div></div><div class="stats"><div class="stat"><small>总作品</small><strong id="totalPosts">0</strong></div><div class="stat"><small>平均收藏率</small><strong id="avgSave">0%</strong></div><div class="stat"><small>平均互动率</small><strong id="avgEng">0%</strong></div><div class="stat"><small>累计涨粉</small><strong id="sumFollow">0</strong></div></div><div class="card"><h3>自动结论</h3><div id="reviewText" class="muted">先在账号数据库录入作品数据。系统会比较内容类型、收藏率、互动率和涨粉效率。</div></div></section>
+
+
+<section id="strategy" class="section"><div class="top"><div><div class="eyebrow">账号操盘系统 · 不是看数字，是从数字里学规律</div><h1>近期10条 → 找变量 → 提炼规律 → 决定未来7天</h1></div><button class="btn" onclick="analyze10()">分析近期10条</button></div><div class="hero"><div><b>这才是她那段指令的核心</b><p>同一个账号里同时存在“内容题材、包装方式、用户需求、分发时机”四类变量。不能只看播放量，也不能看到一条爆款就复制标题。系统要比较高/低表现组，找出反复出现的共同因子，再把结论写回下一轮选题。</p></div><div class="tags"><span>高低组对照</span><span>用户偏好</span><span>账号优势</span><span>爆款规律</span><span>7天实验</span></div></div><div class="grid2" style="margin-top:12px"><div class="card"><h3>① 近期10条表现对照</h3><div id="tenCompare" class="muted">录入至少3条作品后开始形成判断；10条以后结论更可靠。</div></div><div class="card"><h3>② 原因诊断：先分清是哪一层出了问题</h3><div id="diagnosis"><p><b>选题层：</b>用户本来就不需要这个东西？</p><p><b>包装层：</b>东西有价值，但标题/首图没让人停下来？</p><p><b>内容层：</b>停下来了，但证据不足、信息密度低，所以不收藏？</p><p><b>关注层：</b>这条有用，但用户只记住“东西”，没有记住“你会持续替她筛东西”？</p></div></div></div><div class="grid2"><div class="card"><h3>③ 账号认知账本</h3><p class="muted">这里存的不是“爆款模板”，而是被数据反复验证的规律。每条规律都标记证据强度，避免1条内容就下结论。</p><div id="knowledge"></div></div><div class="card"><h3>④ 未来7天不是7条随便的选题，而是7次实验</h3><div id="weekPlan"></div></div></div><div class="card"><h3>⑤ 每条内容真正要回答的5个问题</h3><div class="flow" style="grid-template-columns:repeat(5,1fr)"><div>为什么停</div><div>为什么看完</div><div>为什么收藏</div><div>为什么评论</div><div>为什么关注你</div></div><p class="muted" style="margin-top:12px">播放高 ≠ 内容一定好；收藏高说明长期价值强；评论高说明情绪/争议/参与强；涨粉高才更接近“账号资产”。所以不同指标必须分开解释。</p></div></section>
+
+<section id="experiment" class="section"><div class="top"><div><div class="eyebrow">内容实验室 · 把“感觉”变成可验证假设</div><h1>一次尽量只改一个变量，才能知道到底是什么起作用</h1></div><button class="btn" onclick="addHypothesis()">新建假设</button></div>
+<div class="hero"><div><b>每条内容都应该有“实验身份”</b><p>先写清楚：我认为哪个因素会让哪个指标变好？再设计对照内容。发布后用数据支持、反驳或保留这个假设，而不是事后给爆款编故事。</p></div><div class="tags"><span>题材变量</span><span>包装变量</span><span>证据变量</span><span>人格变量</span><span>单变量测试</span></div></div>
+<div class="grid2" style="margin-top:12px"><div class="card"><h3>① 新建一个可证伪假设</h3><small>假设名称</small><input id="hyName" placeholder="例：强结果首图比解释型首图更容易拿到播放"><small style="display:block;margin-top:10px">依据是什么</small><textarea id="hyEvidence" placeholder="来自哪几条作品、评论区、对标案例或你的观察？"></textarea><div class="formgrid"><div><small>只改变</small><select id="hyVariable"><option>选题对象</option><option>标题/首图</option><option>内容结构</option><option>证据强度</option><option>女性场景</option><option>人格表达</option><option>发布时间</option></select></div><div><small>主要观察指标</small><select id="hyMetric"><option>播放</option><option>收藏率</option><option>互动率</option><option>涨粉率</option></select></div><div><small>至少测试</small><select id="hyN"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div></div></div>
+<div class="card"><h3>② 判断规则</h3><p><b>支持：</b>同一假设在多个样本中重复出现，而且不是只靠一条爆款。</p><p><b>反驳：</b>按预期改变量后，目标指标没有改善，或相反。</p><p><b>证据不足：</b>样本少、同时改了多个变量、数据阶段不同，都不升级成“账号规律”。</p><div class="reason">目标不是证明自己对，而是尽快淘汰错误认知。</div></div></div>
+<div class="card"><h3>③ 假设看板</h3><div id="hypothesisList"></div></div>
+<div class="card"><h3>④ 最近作品的“变量指纹”</h3><div id="fingerprints" class="muted">录入作品时补上母题、系列、证据方式和实验目标，这里才有能力做真正的归因。</div></div><div class="grid2"><div class="card"><h3>⑤ 自动生成7天实验计划</h3><p class="muted">优先读取“验证中/证据不足”的假设，再从选题池与素材库挑对象。每天只安排一个主要变量。</p><button class="btn" onclick="generateExperimentPlan()">生成7天计划</button><div id="experimentPlan"></div></div><div class="card"><h3>⑥ A/B 对照设计器</h3><small>要验证什么</small><input id="abQuestion" placeholder="例：强结果首图是否比解释型首图更容易获得播放"><small>A版本</small><textarea id="abA" placeholder="例：首图直接展示最终结果"></textarea><small>B版本</small><textarea id="abB" placeholder="例：首图先解释问题"></textarea><small>必须保持不变</small><textarea id="abFixed" placeholder="选题、正文结构、发布时间段、证据强度尽量相同"></textarea><button class="btn ghost" onclick="saveAB()">保存A/B实验</button><div id="abList"></div></div></div></section>
+<section id="profile" class="section"><div class="top"><div><div class="eyebrow">阮嘤资料库</div><h1>先让系统知道“你是谁”，再决定你适合讲什么</h1></div><button class="btn" onclick="saveProfile()">保存资料</button></div><div class="grid2"><div class="card"><h3>个人内容资产</h3><small>你亲自经历过、能讲出细节的事情</small><textarea id="pfExp" placeholder="学习、找工作、实习、做账号、消费、踩坑、折腾互联网工具……"></textarea><small>你踩过的坑 / 后悔太晚知道的事</small><textarea id="pfPain"></textarea><small>你反复会做、会研究的事</small><textarea id="pfSkill"></textarea></div><div class="card"><h3>账号人格</h3><small>你希望别人为什么关注你</small><textarea id="pfFollow" placeholder="例如：她总能挖到我没见过但真的有用的东西"></textarea><small>坚决不做什么</small><textarea id="pfNo" placeholder="搬运、硬装专家、虚假夸张……"></textarea><small>未来想自然延伸到什么</small><textarea id="pfFuture" placeholder="书 / AI / APP / 网站 / 产品 / 生活方式……"></textarea><div id="profileSummary" class="reason"></div></div></div></section>
+<section id="audience" class="section"><div class="top"><div><div class="eyebrow">目标人群研究</div><h1>不是“18–25岁女性”，而是她为什么停下来、收藏、关注</h1></div><button class="btn" onclick="saveAudience()">保存画像</button></div><div class="card"><div class="formgrid"><div><small>人生阶段</small><textarea id="auStage" placeholder="大学生 / 初入职场 / 转型期……"></textarea></div><div><small>最近最烦什么</small><textarea id="auPain"></textarea></div><div><small>她想变成什么样</small><textarea id="auWant"></textarea></div><div><small>什么会让她停留</small><textarea id="auStop"></textarea></div><div><small>什么会让她收藏</small><textarea id="auSave"></textarea></div><div><small>什么会让她关注你</small><textarea id="auFollow"></textarea></div></div></div><div class="card"><h3>内容过滤器</h3><div id="audienceFilter" class="muted">填写画像后，这里会生成你的选题判断标准。</div></div></section>
+<section id="materials" class="section"><div class="top"><div><div class="eyebrow">素材知识库</div><h1>所有发现先进入仓库，核源后再变成选题</h1></div><button class="btn" onclick="addMaterial()">收进素材库</button></div><div class="card"><div class="formgrid"><div><small>素材名称</small><input id="matName" placeholder="一个网站 / 一本书 / 一个观点"></div><div><small>原始来源</small><input id="matSource" placeholder="官网 / GitHub / 论文 / X / 小红书"></div><div><small>来源链接/定位</small><input id="matLink" placeholder="可粘贴链接或记录出处"></div></div><textarea id="matNote" placeholder="它讲了什么？你为什么觉得有意思？哪些地方需要核实？" style="margin-top:10px"></textarea></div><div id="materialList"></div></section>
+<section id="learning" class="section"><div class="top"><div><div class="eyebrow">7天学习闭环</div><h1>一条内容至少看三次：2小时、24小时、7天</h1></div></div><div class="card"><div class="flow"><div>发布</div><div>2h看停留</div><div>24h看收藏</div><div>7d看涨粉</div><div>找原因</div><div>沉淀规则</div><div>喂回选题</div></div></div><div id="learningList"></div></section>
+<section id="backup" class="section"><div class="top"><div><div class="eyebrow">数据安全</div><h1>先保证你的账号认知不会因为换手机或清缓存丢失</h1></div></div><div class="grid2"><div class="card"><h3>完整备份</h3><p class="muted">导出所有作品、素材、选题、画像、假设、实验计划和账号认知。建议每周备份一次。</p><button class="btn" onclick="exportBackup()">导出 JSON 备份</button></div><div class="card"><h3>恢复数据</h3><p class="muted">选择之前导出的 JSON。恢复会覆盖当前工作台同名数据。</p><input type="file" id="backupFile" accept="application/json"><button class="btn ghost" style="margin-top:10px" onclick="importBackup()">导入并恢复</button></div></div><div class="card"><h3>当前数据体检</h3><div id="backupHealth"></div></div></section></main></div><script>
+const $=id=>document.getElementById(id);const store=(k,v)=>localStorage.setItem(k,JSON.stringify(v));const load=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k))||d}catch{return d}};
+let ideas=load('ry_ideas',[{name:'一个普通人会反复用的“人生避坑”资源',source:'已验证方向',why:'强发现感 + 强收藏动机',score:92},{name:'最近冒头的实用 AI 小工具',source:'AI / X / 官网',why:'先实测再讲结果，不做功能搬运',score:88},{name:'被低估的免费公开资源/网站',source:'官网 / GitHub',why:'“居然免费”天然适合发现型账号',score:86},{name:'一本不是鸡汤、而是能直接抄作业的书',source:'书籍',why:'延续已验证的高性价比人生方向',score:84},{name:'女生真正能用上的效率/生活工具',source:'APP / 网站',why:'与目标女粉高度匹配',score:82},{name:'一个互联网老东西，今天依然好用',source:'互联网考古',why:'反常识 + 新鲜感',score:78}]);
+function nav(){document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');renderAll()})}nav();
+function renderRecs(){let a=[...ideas].sort((x,y)=>y.score-x.score).slice(0,3);$('recs').innerHTML=a.map((x,i)=>`<div class="rec"><div class="rank">0${i+1}</div><div><b>${x.name}</b><div class="muted" style="margin-top:5px">来源：${x.source}</div><div class="reason"><b>为什么现在值得做：</b> ${x.why}</div><div class="meters"><div class="meter">账号匹配<div><i style="width:${Math.min(100,x.score+3)}%"></i></div></div><div class="meter">收藏潜力<div><i style="width:${Math.min(100,x.score-2)}%"></i></div></div><div class="meter">新鲜感<div><i style="width:${Math.min(100,x.score-7)}%"></i></div></div><div class="meter">可执行<div><i style="width:${Math.min(100,x.score+5)}%"></i></div></div></div></div><div class="score">${x.score}<small>推荐分</small></div></div>`).join('')}
+function refreshBrief(){ideas.forEach((x,i)=>x.score=Math.max(70,Math.min(96,x.score+(i%2?1:-1))));store('ry_ideas',ideas);renderRecs();alert('已根据本地候选池重新排序。实时联网情报接口将在后续版本接入。')}
+function saveInbox(){let t=$('inbox').value.trim();if(!t)return;let a=load('ry_inbox');a.unshift({t,at:new Date().toLocaleString()});store('ry_inbox',a);$('inbox').value='';renderInbox()}function renderInbox(){let a=load('ry_inbox');$('inboxList').innerHTML=a.slice(0,4).map(x=>`<div style="padding:8px 0;border-bottom:1px solid #173039"><span class="pill">待判断</span> ${x.t}</div>`).join('')}
+function addPost(){let p={date:$('date').value,title:$('title').value,type:$('type').value,views:+$('views').value||0,likes:+$('likes').value||0,saves:+$('saves').value||0,comments:+$('comments').value||0,follows:+$('follows').value||0,hook:$('hook').value,mother:$('postMother').value,series:$('postSeries').value,proof:$('postProof').value,goal:$('postGoal').value,test:$('postTest').value};if(!p.title)return alert('先写标题/选题');let a=load('ry_posts');a.unshift(p);store('ry_posts',a);renderPosts();review()}
+function pct(n,d){return d?((n/d)*100).toFixed(2)+'%':'0%'}function renderPosts(){let a=load('ry_posts');$('postRows').innerHTML=a.map(p=>`<tr><td>${p.date||'-'}</td><td>${p.title}</td><td>${p.type}</td><td>${p.views}</td><td>${p.likes}</td><td>${p.saves}</td><td>${p.comments}</td><td>${p.follows}</td><td>${pct(p.saves,p.views)}</td><td>${pct(p.likes+p.saves+p.comments,p.views)}</td></tr>`).join('')||'<tr><td colspan="10" class="empty">还没有作品数据</td></tr>'; $('pending').textContent=a.length}
+function addIdea(){let n=$('ideaName').value.trim();if(!n)return alert('先写候选东西');ideas.unshift({name:n,source:$('ideaSource').value||'手动收集',why:$('ideaWhy').value||'待判断',score:80});store('ry_ideas',ideas);renderIdeas();renderRecs()}
+function renderIdeas(){$('ideaCount').textContent=ideas.length;$('ideaList').innerHTML=[...ideas].sort((a,b)=>b.score-a.score).map((x,i)=>`<div class="card idea ${i<2?'hot':''}"><span class="pill">${x.score}分</span> <b>${x.name}</b><p class="muted">${x.source} · ${x.why}</p><div class="chips"><button onclick="useTopic('${x.name.replaceAll("'","\\'")}')">拿去做内容</button><button onclick="bump(${ideas.indexOf(x)})">我看好它 +3</button></div></div>`).join('')}
+function bump(i){ideas[i].score=Math.min(99,ideas[i].score+3);store('ry_ideas',ideas);renderIdeas()}function useTopic(t){$('topic').value=t;document.querySelector('[data-page="script"]').click()}
+function addCase(){let t=$('caseTitle').value.trim();if(!t)return;let a=load('ry_cases');a.unshift({t,s:$('caseSource').value,p:$('casePoint').value,n:$('caseNote').value});store('ry_cases',a);renderCases()}function renderCases(){let a=load('ry_cases');$('caseList').className='card';$('caseList').innerHTML=a.length?a.map(x=>`<div class="idea" style="margin:12px 0"><b>${x.t}</b><p class="muted">${x.s} · 爆点：${x.p}</p><p>${x.n}</p></div>`).join(''):'<div class="empty">还没有拆解。</div>'}
+function lines(id){return $(id).value.split(/\n|，|,/).map(x=>x.trim()).filter(Boolean)}
+function buildMatrix(){let a=lines('mxTracks'),b=lines('mxTopics'),c=lines('mxSeries'),out=[];for(let x of a)for(let y of b)for(let z of c)out.push({x,y,z});out=out.slice(0,30);$('matrixOut').innerHTML=out.map((q,i)=>`<div class="idea" style="margin:10px 0"><span class="pill">${String(i+1).padStart(2,'0')}</span> <b>${q.z}｜${q.y}</b><p class="muted">赛道：${q.x}</p><div class="chips"><button onclick="useTopic('${(q.z+'：'+q.y+'（'+q.x+'）').replaceAll("'","\\'")}')">拿去生成内容</button></div></div>`).join('');store('ry_matrix',{tracks:$('mxTracks').value,topics:$('mxTopics').value,series:$('mxSeries').value})}
+function generateScript(){let t=$('topic').value.trim(),v=$('value').value.trim()||'帮普通人省时间、少踩坑',p=$('proof').value.trim()||'实际操作截图 / 原始来源 / 前后对比';if(!t)return alert('先写选题');$('scriptOut').innerHTML=`<p><span class="pill">5个标题</span><br>① 我怎么现在才发现${t}<br>② 普通人真的很需要知道：${t}<br>③ 别再自己乱找了，我替你筛了${t}<br>④ 如果你也总在找这种东西，先收藏${t}<br>⑤ 这个信息差，我希望自己早点知道：${t}</p><p><span class="pill">前3秒 / 首图</span><br><b>先亮结果，不先解释。</b> 直接展示最反常识、最省事或最有“这是什么”感觉的画面，并用一句：‘我怎么现在才刷到这个……’</p><p><span class="pill">完整结构</span><br>开头：痛点/结果冲突 → 正文1：它是什么，只讲一句 → 正文2：${v} → 正文3：用 ${p} 证明 → 正文4：给出 3 个具体使用场景 → 正文5：主动说一个限制，建立可信度 → 结尾：给收藏理由 + 评论区问题。</p><p><span class="pill">拍摄/配图清单</span><br>① 结果画面/首页截图 ② 核心功能实测 ③ 原始来源/官方页面 ④ 你实际使用的步骤 ⑤ 使用前后对比 ⑥ 限制/注意点 ⑦ 最终清单总结。图文建议 6–9 张，每张只讲一个信息点。</p><p><span class="pill">结尾互动</span><br>“这种东西我会继续替你筛。下一期想看网站、书、APP还是AI工具？”</p>`}
+function review(){let a=load('ry_posts');$('totalPosts').textContent=a.length;if(!a.length)return;let sv=a.reduce((s,p)=>s+(p.views?p.saves/p.views:0),0)/a.length,en=a.reduce((s,p)=>s+(p.views?(p.likes+p.saves+p.comments)/p.views:0),0)/a.length,fo=a.reduce((s,p)=>s+p.follows,0);$('avgSave').textContent=(sv*100).toFixed(2)+'%';$('avgEng').textContent=(en*100).toFixed(2)+'%';$('sumFollow').textContent=fo;let best=[...a].sort((x,y)=>(y.views?y.saves/y.views:0)-(x.views?x.saves/x.views:0))[0];$('reviewText').innerHTML=`目前收藏效率最高的是 <b>「${best.title}」</b>（${pct(best.saves,best.views)}）。下一条先复用它的“选题价值/钩子结构”，不要机械复制标题。继续累计 10–20 条后，再按内容类型判断你的稳定优势。`}
+
+function saveProfile(){let p={exp:$('pfExp').value,pain:$('pfPain').value,skill:$('pfSkill').value,follow:$('pfFollow').value,no:$('pfNo').value,future:$('pfFuture').value};store('ry_profile',p);renderProfile()}
+function renderProfile(){let p=load('ry_profile',{});['Exp','Pain','Skill','Follow','No','Future'].forEach(k=>{let key=k.toLowerCase(); if($('pf'+k)) $('pf'+k).value=p[key]||''});$('profileSummary').innerHTML=p.follow?'<b>账号核心承诺：</b> '+p.follow+'<br><span class="muted">以后每个选题先问：它能不能强化这个印象？</span>':'先填写“为什么值得关注你”。'}
+function saveAudience(){let a={stage:$('auStage').value,pain:$('auPain').value,want:$('auWant').value,stop:$('auStop').value,save:$('auSave').value,follow:$('auFollow').value};store('ry_audience',a);renderAudience()}
+function renderAudience(){let a=load('ry_audience',{});['Stage','Pain','Want','Stop','Save','Follow'].forEach(k=>{let key=k.toLowerCase();if($('au'+k))$('au'+k).value=a[key]||''});$('audienceFilter').innerHTML=a.save?`<b>选题先过4关：</b> ① 她现在真的遇得到吗？ ② 能制造“原来还有这个”吗？ ③ 是否值得保存以后再用？ ④ 看完后有没有理由继续关注你？<br><br><b>当前收藏触发：</b>${a.save}`:'填写后自动生成。'}
+function addMaterial(){let n=$('matName').value.trim();if(!n)return alert('先写素材名称');let a=load('ry_materials');a.unshift({n,s:$('matSource').value,l:$('matLink').value,note:$('matNote').value,status:'待核源',at:new Date().toLocaleDateString()});store('ry_materials',a);['matName','matSource','matLink','matNote'].forEach(x=>$(x).value='');renderMaterials()}
+function materialToIdea(i){let a=load('ry_materials'),m=a[i];ideas.unshift({name:m.n,source:m.s||'素材库',why:m.note||'来自素材库，待判断',score:80});store('ry_ideas',ideas);m.status='已进选题池';store('ry_materials',a);renderMaterials();renderIdeas();renderRecs()}
+function renderMaterials(){let a=load('ry_materials');$('materialList').innerHTML=a.length?a.map((m,i)=>`<div class="card idea"><span class="pill">${m.status}</span> <b>${m.n}</b><p class="muted">${m.s||'未填来源'} · ${m.at}</p><p>${m.note||''}</p><div class="chips"><button onclick="materialToIdea(${i})">进入选题池</button>${m.l?`<button onclick="navigator.clipboard.writeText('${m.l.replaceAll("'","\\'")}')">复制来源</button>`:''}</div></div>`).join(''):'<div class="card empty">还没有素材。以后刷到任何值得研究的东西，先收进这里。</div>'}
+function renderLearning(){let a=load('ry_posts');$('learningList').innerHTML=a.length?a.map(p=>{let save=p.views?p.saves/p.views*100:0,eng=p.views?(p.likes+p.saves+p.comments)/p.views*100:0;let verdict=save>=3?'收藏信号强：优先复用“价值点”':eng>=5?'互动不错：继续测试同类表达':'样本偏弱：优先检查选题和首图，不急着否定赛道';return `<div class="card"><b>${p.title}</b><p class="muted">${p.date||''} · ${p.type} · 播放 ${p.views}</p><div class="reason">${verdict}</div><p>7天后重点记录：这条带来的关注，是因为“东西本身”，还是因为“你筛选东西的能力”？</p></div>`}).join(''):'<div class="card empty">录入作品后，这里会形成每条内容的学习卡。</div>'}
+
+function analyze10(){let a=load('ry_posts').slice(0,10);if(a.length<3){$('tenCompare').innerHTML='目前只有 '+a.length+' 条数据。先继续录入；少量样本只做假设，不下“账号规律”结论。';$('knowledge').innerHTML='<div class="reason">证据不足：先积累样本。</div>';buildWeek([]);return}let rows=a.map(p=>({...p,save:p.views?p.saves/p.views:0,eng:p.views?(p.likes+p.saves+p.comments)/p.views:0,follow:p.views?p.follows/p.views:0}));let byV=[...rows].sort((x,y)=>y.views-x.views),hi=byV.slice(0,Math.ceil(rows.length/3)),lo=byV.slice(-Math.ceil(rows.length/3));let avg=(arr,k)=>arr.reduce((s,x)=>s+x[k],0)/arr.length;let bestSave=[...rows].sort((x,y)=>y.save-x.save)[0],bestFollow=[...rows].sort((x,y)=>y.follow-x.follow)[0];$('tenCompare').innerHTML=`<table><tr><th>观察</th><th>高表现组</th><th>低表现组</th></tr><tr><td>平均播放</td><td>${Math.round(avg(hi,'views'))}</td><td>${Math.round(avg(lo,'views'))}</td></tr><tr><td>平均收藏率</td><td>${(avg(hi,'save')*100).toFixed(2)}%</td><td>${(avg(lo,'save')*100).toFixed(2)}%</td></tr><tr><td>平均互动率</td><td>${(avg(hi,'eng')*100).toFixed(2)}%</td><td>${(avg(lo,'eng')*100).toFixed(2)}%</td></tr></table><div class="reason">播放最高不等于最值得复制。收藏效率最高：<b>${bestSave.title}</b>；涨粉效率最高：<b>${bestFollow.title}</b>。前者更像“内容价值”，后者更像“账号价值”。</div>`;let type={};rows.forEach(x=>{type[x.type]??={n:0,v:0,s:0,f:0};type[x.type].n++;type[x.type].v+=x.views;type[x.type].s+=x.save;type[x.type].f+=x.follow});let types=Object.entries(type).map(([k,v])=>({k,...v,sv:v.s/v.n,fo:v.f/v.n,av:v.v/v.n})).sort((a,b)=>b.sv-a.sv);let rules=[];if(types[0])rules.push(`当前“${types[0].k}”平均收藏效率相对更强（样本 ${types[0].n} 条），下一周继续验证，不直接扩成永久结论。`);if(bestSave)rules.push(`“${bestSave.title}”最值得拆的是它让人保存的理由，而不是照抄标题。`);if(bestFollow)rules.push(`“${bestFollow.title}”更能把单条内容转成关注，需要检查它是否强化了“阮嘤替你筛好东西”的人格承诺。`);$('knowledge').innerHTML=rules.map((r,i)=>`<div class="reason"><b>自动观察 H${i+1}</b>　${r}<br><span class="muted">证据：${rows.length}/10 条近期作品 · 状态：继续验证</span></div>`).join('')+'<div class="reason" style="border-left-color:#ffb86b"><b>人工实验账本</b><br>'+buildAccountModel()+'</div>';buildWeek(types)}function buildWeek(types){let base=['复刻高收藏内容的“用户需求”，换一个新对象','测试同一选题但换首图/标题，隔离包装变量','做一条强证据型内容：实测截图/前后对比','做一条强人格型内容：为什么我替你筛这个','测试女性具体场景，而不是泛人群','从素材库挑一个高新鲜感对象，验证发现感','复盘前6条，只保留被数据支持的方向'];$('weekPlan').innerHTML=base.map((x,i)=>`<div class="idea" style="margin:9px 0"><span class="pill">Day ${i+1}</span> <b>${x}</b><p class="muted">实验原则：一次尽量只改变一个关键变量，发布后记录播放、收藏、评论、涨粉分别发生了什么。</p></div>`).join('')}
+
+function addHypothesis(){let n=$('hyName').value.trim();if(!n)return alert('先写一个可以被数据验证或推翻的假设');let a=load('ry_hypotheses');a.unshift({id:Date.now(),name:n,evidence:$('hyEvidence').value,variable:$('hyVariable').value,metric:$('hyMetric').value,n:+$('hyN').value,status:'验证中',created:new Date().toLocaleDateString()});store('ry_hypotheses',a);$('hyName').value='';$('hyEvidence').value='';renderHypotheses()}
+function setHypothesis(id,status){let a=load('ry_hypotheses');let h=a.find(x=>x.id===id);if(h)h.status=status;store('ry_hypotheses',a);renderHypotheses()}
+function renderHypotheses(){let a=load('ry_hypotheses');$('hypothesisList').innerHTML=a.length?a.map(h=>`<div class="idea" style="margin:12px 0"><span class="pill">${h.status}</span> <b>${h.name}</b><p class="muted">只改变：${h.variable} · 观察：${h.metric} · 至少 ${h.n} 条 · ${h.created}</p><p>${h.evidence||'尚未填写初始证据'}</p><div class="chips"><button onclick="setHypothesis(${h.id},'支持')">证据支持</button><button onclick="setHypothesis(${h.id},'反驳')">被反驳</button><button onclick="setHypothesis(${h.id},'证据不足')">证据不足</button><button onclick="setHypothesis(${h.id},'验证中')">继续验证</button></div></div>`).join(''):'<div class="empty">还没有假设。先从“为什么某条比另一条好”写一个可验证解释。</div>';renderFingerprints()}
+function renderFingerprints(){let a=load('ry_posts').slice(0,10);if(!$('fingerprints'))return;$('fingerprints').innerHTML=a.length?`<table><tr><th>作品</th><th>母题</th><th>系列</th><th>证据</th><th>目标</th><th>本条实验</th></tr>${a.map(p=>`<tr><td>${p.title}</td><td>${p.mother||'-'}</td><td>${p.series||'-'}</td><td>${p.proof||'-'}</td><td>${p.goal||'-'}</td><td>${p.test||'-'}</td></tr>`).join('')}</table>`:'还没有作品变量数据。';}
+function buildAccountModel(){let a=load('ry_posts');let h=load('ry_hypotheses');let supported=h.filter(x=>x.status==='支持'),rejected=h.filter(x=>x.status==='反驳');let text=[];if(supported.length)text.push('<b>已被支持的规律：</b>'+supported.map(x=>x.name).join('；'));if(rejected.length)text.push('<b>已被数据推翻：</b>'+rejected.map(x=>x.name).join('；'));if(a.length<10)text.push('<b>样本提醒：</b>目前作品 '+a.length+' 条，所有规律都应保留“继续验证”意识。');return text.join('<br><br>')||'还没有足够证据形成账号模型。'}
+
+// ===== V6：证据驱动的账号学习层 =====
+const V6_KEYS=['ry_ideas','ry_inbox','ry_posts','ry_cases','ry_viral_cases','ry_matrix','ry_profile','ry_audience','ry_materials','ry_hypotheses','ry_plan','ry_abtests'];
+function evidenceLevel(x){let n=0;if(x.source&&x.source!=='手动收集')n++;if(x.why&&x.why!=='待判断')n++;if(x.proof)n++;if(x.accountEvidence)n++;return n>=3?'证据较强':n>=1?'初步判断':'待验证'}
+function migrateV6(){ideas=ideas.map(x=>({name:x.name,source:x.source||'待补来源',why:x.why||'待判断',proof:x.proof||'',accountEvidence:x.accountEvidence||'',cost:x.cost||'中',status:x.status||evidenceLevel(x)}));store('ry_ideas',ideas)}
+function renderRecs(){let rank={'证据较强':3,'初步判断':2,'待验证':1};let a=[...ideas].sort((x,y)=>(rank[y.status]||0)-(rank[x.status]||0)).slice(0,3);$('recs').innerHTML=a.length?a.map((x,i)=>`<div class="rec" style="grid-template-columns:42px 1fr 95px"><div class="rank">0${i+1}</div><div><b>${x.name}</b><div class="muted" style="margin-top:5px">来源：${x.source||'待补'} · 执行成本：${x.cost||'中'}</div><div class="reason"><b>当前依据：</b> ${x.why||'还没有明确需求证据'}${x.accountEvidence?'<br><b>账号证据：</b>'+x.accountEvidence:''}${x.proof?'<br><b>可展示证据：</b>'+x.proof:''}</div><div class="actions"><button onclick="useTopic('${x.name.replaceAll("'","\\'")}')">进入内容生产</button></div></div><div><span class="status ${x.status==='证据较强'?'strong':x.status==='待验证'?'warn':''}">${x.status||'待验证'}</span></div></div>`).join(''):'<div class="empty">选题池还没有候选。</div>'}
+function refreshBrief(){ideas.forEach(x=>x.status=evidenceLevel(x));store('ry_ideas',ideas);renderRecs();renderIdeas();alert('已重新检查本地证据状态。没有联网数据的候选不会被伪装成“热点”。')}
+function addIdea(){let n=$('ideaName').value.trim();if(!n)return alert('先写候选东西');ideas.unshift({name:n,source:$('ideaSource').value||'手动收集',why:$('ideaWhy').value||'待判断',proof:'',accountEvidence:'',cost:'中',status:'初步判断'});store('ry_ideas',ideas);renderIdeas();renderRecs()}
+function renderIdeas(){$('ideaCount').textContent=ideas.length;$('ideaList').innerHTML=ideas.map((x,i)=>`<div class="card idea"><span class="status ${x.status==='证据较强'?'strong':x.status==='待验证'?'warn':''}">${x.status||'待验证'}</span> <b>${x.name}</b><p class="muted">来源：${x.source||'待补'} · 执行成本：${x.cost||'中'}</p><div class="decision"><span class="mini">用户需求/理由</span><div>${x.why||'待补'}</div><span class="mini">账号证据</span><div>${x.accountEvidence||'尚无，发布后验证'}</div><span class="mini">可展示证据</span><div>${x.proof||'待准备截图、实测或原始来源'}</div></div><div class="actions"><button onclick="useTopic('${x.name.replaceAll("'","\\'")}')">拿去做内容</button><button onclick="editIdeaEvidence(${i})">补证据</button><button onclick="ideas.splice(${i},1);store('ry_ideas',ideas);renderIdeas();renderRecs()">删除</button></div></div>`).join('')||'<div class="card empty">还没有候选选题。</div>'}
+function editIdeaEvidence(i){let x=ideas[i],a=prompt('补充账号证据：\n例如：同类内容收藏率更高 / 评论区多人追问',x.accountEvidence||'');if(a===null)return;let b=prompt('补充可展示证据：\n例如：官网截图 / 实测 / 原始来源',x.proof||'');if(b===null)return;let c=prompt('执行成本：低 / 中 / 高',x.cost||'中');x.accountEvidence=a;x.proof=b;x.cost=c||'中';x.status=evidenceLevel(x);store('ry_ideas',ideas);renderIdeas();renderRecs()}
+function materialToIdea(i){let a=load('ry_materials'),m=a[i];ideas.unshift({name:m.n,source:m.s||'素材库',why:m.note||'来自素材库，待判断',proof:m.l?'已记录原始来源':'',accountEvidence:'',cost:'中',status:'初步判断'});store('ry_ideas',ideas);m.status='已进选题池';store('ry_materials',a);renderMaterials();renderIdeas();renderRecs()}
+function fillHypothesisOptions(){let sel=$('postHypothesis');if(!sel)return;let cur=sel.value,h=load('ry_hypotheses');sel.innerHTML='<option value="">不关联实验</option>'+h.map(x=>`<option value="${x.id}">${x.name}</option>`).join('');sel.value=cur}
+function addPost(){let p={id:Date.now(),date:$('date').value,title:$('title').value,type:$('type').value,views:+$('views').value||0,likes:+$('likes').value||0,saves:+$('saves').value||0,comments:+$('comments').value||0,follows:+$('follows').value||0,hook:$('hook').value,mother:$('postMother').value,series:$('postSeries').value,proof:$('postProof').value,goal:$('postGoal').value,test:$('postTest').value,hypothesisId:$('postHypothesis')?.value||'',variant:$('postVariant')?.value||''};if(!p.title)return alert('先写标题/选题');let a=load('ry_posts');a.unshift(p);store('ry_posts',a);renderAll();alert('已保存。它会进入复盘、实验和账号认知。')}
+function median(arr){if(!arr.length)return 0;let a=[...arr].sort((x,y)=>x-y),m=Math.floor(a.length/2);return a.length%2?a[m]:(a[m-1]+a[m])/2}
+function review(){let a=load('ry_posts');$('totalPosts').textContent=a.length;if(!a.length){$('avgSave').textContent='0%';$('avgEng').textContent='0%';$('sumFollow').textContent='0';$('reviewText').innerHTML='先录入作品数据。';return}let sv=a.map(p=>p.views?p.saves/p.views:0),en=a.map(p=>p.views?(p.likes+p.saves+p.comments)/p.views:0),fo=a.reduce((s,p)=>s+p.follows,0);$('avgSave').textContent=(median(sv)*100).toFixed(2)+'%';$('avgEng').textContent=(median(en)*100).toFixed(2)+'%';$('sumFollow').textContent=fo;let bestS=[...a].sort((x,y)=>(y.views?y.saves/y.views:0)-(x.views?x.saves/x.views:0))[0],bestF=[...a].sort((x,y)=>(y.views?y.follows/y.views:0)-(x.views?x.follows/x.views:0))[0];$('reviewText').innerHTML=`<div class="reason"><b>事实：</b>近期样本 ${a.length} 条；中位收藏率 ${pct(median(sv),1)}，中位互动率 ${pct(median(en),1)}。</div><div class="reason"><b>观察：</b>收藏效率最高的是「${bestS.title}」；涨粉效率最高的是「${bestF.title}」。这只能说明它们值得拆变量，不能直接说明“原因”。</div><div class="reason"><b>下一步：</b>分别检查它们的母题、首图/钩子、证据方式和人格表达，形成一个可证伪假设，再安排下一条对照实验。</div>`}
+function analyze10(){let a=load('ry_posts').slice(0,10);if(a.length<3){$('tenCompare').innerHTML='目前只有 '+a.length+' 条数据。少量样本只记录事实，不下规律结论。';$('knowledge').innerHTML='<div class="reason">证据不足：先积累至少3条，最好10条以上再比较。</div>'+buildAccountModel();buildWeek();return}let r=a.map(p=>({...p,save:p.views?p.saves/p.views:0,eng:p.views?(p.likes+p.saves+p.comments)/p.views:0,follow:p.views?p.follows/p.views:0})),mv=median(r.map(x=>x.views)),ms=median(r.map(x=>x.save)),me=median(r.map(x=>x.eng)),mf=median(r.map(x=>x.follow));let bestS=[...r].sort((x,y)=>y.save-x.save)[0],bestF=[...r].sort((x,y)=>y.follow-x.follow)[0];$('tenCompare').innerHTML=`<table><tr><th>指标</th><th>近期中位数</th><th>用途</th></tr><tr><td>播放</td><td>${Math.round(mv)}</td><td>陌生人获取</td></tr><tr><td>收藏率</td><td>${(ms*100).toFixed(2)}%</td><td>长期内容价值</td></tr><tr><td>互动率</td><td>${(me*100).toFixed(2)}%</td><td>表达/参与欲</td></tr><tr><td>涨粉率</td><td>${(mf*100).toFixed(2)}%</td><td>账号资产</td></tr></table><div class="reason"><b>事实：</b>收藏效率最高「${bestS.title}」；涨粉效率最高「${bestF.title}」。<br><b>观察：</b>两者${bestS.title===bestF.title?'是同一条，值得重点拆解它同时提供“内容价值+账号价值”的变量。':'不是同一条，说明“值得收藏”和“值得关注你”可能由不同变量驱动。'}</div>`;$('knowledge').innerHTML=buildCognitionLedger(r);buildWeek()}
+function buildCognitionLedger(rows){let h=load('ry_hypotheses'),supported=h.filter(x=>x.status==='支持'),testing=h.filter(x=>x.status==='验证中'||x.status==='证据不足'),rejected=h.filter(x=>x.status==='反驳');let facts=`近期${rows.length}条；中位播放${Math.round(median(rows.map(x=>x.views)))}；中位收藏率${(median(rows.map(x=>x.save))*100).toFixed(2)}%；中位涨粉率${(median(rows.map(x=>x.follow))*100).toFixed(2)}%。`;return `<div class="reason"><b>① 事实</b><br>${facts}</div><div class="reason"><b>② 观察</b><br>高收藏、高涨粉作品值得拆变量，但观察不等于因果。</div><div class="reason" style="border-left-color:#ffb86b"><b>③ 待验证假设</b><br>${testing.length?testing.map(x=>x.name).join('；'):'暂无，去内容实验室建立。'}</div><div class="reason"><b>④ 已支持规律</b><br>${supported.length?supported.map(x=>x.name).join('；'):'暂无。至少经过重复实验后再升级。'}</div>${rejected.length?`<div class="reason"><b>已淘汰认知</b><br>${rejected.map(x=>x.name).join('；')}</div>`:''}`}
+function buildAccountModel(){let a=load('ry_posts'),h=load('ry_hypotheses'),s=h.filter(x=>x.status==='支持'),r=h.filter(x=>x.status==='反驳'),t=h.filter(x=>x.status==='验证中'||x.status==='证据不足');return `<b>样本：</b>${a.length} 条作品<br><br><b>已支持：</b>${s.length?s.map(x=>x.name).join('；'):'暂无'}<br><br><b>待验证：</b>${t.length?t.map(x=>x.name).join('；'):'暂无'}<br><br><b>已反驳：</b>${r.length?r.map(x=>x.name).join('；'):'暂无'}`}
+function buildWeek(){let h=load('ry_hypotheses').filter(x=>x.status==='验证中'||x.status==='证据不足'),pool=ideas.length?ideas:[],days=[];for(let i=0;i<7;i++){let hy=h[i%Math.max(1,h.length)],idea=pool[i%Math.max(1,pool.length)];days.push({day:i+1,hid:hy?.id||'',hypothesis:hy?.name||['发现感是否提高收藏','强证据是否提高收藏','人格表达是否提高涨粉','女性具体场景是否提高互动','结果型开头是否提高播放','同母题换对象是否可复刻','复盘并决定保留/淘汰'][i],variable:hy?.variable||['选题对象','证据强度','人格表达','女性场景','标题/首图','选题对象','复盘'][i],metric:hy?.metric||['收藏率','收藏率','涨粉率','互动率','播放','收藏率','综合'][i],topic:idea?.name||'从素材库选择一个对象',status:'待执行'})}store('ry_plan',days);renderPlan();if($('weekPlan'))$('weekPlan').innerHTML=days.map(planHTML).join('')}
+function planHTML(x){return `<div class="planDay"><span class="pill">Day ${x.day}</span> <b>${x.topic}</b><p><b>验证：</b>${x.hypothesis}</p><p class="muted">只改变：${x.variable} · 主要看：${x.metric} · 状态：${x.status}</p><div class="actions"><button onclick="planToScript(${x.day})">进入内容生产</button></div></div>`}
+function generateExperimentPlan(){buildWeek();alert('已根据当前待验证假设与选题池生成7天实验计划。')}
+function renderPlan(){let p=load('ry_plan');if($('experimentPlan'))$('experimentPlan').innerHTML=p.length?p.map(planHTML).join(''):'<div class="empty">还没有实验计划。</div>';if($('weekPlan')&&p.length)$('weekPlan').innerHTML=p.map(planHTML).join('')}
+function planToScript(day){let p=load('ry_plan').find(x=>x.day===day);if(!p)return;$('topic').value=p.topic;$('scriptTest').value=p.hypothesis;$('scriptGoal').value=p.metric==='涨粉率'?'涨粉':p.metric==='收藏率'?'收藏':p.metric==='播放'?'播放':'评论';document.querySelector('[data-page="script"]').click()}
+function saveAB(){let q=$('abQuestion').value.trim();if(!q)return alert('先写要验证什么');let a=load('ry_abtests');a.unshift({id:Date.now(),q,A:$('abA').value,B:$('abB').value,fixed:$('abFixed').value,status:'待执行',created:new Date().toLocaleDateString()});store('ry_abtests',a);renderAB()}
+function renderAB(){let a=load('ry_abtests');if(!$('abList'))return;$('abList').innerHTML=a.length?a.map(x=>`<div class="reason"><b>${x.q}</b><br><span class="mini">A</span> ${x.A||'-'}<br><span class="mini">B</span> ${x.B||'-'}<br><span class="mini">固定</span> ${x.fixed||'-'}<br><span class="status">${x.status}</span></div>`).join(''):'<div class="empty">还没有A/B实验。</div>'}
+function generateScript(){let t=$('topic').value.trim(),v=$('value').value.trim()||'帮普通人省时间、少踩坑',p=$('proof').value.trim()||'实际操作截图 / 原始来源 / 前后对比',goal=$('scriptGoal').value,test=$('scriptTest').value.trim()||'本条先不做变量实验';if(!t)return alert('先写选题');let profile=load('ry_profile',{}),aud=load('ry_audience',{}),rules=load('ry_hypotheses').filter(x=>x.status==='支持').map(x=>x.name);let hook=goal==='播放'?'先亮最反常识的结果，前3秒不解释背景':goal==='收藏'?'先告诉她“这条以后一定用得到”，马上给清晰结果':goal==='涨粉'?'开头加入“我替你筛过/试过”的人格承诺':'先抛一个她愿意表达立场的问题';$('scriptOut').innerHTML=`<div class="reason"><b>这条的任务：</b>${goal}　·　<b>只验证：</b>${test}</div><p><span class="pill">为什么值得做</span><br>${v}。目标人群线索：${aud.pain||aud.stage||'尚未填写人群画像'}。</p><p><span class="pill">5个标题</span><br>① 我怎么现在才发现：${t}<br>② 别再自己乱找了，我替你筛了：${t}<br>③ 这个信息差，我希望自己早点知道：${t}<br>④ 如果你也在找这种东西，先收藏：${t}<br>⑤ 我实际试完，${t}最值得看的不是表面功能</p><p><span class="pill">前3秒 / 首图</span><br><b>${hook}。</b></p><p><span class="pill">完整脚本</span><br>开头：结果/冲突 → 1句话说明它是什么 → 为什么对目标用户有用 → 用「${p}」证明 → 3个具体场景 → 主动说1个限制 → 给明确行动 → 结尾强化“我持续替你筛”的账号承诺。</p><p><span class="pill">证据缺口</span><br>发布前必须确认：原始来源在哪里？你是否亲自试过？有没有截图/录屏？有没有限制条件？如果缺一项，就不要把判断写成确定事实。</p><p><span class="pill">拍摄清单</span><br>① 结果画面 ② 原始来源 ③ 实测过程 ④ 关键步骤 ⑤ 使用场景 ⑥ 限制/避坑 ⑦ 总结卡。图文6–9张，每张只讲一个信息点。</p><p><span class="pill">账号认知约束</span><br>${profile.follow||'核心承诺尚未填写'}${rules.length?'<br>已支持规律：'+rules.join('；'):''}</p>`}
+function exportBackup(){let data={version:'V7',exportedAt:new Date().toISOString(),data:{}};V6_KEYS.forEach(k=>data.data[k]=load(k,k==='ry_matrix'?{}:[]));let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='ruanying-workbench-V7-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(u)}
+function importBackup(){let f=$('backupFile').files[0];if(!f)return alert('先选择备份文件');let r=new FileReader();r.onload=()=>{try{let j=JSON.parse(r.result);if(!j.data)throw 0;if(!confirm('恢复会覆盖当前同名数据，确定继续？'))return;Object.entries(j.data).forEach(([k,v])=>store(k,v));location.reload()}catch{alert('备份文件格式不正确')}};r.readAsText(f)}
+function renderBackupHealth(){if(!$('backupHealth'))return;let p=load('ry_posts'),m=load('ry_materials'),h=load('ry_hypotheses'),pl=load('ry_plan');$('backupHealth').innerHTML=`<table><tr><th>数据</th><th>数量</th><th>状态</th></tr><tr><td>作品</td><td>${p.length}</td><td>${p.length?'已沉淀':'待录入'}</td></tr><tr><td>素材</td><td>${m.length}</td><td>${m.length?'已沉淀':'待收集'}</td></tr><tr><td>实验假设</td><td>${h.length}</td><td>${h.length?'已建立':'待建立'}</td></tr><tr><td>7天计划</td><td>${pl.length}</td><td>${pl.length?'已生成':'待生成'}</td></tr></table><div class="reason"><b>注意：</b>GitHub Pages 只托管网页代码。你录入的业务数据仍保存在当前浏览器 localStorage，所以换设备前请先导出备份。</div>`}
+function renderHypotheses(){let a=load('ry_hypotheses');$('hypothesisList').innerHTML=a.length?a.map(h=>{let linked=load('ry_posts').filter(p=>String(p.hypothesisId)===String(h.id));return `<div class="idea" style="margin:12px 0"><span class="pill">${h.status}</span> <b>${h.name}</b><p class="muted">只改变：${h.variable} · 观察：${h.metric} · 目标样本≥${h.n} · 已关联${linked.length}条</p><p>${h.evidence||'尚未填写初始证据'}</p><div class="actions"><button onclick="setHypothesis(${h.id},'支持')">证据支持</button><button onclick="setHypothesis(${h.id},'反驳')">被反驳</button><button onclick="setHypothesis(${h.id},'证据不足')">证据不足</button><button onclick="setHypothesis(${h.id},'验证中')">继续验证</button></div></div>`}).join(''):'<div class="empty">还没有假设。先从“为什么某条比另一条好”写一个可验证解释。</div>';renderFingerprints();fillHypothesisOptions()}
+
+function esc(x){return String(x||'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function addViralCase(){let t=$('vcTitle').value.trim();if(!t)return alert('先填写原始标题');let c={id:Date.now(),platform:$('vcPlatform').value,date:$('vcDate').value,link:$('vcLink').value.trim(),title:t,object:$('vcObject').value.trim(),tags:$('vcTags').value.trim(),hook:$('vcHook').value.trim(),first3:$('vcFirst3').value.trim(),structure:$('vcStructure').value.trim(),proof:$('vcProof').value.trim(),audience:$('vcAudience').value.trim(),emotion:$('vcEmotion').value.trim(),need:$('vcNeed').value.trim(),comments:$('vcComments').value.trim(),play:$('vcPlay').value.trim(),save:$('vcSave').value.trim(),share:$('vcShare').value.trim(),follow:$('vcFollow').value.trim(),logic:$('vcLogic').value.trim(),copy:$('vcCopy').value.trim(),nocopy:$('vcNoCopy').value.trim(),adapt:$('vcAdapt').value.trim(),test:$('vcTest').value.trim(),transfer:$('vcTransfer').checked,created:new Date().toISOString()};let a=load('ry_viral_cases');a.unshift(c);store('ry_viral_cases',a);['vcLink','vcTitle','vcObject','vcTags','vcHook','vcFirst3','vcStructure','vcProof','vcAudience','vcEmotion','vcNeed','vcComments','vcPlay','vcSave','vcShare','vcFollow','vcLogic','vcCopy','vcNoCopy','vcAdapt','vcTest'].forEach(id=>$(id).value='');$('vcTransfer').checked=false;renderViralCases()}
+function viralToIdea(id){let c=load('ry_viral_cases').find(x=>x.id===id);if(!c)return;ideas.unshift({name:c.adapt||('基于「'+c.title+'」迁移的新选题'),source:'爆款分析库 · '+c.platform,why:'外部案例底层逻辑：'+(c.logic||c.copy||'待验证'),status:'待验证',cost:'中',accountEvidence:'尚未经过阮嘤账号验证',proof:c.proof||'需准备自己的实测/原始来源'});store('ry_ideas',ideas);renderIdeas();renderRecs();alert('已进入选题雷达：它现在只是“外部启发”，不是已验证账号规律。')}
+function viralToHypothesis(id){let c=load('ry_viral_cases').find(x=>x.id===id);if(!c)return;let name=c.test||('验证「'+(c.emotion||c.logic||c.hook||'该爆款变量')+'」是否适合阮嘤账号');let a=load('ry_hypotheses');a.unshift({id:Date.now(),name,evidence:'来源于爆款案例「'+c.title+'」。外部信号，不代表账号因果。',variable:c.emotion?'情绪表达':'标题/首图',metric:c.save?'收藏率':'播放',n:3,status:'验证中',created:new Date().toLocaleDateString()});store('ry_hypotheses',a);renderHypotheses();alert('已建立待验证假设。需要用你自己的作品数据验证。')}
+function deleteViral(id){if(!confirm('删除这条爆款拆解？'))return;store('ry_viral_cases',load('ry_viral_cases').filter(x=>x.id!==id));renderViralCases()}
+function tokenFreq(a,field){let m={};a.forEach(c=>String(c[field]||'').split(/[，,、/|#；;\s]+/).map(x=>x.trim()).filter(x=>x.length>1).forEach(x=>m[x]=(m[x]||0)+1));return Object.entries(m).filter(x=>x[1]>=2).sort((a,b)=>b[1]-a[1])}
+function splitTokens(v){return String(v||'').split(/[，,、;；|/\n]+/).map(x=>x.trim()).filter(x=>x.length>1)}
+function topField(a,f,n=5){let m={};a.forEach(c=>splitTokens(c[f]).forEach(x=>m[x]=(m[x]||0)+1));return Object.entries(m).sort((x,y)=>y[1]-x[1]).slice(0,n)}
+function renderViralPatterns(a){let days=+$('viralWindow')?.value||7,dim=$('viralDimension')?.value||'all',now=Date.now();let scope=a.filter(c=>days>3000||!c.date||(now-new Date(c.date).getTime()<=days*864e5&&now>=new Date(c.date).getTime()));let defs=[['emotion','重复情绪'],['audience','重复受众'],['need','重复需求'],['tags','重复Tag/关键词'],['proof','重复证据方式'],['logic','重复底层逻辑'],['hook','重复标题/钩子']].filter(x=>dim==='all'||x[0]===dim);let found=[];defs.forEach(([f,label])=>topField(scope,f,6).filter(x=>x[1]>=2).forEach(([k,n])=>found.push({f,label,k,n})));found.sort((x,y)=>y.n-x.n);$('viralPatterns').textContent=found.length;$('viralPatternList').className='';$('viralPatternList').innerHTML=found.length?found.map(x=>`<div class="reason"><b>${x.label}：</b>${esc(x.k)} <span class="status">${x.n}条重复</span><br><span class="mini">外部信号 · 需要进入实验室验证是否适合阮嘤。</span></div>`).join(''):'<div class="empty">当前观察窗口还没有形成≥2条重复信号。</div>';renderViralIntelligence(scope,found)}
+function renderViralIntelligence(scope,found){let e=topField(scope,'emotion',4),n=topField(scope,'need',4),aud=topField(scope,'audience',4),hook=topField(scope,'hook',3),proof=topField(scope,'proof',3),follow=topField(scope,'follow',4);let fmt=x=>x.length?x.map(([k,v])=>`<span class="pill">${esc(k)} · ${v}</span>`).join(' '):'<span class="mini">暂无重复信号</span>';
+$('viralTodayDecision').className='';$('viralTodayDecision').innerHTML=scope.length?`<p><b>近窗口样本：</b>${scope.length} 条</p><p><b>高频情绪：</b>${fmt(e)}</p><p><b>高频需求：</b>${fmt(n)}</p><p><b>高频钩子：</b>${fmt(hook)}</p><p><b>高频证据：</b>${fmt(proof)}</p>`:'<div class="empty">先录入近期真实案例。</div>';
+let known=(load('ry_hypotheses')||[]).map(x=>String(x.name||'')+' '+String(x.evidence||'')).join(' ');let opp=found.filter(x=>!known.includes(x.k)).slice(0,4);$('viralOpportunity').className='';$('viralOpportunity').innerHTML=opp.length?opp.map(x=>`<div class="reason"><b>${esc(x.k)}</b> · ${x.label}<br><span class="mini">外部出现 ${x.n} 次，但你的实验账本里还没有明确验证。</span></div>`).join(''):'<div class="empty">暂时没有明显“外部已重复、账号未验证”的变量。</div>';
+$('viralEmotionMap').className='';$('viralEmotionMap').innerHTML=`<p><b>情绪：</b>${fmt(e)}</p><p><b>需求：</b>${fmt(n)}</p><p class="mini">研究重点：同一需求换不同情绪包装，结果是否变化？</p>`;
+$('viralAudienceMap').className='';$('viralAudienceMap').innerHTML=`<p><b>高频受众：</b>${fmt(aud)}</p><p><b>关注动机：</b>${fmt(follow)}</p><p class="mini">关注动机比单条播放更接近“账号资产”。</p>`;
+let tests=found.slice(0,3);$('viralTests').className='';$('viralTests').innerHTML=tests.length?tests.map((x,i)=>`<div class="reason"><b>实验 ${i+1}｜${esc(x.k)}</b><br>保持题材尽量接近，只改变「${x.label.replace('重复','')}」变量；发布后优先观察与该变量对应的目标指标。<div class="actions"><button onclick="quickViralHyp('${encodeURIComponent(x.k)}','${encodeURIComponent(x.label)}')">加入实验室</button></div></div>`).join(''):'<div class="empty">至少需要形成重复变量后才生成测试方向。</div>'}
+function quickViralHyp(k,l){k=decodeURIComponent(k);l=decodeURIComponent(l);let a=load('ry_hypotheses');a.unshift({id:Date.now(),name:'验证「'+k+'」是否适合阮嘤账号',evidence:'爆款分析库跨案例重复信号：'+l+'。这只是外部观察，不代表因果。',variable:l.replace('重复',''),metric:l.includes('情绪')?'评论/收藏':l.includes('钩子')?'播放/停留':'收藏/涨粉',n:3,status:'验证中',created:new Date().toLocaleDateString()});store('ry_hypotheses',a);renderHypotheses();alert('已加入内容实验室，等待用自己的作品数据验证。')}
+function renderViralCases(){let a=load('ry_viral_cases'),f=$('viralFilter')?.value||'全部',q=($('viralSearch')?.value||'').toLowerCase();let now=Date.now();$('viralCount').textContent=a.length;$('viralFresh').textContent=a.filter(c=>c.date&&now-new Date(c.date).getTime()<=7*864e5&&now>=new Date(c.date).getTime()).length;$('viralTransfer').textContent=a.filter(c=>c.transfer).length;renderViralPatterns(a);let list=a.filter(c=>(f==='全部'||c.platform===f)&&(!q||[c.title,c.object,c.tags,c.audience,c.emotion,c.logic].join(' ').toLowerCase().includes(q)));$('viralCaseList').innerHTML=list.length?list.map(c=>`<div class="card idea"><div><span class="pill">${esc(c.platform)}</span> <span class="status ${c.transfer?'strong':''}">${c.transfer?'建议迁移':'研究案例'}</span> <span class="mini">${esc(c.date||'日期未填')}</span></div><h3 style="margin-top:10px">${esc(c.title)}</h3><p class="muted">${esc(c.object||'主题未填')} · ${esc(c.tags||'Tag未填')}</p><div class="decision"><span class="mini">标题/钩子</span><div>${esc(c.hook||'待拆')}</div><span class="mini">前三秒</span><div>${esc(c.first3||'待拆')}</div><span class="mini">受众</span><div>${esc(c.audience||'待拆')}</div><span class="mini">情绪</span><div>${esc(c.emotion||'待拆')}</div><span class="mini">底层逻辑</span><div>${esc(c.logic||'待拆')}</div><span class="mini">收藏动机</span><div>${esc(c.save||'待拆')}</div><span class="mini">关注动机</span><div>${esc(c.follow||'待拆')}</div><span class="mini">可迁移变量</span><div>${esc(c.copy||'待拆')}</div><span class="mini">阮嘤改造</span><div>${esc(c.adapt||'待设计')}</div></div><div class="actions"><button onclick="viralToIdea(${c.id})">转成我的选题</button><button onclick="viralToHypothesis(${c.id})">建立验证假设</button>${c.link?`<button onclick="window.open('${esc(c.link)}','_blank')">打开来源</button>`:''}<button class="danger" onclick="deleteViral(${c.id})">删除</button></div></div>`).join(''):'<div class="empty">还没有符合筛选条件的爆款案例。</div>'}
+function renderAll(){let m=load('ry_matrix',{});if($('mxTracks')&&m.tracks){$('mxTracks').value=m.tracks;$('mxTopics').value=m.topics;$('mxSeries').value=m.series}renderRecs();renderInbox();renderPosts();renderIdeas();renderCases();renderViralCases();review();renderProfile();renderAudience();renderMaterials();renderLearning();analyze10();renderHypotheses();renderPlan();renderAB();renderBackupHealth()}
+migrateV6();$('date').value=new Date().toISOString().slice(0,10);if($('vcDate'))$('vcDate').value=new Date().toISOString().slice(0,10);renderAll();
+
+function gDays(d){if(!d)return 9999;return Math.floor((Date.now()-new Date(d).getTime())/864e5)}
+function gSplit(s){return (s||'').split(/[，,、；;｜|\/\n]+/).map(x=>x.trim().replace(/\s+/g,' ').slice(0,160)).filter(x=>x.length>=2)}
+function gLife(cs){let d=cs.map(c=>gDays(c.date)).filter(x=>x>=0&&x<9999);let f=d.filter(x=>x<=7).length,m=d.filter(x=>x>7&&x<=30).length;if(f>=2&&m===0)return'萌芽';if(f>=2&&m>=1)return'持续/上升';if(f===1&&m>=2)return'降温观察';if(f===0&&m>=1)return'降温';return'单点信号'}
+function gStatus(v){let h=load('ry_hypotheses');let r=h.filter(x=>(x.name+' '+x.evidence+' '+x.variable).includes(v));if(r.some(x=>x.status==='支持'))return'verified';if(r.some(x=>x.status==='验证中'||x.status==='证据不足'))return'testing';return'external'}
+function collectGenes(){let cs=load('ry_viral_cases'),defs=[['hook','标题/钩子'],['emotion','情绪'],['need','用户需求'],['audience','受众'],['proof','证据方式'],['tags','Tag'],['logic','底层逻辑']],m={};defs.forEach(([f,l])=>cs.forEach(c=>gSplit(c[f]).forEach(v=>{let k=f+'::'+v;m[k]??={type:f,label:l,value:v,count:0,cases:[],latest:''};m[k].count++;m[k].cases.push(c);if(c.date>m[k].latest)m[k].latest=c.date})));let a=Object.values(m);a.forEach(g=>{g.status=gStatus(g.value);g.lifecycle=gLife(g.cases)});return a.sort((a,b)=>b.count-a.count||(b.latest||'').localeCompare(a.latest||''))}
+function gBadge(g){let s=g.status==='verified'?'阮嘤已支持':g.status==='testing'?'验证中':'外部信号';return `<span class="status ${g.status==='verified'?'strong':''}">${s}</span> <span class="status">${g.count}次</span> <span class="mini">${g.lifecycle}</span>`}
+function geneToHypothesis(t,v){t=decodeURIComponent(t);v=decodeURIComponent(v);let a=load('ry_hypotheses');if(a.some(h=>h.name.includes(v)))return alert('这个变量已经在实验账本里。');let n={hook:'标题/钩子',emotion:'情绪',need:'用户需求',audience:'受众场景',proof:'证据方式',tags:'Tag',logic:'底层逻辑'};a.unshift({id:Date.now(),name:`验证「${v}」是否适合阮嘤账号`,evidence:`爆款基因库发现重复${n[t]||t}信号。外部重复不代表因果。`,variable:n[t]||t,metric:t==='hook'?'播放/停留':t==='emotion'?'评论/收藏':t==='proof'?'收藏率':'收藏/涨粉',n:3,status:'验证中',created:new Date().toLocaleDateString()});store('ry_hypotheses',a);renderHypotheses();renderGeneLibrary();alert('已送入内容实验室。')}
+function renderGeneLibrary(){if(!$('geneList'))return;let gs=collectGenes(),t=$('geneType')?.value||'all',mn=+$('geneMin')?.value||2,st=$('geneStatus')?.value||'all',f=gs.filter(g=>(t==='all'||g.type===t)&&g.count>=mn&&(st==='all'||g.status===st));$('geneCount').textContent=gs.length;$('geneRepeat').textContent=gs.filter(g=>g.count>=2).length;$('geneFresh').textContent=gs.filter(g=>g.cases.some(c=>gDays(c.date)<=7)).length;$('geneVerified').textContent=gs.filter(g=>g.status==='verified').length;let op=gs.filter(g=>g.count>=2&&g.status!=='verified'&&g.cases.some(c=>gDays(c.date)<=7)).slice(0,5);$('geneDecision').className='';$('geneDecision').innerHTML=op.length?op.map(g=>`<div class="reason"><b>${g.label}：</b>${esc(g.value)}<br>${gBadge(g)}<div class="actions"><button onclick="geneToHypothesis('${encodeURIComponent(g.type)}','${encodeURIComponent(g.value)}')">拿去验证</button></div></div>`).join(''):'<div class="empty">当前没有“重复 + 近期活跃 + 未验证”的基因。</div>';let lc={};gs.filter(g=>g.count>=2).forEach(g=>lc[g.lifecycle]=(lc[g.lifecycle]||0)+1);$('lifeCycle').className='';$('lifeCycle').innerHTML=Object.entries(lc).map(([k,n])=>`<div class="reason"><b>${k}</b>　${n}个重复基因</div>`).join('')||'<div class="empty">还没有足够时间序列。</div>';let mini=(id,a,msg)=>{$(id).className='';$(id).innerHTML=a.length?a.slice(0,8).map(g=>`<div class="reason"><b>${esc(g.value)}</b><br>${gBadge(g)}</div>`).join(''):`<div class="empty">${msg}</div>`};mini('titleFormulaList',gs.filter(g=>g.type==='hook'&&g.count>=2),'至少需要2条重复标题结构。');let cm={};load('ry_viral_cases').forEach(c=>gSplit(c.emotion).forEach(e=>gSplit(c.need).forEach(n=>cm[e+' × '+n]=(cm[e+' × '+n]||0)+1)));$('emotionFormulaList').className='';$('emotionFormulaList').innerHTML=Object.entries(cm).filter(x=>x[1]>=2).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([k,n])=>`<div class="reason"><b>${esc(k)}</b><br><span class="status">${n}条共同出现</span></div>`).join('')||'<div class="empty">还没有重复的“情绪 × 需求”组合。</div>';mini('audienceGeneList',gs.filter(g=>g.type==='audience'&&g.count>=2),'至少需要2条重复受众场景。');mini('proofGeneList',gs.filter(g=>g.type==='proof'&&g.count>=2),'至少需要2条重复证据结构。');$('geneList').className='';$('geneList').innerHTML=f.length?f.map(g=>`<div class="idea"><div><span class="pill">${g.label}</span> ${gBadge(g)}</div><h3>${esc(g.value)}</h3><p class="muted">关联案例：${g.cases.slice(0,3).map(c=>esc(c.title)).join('；')}${g.cases.length>3?'…':''}</p><div class="actions"><button onclick="geneToHypothesis('${encodeURIComponent(g.type)}','${encodeURIComponent(g.value)}')">建立验证实验</button></div></div>`).join(''):'<div class="empty">当前筛选条件下没有基因。</div>'}
+
+try{renderGeneLibrary()}catch(e){};
+
+let ryCommandSelection=null;
+function cmdFreshGene(){
+  try{
+    let gs=collectGenes();
+    return gs.filter(g=>g.count>=2&&g.status!=='verified'&&g.cases.some(c=>gDays(c.date)<=7))[0]
+      || gs.filter(g=>g.count>=2&&g.status!=='verified')[0]
+      || gs[0] || null;
+  }catch(e){return null}
+}
+function cmdOpenHyp(){
+  let hs=load('ry_hypotheses')||[];
+  return hs.find(h=>h.status==='验证中') || hs.find(h=>h.status==='证据不足') || hs[0] || null;
+}
+function cmdIdeaCandidates(){
+  let ideas=load('ry_ideas')||[], gene=cmdFreshGene(), hyp=cmdOpenHyp();
+  return ideas.map(i=>{
+    let blob=((i.title||'')+' '+(i.reason||'')+' '+(i.audience||'')+' '+(i.proof||'')+' '+(i.tags||'')+' '+(i.source||'')).toLowerCase();
+    let evidence=[];
+    if(gene && blob.includes((gene.value||'').toLowerCase())) evidence.push('命中近期爆款基因');
+    if(hyp && blob.includes((hyp.variable||'').toLowerCase())) evidence.push('可验证当前假设');
+    if(i.proof) evidence.push('已有证据素材');
+    if(i.audience) evidence.push('受众明确');
+    if(i.source) evidence.push('来源明确');
+    let cost=(i.cost||i.difficulty||'').toString();
+    if(/低|简单|快|1|容易/.test(cost)) evidence.push('执行成本较低');
+    return {idea:i,evidence,rank:evidence.length};
+  }).sort((a,b)=>b.rank-a.rank);
+}
+function renderCommandCenter(){
+  if(!$('cmdTitle'))return;
+  let hs=load('ry_hypotheses')||[], ideas=load('ry_ideas')||[], posts=load('ry_posts')||[];
+  let gene=cmdFreshGene(), hyp=cmdOpenHyp(), cs=cmdIdeaCandidates(), pick=cs[0]||null;
+  ryCommandSelection={gene,hyp,pick};
+  $('cmdHyp').textContent=hs.filter(h=>h.status==='验证中'||h.status==='证据不足').length;
+  $('cmdIdeas').textContent=ideas.length;
+  $('cmdGenes').textContent=(()=>{try{return collectGenes().filter(g=>g.count>=2&&g.cases.some(c=>gDays(c.date)<=7)).length}catch(e){return 0}})();
+  $('cmdPosts').textContent=posts.length;
+  if(!pick){
+    $('cmdTitle').textContent='先补一个真实选题';
+    $('cmdWhy').className='';$('cmdWhy').innerHTML='<div class="empty">当前选题池为空。先从爆款分析库转一个案例，或手动录入一个你真正想做的题。</div>';
+  }else{
+    $('cmdTitle').textContent=pick.idea.title||pick.idea.name||'未命名选题';
+    $('cmdWhy').className='';$('cmdWhy').innerHTML=`<div class="reason"><b>决策依据：</b>${pick.evidence.length?pick.evidence.map(esc).join(' · '):'目前证据较少，因此只是候选，不是推荐结论。'}</div>`;
+  }
+  $('cmdNow').className='';
+  $('cmdNow').innerHTML=gene
+    ? `<div class="reason"><b>外部：</b>「${esc(gene.value)}」在爆款样本中重复 ${gene.count} 次，生命周期：${gene.lifecycle}。</div>`+
+      (hyp?`<div class="reason"><b>内部：</b>当前还有「${esc(hyp.name)}」需要验证。</div>`:'')
+    : `<div class="empty">目前没有足够的近期重复爆款基因。不要为了追热点硬做。</div>`;
+  let risks=[];
+  if(posts.length<10) risks.push(`账号样本只有 ${posts.length} 条，内部规律仍应保守解释`);
+  if(gene&&gene.count<3) risks.push('该外部基因重复样本仍少');
+  if(!gene) risks.push('缺少近期外部重复信号');
+  if(!hyp) risks.push('当前没有明确实验假设，容易一条内容同时改太多变量');
+  $('cmdRisk').className='';$('cmdRisk').innerHTML=risks.length?risks.map(x=>`<div class="reason">${esc(x)}</div>`).join(''):'<div class="reason">当前证据链相对完整，但仍不把相关性当因果。</div>';
+  $('cmdGene').className='';
+  $('cmdGene').innerHTML=gene?`<div class="reason"><b>${esc(gene.label)}：</b>${esc(gene.value)}<br>${gBadge(gene)}<p class="muted">今天只借这个变量，不照搬原视频。</p></div>`:'<div class="empty">暂无合适基因。</div>';
+  $('cmdTest').className='';
+  $('cmdTest').innerHTML=hyp?`<div class="reason"><b>${esc(hyp.name)}</b><p>变量：${esc(hyp.variable||'未写')}｜目标指标：${esc(hyp.metric||'未写')}｜建议样本：${esc(hyp.n||3)}</p></div>`:'<div class="empty">建议先建立一个单变量假设。</div>';
+  let title=pick?.idea?.title||'当前选题';
+  $('cmdMake').className='';
+  $('cmdMake').innerHTML=`<div class="reason"><b>内容对象：</b>${esc(title)}</div><div class="reason"><b>前3秒：</b>${gene&&gene.type==='hook'?'优先使用已观察到的钩子结构，但换成你的内容对象。':'先展示结果/反常识点，不做长铺垫。'}</div><div class="reason"><b>证据：</b>${esc(pick?.idea?.proof||'补原始来源、实测截图或真实使用结果；没有证据就不要强下结论。')}</div><div class="reason"><b>控制变量：</b>除今天要验证的变量外，尽量保持内容长度、画面密度、发布时间等稳定。</div>`;
+  let metric=hyp?.metric||'播放、收藏、评论、涨粉';
+  $('cmdMetrics').className='';$('cmdMetrics').innerHTML=`<div class="reason"><b>主指标：</b>${esc(metric)}</div><div class="reason"><b>辅助判断：</b>播放看触达；收藏看长期价值；评论看表达欲；涨粉看用户是否认可“阮嘤这个筛选者”。</div><div class="reason"><b>结论规则：</b>不要用1条内容升级成账号规律。至少按实验账本要求积累多个样本。</div>`;
+  $('cmdCandidates').className='';
+  $('cmdCandidates').innerHTML=cs.length?cs.slice(0,6).map((x,idx)=>`<div class="idea"><div><span class="pill">候选 ${idx+1}</span> <span class="status">${x.evidence.length}项证据标签</span></div><h3>${esc(x.idea.title||x.idea.name||'未命名')}</h3><p class="muted">${x.evidence.length?x.evidence.map(esc).join(' · '):'证据不足'}</p></div>`).join(''):'<div class="empty">选题池暂无候选。</div>';
+}
+function commandToExperiment(){
+  renderCommandCenter();
+  let s=ryCommandSelection;if(!s)return;
+  if(s.hyp){showPage('experiments');return}
+  if(s.gene){geneToHypothesis(encodeURIComponent(s.gene.type),encodeURIComponent(s.gene.value));showPage('experiments');return}
+  alert('当前没有可建立实验的爆款基因。')
+}
+function commandToProduction(){
+  renderCommandCenter();
+  let s=ryCommandSelection;if(!s?.pick)return alert('先在选题池加入一个真实选题。');
+  try{
+    let i=s.pick.idea;
+    let titleInput=$('prodTitle')||$('contentTitle')||$('draftTitle');
+    if(titleInput) titleInput.value=i.title||i.name||'';
+  }catch(e){}
+  showPage('production');
+}
+
+try{renderCommandCenter()}catch(e){};
+
+const PIPE_FIELDS=['pipeTopic','pipeAudience','pipeGoal','pipeVariable','pipeGene','pipeNeed','pipeEmotion','pipeMetric','pipeTitles','pipeFinalTitle','pipeCover','pipeHook','pipeHookWhy','pipeVideo','pipeSlides','pipeEvidence','pipeTags','pipeComment','pipePlatform','pipePublishTime','pipeUrl','pipeStatus','pipe2h','pipe24h','pipe7d','pipeConclusion','pipeNext','pipeLearning'];
+function pipeVal(id){return $(id)?.value||''}
+function pipeSet(id,v){if($(id))$(id).value=v||''}
+function pipeLoadDecision(){
+  try{renderCommandCenter()}catch(e){}
+  let s=window.ryCommandSelection||ryCommandSelection||null;
+  if(!s)return alert('今日决策台还没有可载入的选题。');
+  let i=s.pick?.idea||{}, g=s.gene, h=s.hyp;
+  pipeSet('pipeTopic',i.title||i.name||'');
+  pipeSet('pipeAudience',i.audience||'');
+  pipeSet('pipeVariable',h?.variable||g?.value||'');
+  pipeSet('pipeGene',g?`${g.label}：${g.value}`:'');
+  pipeSet('pipeNeed',i.need||'');
+  pipeSet('pipeEmotion',i.emotion||'');
+  pipeSet('pipeMetric',h?.metric||'');
+  pipeSet('pipeEvidence',i.proof?`□ ${i.proof}`:'□ 原始来源\n□ 实测/截图\n□ 关键结论证据');
+  pipeSet('pipeFinalTitle',i.title||i.name||'');
+  renderPipeHistory();
+  alert('已载入今日决策。接下来把它做成可发布内容。');
+}
+function pipeData(){
+  let o={id:Date.now(),savedAt:new Date().toISOString()};
+  PIPE_FIELDS.forEach(id=>o[id]=pipeVal(id));
+  o.checks=[...document.querySelectorAll('[data-pcheck]')].filter(x=>x.checked).map(x=>x.dataset.pcheck);
+  return o;
+}
+function pipeSave(){
+  let d=pipeData(); if(!d.pipeTopic)return alert('先填写选题。');
+  let a=load('ry_production_pipeline')||[];
+  let old=a.findIndex(x=>x.pipeTopic===d.pipeTopic&&x.pipeStatus!=='已发布');
+  if(old>=0){d.id=a[old].id;a[old]=d}else a.unshift(d);
+  store('ry_production_pipeline',a);renderPipeHistory();alert('制作单已保存。');
+}
+function pipeLoad(id){
+  let d=(load('ry_production_pipeline')||[]).find(x=>x.id==id);if(!d)return;
+  PIPE_FIELDS.forEach(k=>pipeSet(k,d[k]));
+  document.querySelectorAll('[data-pcheck]').forEach(x=>x.checked=(d.checks||[]).includes(x.dataset.pcheck));
+  showPage('pipeline');
+}
+function pipeDelete(id){
+  if(!confirm('删除这张制作单？'))return;
+  store('ry_production_pipeline',(load('ry_production_pipeline')||[]).filter(x=>x.id!=id));renderPipeHistory();
+}
+function renderPipeHistory(){
+  if(!$('pipeHistory'))return;let a=load('ry_production_pipeline')||[];
+  $('pipeHistory').className='';
+  $('pipeHistory').innerHTML=a.length?a.slice(0,12).map(d=>`<div class="idea"><div><span class="pill">${esc(d.pipePlatform||'未定平台')}</span> <span class="status">${esc(d.pipeStatus||'制作中')}</span></div><h3>${esc(d.pipeTopic||'未命名')}</h3><p class="muted">验证：${esc(d.pipeVariable||'未写')}｜保存：${new Date(d.savedAt).toLocaleString()}</p><div class="actions"><button onclick="pipeLoad(${d.id})">继续制作</button><button onclick="pipeDelete(${d.id})">删除</button></div></div>`).join(''):'<div class="empty">还没有保存过制作单。</div>';
+}
+function pipePreflight(){
+  let checks=[...document.querySelectorAll('[data-pcheck]')], n=checks.filter(x=>x.checked).length;
+  let hard=[];
+  if(!pipeVal('pipeFinalTitle'))hard.push('最终标题');
+  if(!pipeVal('pipeHook'))hard.push('前3秒');
+  if(!pipeVal('pipeEvidence'))hard.push('证据清单');
+  if(!pipeVal('pipeVariable'))hard.push('单一验证变量');
+  let msg=`完成 ${n}/${checks.length} 项`;
+  if(hard.length)msg+=`；还缺：${hard.join('、')}`;
+  else if(n<6)msg+='；内容能发，但证据链/表达还不够完整';
+  else msg+='；可以进入待发布状态';
+  $('pipeCheckResult').textContent=msg;
+}
+function pipeCommitLearning(){
+  let v=pipeVal('pipeVariable'), c=pipeVal('pipeConclusion'), learn=pipeVal('pipeLearning');
+  if(!v)return alert('没有填写本条验证变量。');
+  let hs=load('ry_hypotheses')||[];
+  let h=hs.find(x=>(x.variable||'')===v||(x.name||'').includes(v));
+  if(h){
+    h.status=c; h.latestEvidence=learn||`制作流水线结论：${c}`; h.updated=new Date().toLocaleDateString();
+  }else{
+    hs.unshift({id:Date.now(),name:`验证「${v}」是否适合阮嘤账号`,evidence:learn||'来自发布流水线',variable:v,metric:pipeVal('pipeMetric'),n:3,status:c,created:new Date().toLocaleDateString()});
+  }
+  store('ry_hypotheses',hs);
+  try{renderHypotheses();renderGeneLibrary();renderCommandCenter()}catch(e){}
+  pipeSave();alert('结论已写回实验账本。注意：单条作品的“支持”仍不等于稳定账号规律。');
+}
+function pipeExportText(){
+  let d=pipeData();
+  let txt=`【阮嘤内容发布制作单】\n选题：${d.pipeTopic}\n受众：${d.pipeAudience}\n目标：${d.pipeGoal}\n验证变量：${d.pipeVariable}\n爆款基因：${d.pipeGene}\n需求：${d.pipeNeed}\n情绪：${d.pipeEmotion}\n主指标：${d.pipeMetric}\n\n【标题实验】\n${d.pipeTitles}\n最终标题：${d.pipeFinalTitle}\n封面：${d.pipeCover}\n\n【前3秒】\n${d.pipeHook}\n继续看的理由：${d.pipeHookWhy}\n\n【视频脚本】\n${d.pipeVideo}\n\n【图文逐页】\n${d.pipeSlides}\n\n【证据素材】\n${d.pipeEvidence}\n\n【Tag/搜索词】\n${d.pipeTags}\n\n【评论区钩子】\n${d.pipeComment}\n\n【2h】\n${d.pipe2h}\n【24h】\n${d.pipe24h}\n【7d】\n${d.pipe7d}\n\n结论：${d.pipeConclusion}\n学习：${d.pipeLearning}`;
+  let blob=new Blob([txt],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(d.pipeTopic||'内容制作单')+'.txt';a.click();URL.revokeObjectURL(a.href);
+}
+
+try{renderPipeHistory()}catch(e){};
+
+const DC_KEYS=['Play','Like','Save','Comment','Share','Follow'];
+function dcNum(id){let v=+$(`${id}`)?.value;return Number.isFinite(v)?v:0}
+function dcMed(a){a=a.filter(x=>Number.isFinite(x)).sort((x,y)=>x-y);if(!a.length)return 0;let m=Math.floor(a.length/2);return a.length%2?a[m]:(a[m-1]+a[m])/2}
+function dcRate(n,d){return d>0?n/d*100:0}
+function dcFmt(n){return (Math.round(n*100)/100).toString()}
+function dcStageObj(prefix){let o={};DC_KEYS.forEach(k=>o[k.toLowerCase()]=dcNum(prefix+k));o.note=pipeVal(prefix+'Note');return o}
+function dcClearForm(){
+  ['dcTitle','dcVariable','dcGene','dcHyp','dcUrl','dcEditId','dc2Note','dc24Note','dc7Note'].forEach(x=>pipeSet(x,''));
+  ['dc2','dc24','dc7'].forEach(p=>DC_KEYS.forEach(k=>pipeSet(p+k,'')));
+  pipeSet('dcPublished','');
+  if($('dcDiagnosis'))$('dcDiagnosis').innerHTML='<div class="empty">选择一条作品后查看。</div>';
+}
+function dcCurrentMeta(){
+  return {id:+pipeVal('dcEditId')||Date.now(),title:pipeVal('dcTitle'),platform:pipeVal('dcPlatform'),type:pipeVal('dcType'),published:pipeVal('dcPublished'),variable:pipeVal('dcVariable'),gene:pipeVal('dcGene'),hypothesis:pipeVal('dcHyp'),url:pipeVal('dcUrl')};
+}
+function dcSaveMeta(silent=false){
+  let m=dcCurrentMeta();if(!m.title){if(!silent)alert('先填写作品标题。');return null}
+  let a=load('ry_post_metrics')||[], idx=a.findIndex(x=>x.id===m.id);
+  let old=idx>=0?a[idx]:{};
+  let row={...old,...m,updated:new Date().toISOString()};
+  if(idx>=0)a[idx]=row;else a.unshift(row);
+  store('ry_post_metrics',a);pipeSet('dcEditId',row.id);if(!silent){renderDataCenter();alert('基础信息已保存。')}return row;
+}
+function dcSaveAll(){
+  let row=dcSaveMeta(true);if(!row)return;
+  let a=load('ry_post_metrics')||[], idx=a.findIndex(x=>x.id===row.id);
+  a[idx]={...a[idx],stage2:dcStageObj('dc2'),stage24:dcStageObj('dc24'),stage7:dcStageObj('dc7'),updated:new Date().toISOString()};
+  store('ry_post_metrics',a);
+  dcSyncExperiment(a[idx]);renderDataCenter();dcLoad(row.id);alert('阶段数据已保存并重新分析。');
+}
+function dcHas(s){return s&&s.play>0}
+function dcMetrics(s){if(!dcHas(s))return null;return {play:s.play,likeRate:dcRate(s.like,s.play),saveRate:dcRate(s.save,s.play),commentRate:dcRate(s.comment,s.play),shareRate:dcRate(s.share,s.play),followRate:dcRate(s.follow,s.play)}}
+function dcBaseline(rows,stage='stage24'){
+  let ms=rows.map(r=>dcMetrics(r[stage])).filter(Boolean);if(!ms.length)return null;
+  return {n:ms.length,play:dcMed(ms.map(x=>x.play)),likeRate:dcMed(ms.map(x=>x.likeRate)),saveRate:dcMed(ms.map(x=>x.saveRate)),commentRate:dcMed(ms.map(x=>x.commentRate)),shareRate:dcMed(ms.map(x=>x.shareRate)),followRate:dcMed(ms.map(x=>x.followRate))};
+}
+function dcVs(v,b){if(!b)return '无基准';let d=v-b;if(Math.abs(d)<Math.max(.05,b*.1))return '≈ 基准';return d>0?'↑ 高于基准':'↓ 低于基准'}
+function dcLoad(id){
+  let r=(load('ry_post_metrics')||[]).find(x=>x.id==id);if(!r)return;
+  pipeSet('dcEditId',r.id);pipeSet('dcTitle',r.title);pipeSet('dcPlatform',r.platform);pipeSet('dcType',r.type);pipeSet('dcPublished',r.published);pipeSet('dcVariable',r.variable);pipeSet('dcGene',r.gene);pipeSet('dcHyp',r.hypothesis);pipeSet('dcUrl',r.url);
+  [['dc2',r.stage2],['dc24',r.stage24],['dc7',r.stage7]].forEach(([p,s])=>{s=s||{};DC_KEYS.forEach(k=>pipeSet(p+k,s[k.toLowerCase()]||''));pipeSet(p+'Note',s.note||'')});
+  dcDiagnose(r);showPage('datacenter');
+}
+function dcDiagnose(r){
+  if(!$('dcDiagnosis'))return;let rows=load('ry_post_metrics')||[], stage=dcHas(r.stage7)?'stage7':dcHas(r.stage24)?'stage24':'stage2', m=dcMetrics(r[stage]), b=dcBaseline(rows,stage);
+  if(!m){$('dcDiagnosis').innerHTML='<div class="empty">这条作品还没有阶段数据。</div>';return}
+  let label=stage==='stage7'?'7天':stage==='stage24'?'24小时':'2小时';
+  $('dcDiagnosis').className='';
+  $('dcDiagnosis').innerHTML=`<div class="reason"><b>${label}：</b>播放 ${m.play}（${dcVs(m.play,b?.play)}）</div>
+  <div class="reason">收藏率 ${dcFmt(m.saveRate)}%（${dcVs(m.saveRate,b?.saveRate)}）｜涨粉率 ${dcFmt(m.followRate)}%（${dcVs(m.followRate,b?.followRate)}）</div>
+  <div class="reason">评论率 ${dcFmt(m.commentRate)}%（${dcVs(m.commentRate,b?.commentRate)}）｜分享率 ${dcFmt(m.shareRate)}%（${dcVs(m.shareRate,b?.shareRate)}）</div>
+  <div class="reason"><b>解释：</b>${m.play>(b?.play||0)&&m.saveRate<(b?.saveRate||0)?'触达不错，但收藏价值没有同步提高；不要只因为播放高就复刻。':m.saveRate>(b?.saveRate||0)&&m.followRate>(b?.followRate||0)?'收藏和涨粉同时高于自身基准，值得继续验证内容价值与账号认同。':'当前信号混合，优先继续积累同变量样本。'}</div>`;
+}
+function dcSyncExperiment(r){
+  if(!r.variable)return;
+  let a=load('ry_experiment_samples')||[];
+  let idx=a.findIndex(x=>x.postId===r.id);
+  let s=dcHas(r.stage7)?r.stage7:dcHas(r.stage24)?r.stage24:r.stage2, m=dcMetrics(s);
+  let row={postId:r.id,title:r.title,variable:r.variable,type:r.type,metrics:m,updated:new Date().toISOString()};
+  if(idx>=0)a[idx]=row;else a.push(row);store('ry_experiment_samples',a);
+}
+function dcImportPipeline(){
+  let ps=(load('ry_production_pipeline')||[]).filter(x=>x.pipeStatus==='已发布'), rows=load('ry_post_metrics')||[], n=0;
+  ps.forEach(p=>{
+    if(rows.some(r=>r.title===p.pipeFinalTitle||r.title===p.pipeTopic))return;
+    rows.unshift({id:Date.now()+n,title:p.pipeFinalTitle||p.pipeTopic,platform:p.pipePlatform,type:'发现/宝藏',published:p.pipePublishTime,variable:p.pipeVariable,gene:p.pipeGene,hypothesis:p.pipeVariable,url:p.pipeUrl,updated:new Date().toISOString()});n++;
+  });
+  store('ry_post_metrics',rows);renderDataCenter();alert(`已同步 ${n} 条已发布制作单。`);
+}
+function renderDataCenter(){
+  if(!$('dcList'))return;let rows=load('ry_post_metrics')||[], f=$('dcTypeFilter')?.value||'all', stage=$('dcStageFilter')?.value||'24', key=stage==='7'?'stage7':stage==='2'?'stage2':'stage24';
+  $('dcPostN').textContent=rows.length;$('dc24N').textContent=rows.filter(r=>dcHas(r.stage24)).length;$('dc7N').textContent=rows.filter(r=>dcHas(r.stage7)).length;
+  let vars={};rows.filter(r=>r.variable).forEach(r=>(vars[r.variable]??=[]).push(r));$('dcExpN').textContent=Object.values(vars).filter(a=>a.length>=2).length;
+  let b=dcBaseline(rows,'stage24');$('dcBaseline').className='';
+  $('dcBaseline').innerHTML=b?`<div class="reason"><b>${b.n}条24h样本中位数</b></div><div class="reason">播放 ${dcFmt(b.play)}｜收藏率 ${dcFmt(b.saveRate)}%｜评论率 ${dcFmt(b.commentRate)}%｜分享率 ${dcFmt(b.shareRate)}%｜涨粉率 ${dcFmt(b.followRate)}%</div>${b.n<3?'<div class="reason">⚠ 样本少于3条，只作记录，不作为稳定基准。</div>':''}`:'<div class="empty">暂无24h基准。</div>';
+  let filtered=rows.filter(r=>f==='all'||r.type===f);
+  $('dcList').className='';$('dcList').innerHTML=filtered.length?filtered.map(r=>{let m=dcMetrics(r[key]);return `<div class="idea"><div><span class="pill">${esc(r.type||'未分类')}</span> <span class="status">${esc(r.platform||'')}</span></div><h3>${esc(r.title)}</h3><p class="muted">变量：${esc(r.variable||'未关联')}｜${m?`播放 ${m.play} · 收藏率 ${dcFmt(m.saveRate)}% · 涨粉率 ${dcFmt(m.followRate)}%`:'该阶段暂无数据'}</p><div class="actions"><button onclick="dcLoad(${r.id})">录入/诊断</button></div></div>`}).join(''):'<div class="empty">当前筛选下没有作品。</div>';
+  let typeGroups={};rows.forEach(r=>{if(!r.type)return;(typeGroups[r.type]??=[]).push(r)});
+  $('dcTypeCompare').className='';$('dcTypeCompare').innerHTML=Object.entries(typeGroups).filter(x=>x[1].filter(r=>dcHas(r.stage24)).length>=2).map(([t,a])=>{let x=dcBaseline(a,'stage24');return `<div class="reason"><b>${esc(t)}</b>｜${x.n}条｜播放中位数 ${dcFmt(x.play)}｜收藏率 ${dcFmt(x.saveRate)}%｜涨粉率 ${dcFmt(x.followRate)}%</div>`}).join('')||'<div class="empty">同类型至少需要2条24h样本。</div>';
+  $('dcVariableCompare').className='';$('dcVariableCompare').innerHTML=Object.entries(vars).filter(x=>x[1].length>=2).map(([v,a])=>{let x=dcBaseline(a, a.some(r=>dcHas(r.stage7))?'stage7':'stage24');return `<div class="reason"><b>${esc(v)}</b>｜${a.length}条样本${x?`｜收藏率中位数 ${dcFmt(x.saveRate)}%｜涨粉率 ${dcFmt(x.followRate)}%`:''}<br><span class="mini">${a.length<3?'仍属小样本，继续测试':'开始具备比较价值'}</span></div>`}).join('')||'<div class="empty">同一变量至少需要2条作品。</div>';
+  try{renderCommandCenter()}catch(e){}
+}
+
+try{renderDataCenter()}catch(e){};
+
+function brainNow(){return new Date().toISOString()}
+function brainId(s){let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h)+s.charCodeAt(i)|0;return 'b'+Math.abs(h)}
+function brainMetricForVariable(v){
+  let samples=(load('ry_experiment_samples')||[]).filter(x=>x.variable===v&&x.metrics);
+  let rows=load('ry_post_metrics')||[], base=dcBaseline(rows,'stage24');
+  if(!samples.length)return {samples,base,target:'saveRate',median:0,baseVal:base?.saveRate||0};
+  let text=v||'', target=/标题|钩子|前3秒|封面/.test(text)?'play':/涨粉|关注|人设|身份/.test(text)?'followRate':/评论|互动/.test(text)?'commentRate':/分享|转发/.test(text)?'shareRate':'saveRate';
+  let vals=samples.map(x=>x.metrics?.[target]).filter(Number.isFinite), median=dcMed(vals);
+  let baseVal=base?.[target]||0;
+  return {samples,base,target,median,baseVal};
+}
+function brainAutoRecords(){
+  let rec=[], rows=load('ry_post_metrics')||[], b=dcBaseline(rows,'stage24');
+  if(b){
+    rec.push({id:'fact-baseline',level:'事实',text:`当前账号24小时样本中位数：播放 ${dcFmt(b.play)}，收藏率 ${dcFmt(b.saveRate)}%，评论率 ${dcFmt(b.commentRate)}%，分享率 ${dcFmt(b.shareRate)}%，涨粉率 ${dcFmt(b.followRate)}%。`,evidence:`来自 ${b.n} 条有24h数据的账号作品`,sampleN:b.n,last:brainNow(),source:'作品数据中心',auto:true});
+  }
+  let hs=load('ry_hypotheses')||[];
+  hs.forEach(h=>{
+    let q=brainMetricForVariable(h.variable||''), n=q.samples.length, level='假设', why=`实验账本状态：${h.status||'验证中'}`;
+    if(h.status==='反驳') level='已反驳规律';
+    else if(h.status==='支持' && n>=3 && q.median>q.baseVal) level='已支持规律';
+    else if(h.status==='支持' && n<3) {level='观察';why='有支持信号，但账号样本不足3条，暂不升级为规律'}
+    else if(n>=3 && q.baseVal>0){
+      if(q.median>q.baseVal*1.08){level='已支持规律';why=`${n}条同变量样本的目标指标中位数高于账号基准`}
+      else if(q.median<q.baseVal*.92){level='已反驳规律';why=`${n}条同变量样本的目标指标中位数低于账号基准`}
+      else {level='观察';why=`${n}条样本与账号基准接近，暂不能支持因果`}
+    }
+    rec.push({id:'hyp-'+h.id,level,text:h.name||`变量「${h.variable}」可能有效`,evidence:`${why}${n?`；账号样本 ${n} 条`:''}`,sampleN:n,last:h.updated||h.created||brainNow(),source:'内容实验室 + 作品数据中心',variable:h.variable,next:n<3?'继续保持其他变量相对稳定，补足至少3条样本':'检查同类型基准与反例',auto:true});
+  });
+  try{
+    collectGenes().filter(g=>g.count>=2&&g.status==='external').slice(0,12).forEach(g=>{
+      rec.push({id:'ext-'+brainId(g.type+g.value),level:'观察',text:`外部爆款中「${g.value}」重复出现`,evidence:`${g.count}个外部案例；生命周期：${g.lifecycle}`,sampleN:g.count,last:g.latest||brainNow(),source:'爆款基因库（外部）',variable:g.value,next:'转成阮嘤自己的单变量实验后再判断',external:true,auto:true});
+    })
+  }catch(e){}
+  return rec;
+}
+function brainAll(){
+  let manual=load('ry_account_brain_manual')||[];
+  let overrides=load('ry_account_brain_overrides')||{};
+  return [...brainAutoRecords(),...manual].map(r=>overrides[r.id]?{...r,...overrides[r.id]}:r);
+}
+function brainSaveManual(){
+  let text=pipeVal('brainManualText');if(!text)return alert('先写认知内容。');
+  let a=load('ry_account_brain_manual')||[];
+  a.unshift({id:'manual-'+Date.now(),level:pipeVal('brainManualLevel')||'观察',text,evidence:pipeVal('brainManualEvidence'),next:pipeVal('brainManualNext'),sampleN:0,last:brainNow(),source:'人工记录',auto:false});
+  store('ry_account_brain_manual',a);['brainManualText','brainManualEvidence','brainManualNext'].forEach(x=>pipeSet(x,''));renderBrain();alert('已加入认知账本。');
+}
+function brainOverride(id,level){
+  let o=load('ry_account_brain_overrides')||{};o[id]={...(o[id]||{}),level,last:brainNow()};store('ry_account_brain_overrides',o);renderBrain();
+}
+function brainDelete(id){
+  let a=load('ry_account_brain_manual')||[];store('ry_account_brain_manual',a.filter(x=>x.id!==id));renderBrain();
+}
+function brainCard(r){
+  let badge=r.external?'<span class="status">仅外部信号</span>':'';
+  return `<div class="idea"><div><span class="pill">${esc(r.level)}</span> ${badge} <span class="status">${r.sampleN||0}样本</span></div><h3>${esc(r.text)}</h3><p class="muted"><b>证据：</b>${esc(r.evidence||'未写')}<br><b>来源：</b>${esc(r.source||'')}｜<b>最后验证：</b>${esc((r.last||'').toString().slice(0,10))}${r.next?`<br><b>下一步：</b>${esc(r.next)}`:''}</p><div class="actions">${!r.external&&r.level!=='事实'?`<button onclick="brainOverride('${r.id}','假设')">降为假设</button><button onclick="brainOverride('${r.id}','已支持规律')">人工标支持</button><button onclick="brainOverride('${r.id}','已反驳规律')">标反驳</button>`:''}${!r.auto?`<button onclick="brainDelete('${r.id}')">删除</button>`:''}</div></div>`;
+}
+function renderBrain(){
+  if(!$('brainLedger'))return;let all=brainAll(),filter=$('brainFilter')?.value||'all',q=(pipeVal('brainSearch')||'').toLowerCase();
+  $('brainFactN').textContent=all.filter(x=>x.level==='事实').length;
+  $('brainHypN').textContent=all.filter(x=>x.level==='观察'||x.level==='假设').length;
+  $('brainRuleN').textContent=all.filter(x=>x.level==='已支持规律').length;
+  $('brainRejectN').textContent=all.filter(x=>x.level==='已反驳规律').length;
+  let rules=all.filter(x=>x.level==='已支持规律'), pending=all.filter(x=>x.level==='假设'||x.level==='观察').filter(x=>!x.external), rej=all.filter(x=>x.level==='已反驳规律'), ext=all.filter(x=>x.external);
+  let put=(id,a,msg)=>{$(id).className='';$(id).innerHTML=a.length?a.slice(0,8).map(brainCard).join(''):`<div class="empty">${msg}</div>`};
+  put('brainRules',rules,'还没有达到证据门槛的账号规律。');
+  put('brainPending',pending,'暂无待验证认知。');
+  put('brainRejected',rej,'暂无被反驳规律。');
+  put('brainExternal',ext,'暂无重复外部信号。');
+  let facts=all.filter(x=>x.level==='事实'), top=rules.slice(0,3), wait=pending.slice(0,3);
+  $('brainSummary').className='';$('brainSummary').innerHTML=`${facts.slice(0,2).map(x=>`<div class="reason"><b>事实：</b>${esc(x.text)}</div>`).join('')}${top.map(x=>`<div class="reason"><b>暂时支持：</b>${esc(x.text)}</div>`).join('')}${wait.map(x=>`<div class="reason"><b>待验证：</b>${esc(x.text)}</div>`).join('')||'<div class="empty">还没有足够认知。</div>'}`;
+  let rows=load('ry_post_metrics')||[], n24=rows.filter(r=>dcHas(r.stage24)).length, n7=rows.filter(r=>dcHas(r.stage7)).length, exp=(load('ry_experiment_samples')||[]).length;
+  let health=n24>=10?'较好':n24>=5?'成长中':'早期';
+  $('brainHealth').className='';$('brainHealth').innerHTML=`<div class="reason"><b>当前：${health}</b></div><div class="reason">24h样本 ${n24} 条｜7d样本 ${n7} 条｜实验样本 ${exp} 条</div><div class="reason">${n24<5?'目前最缺的是持续录入作品数据，不是增加更多规则。':n7<3?'24h数据开始有用，但7天长尾样本仍少。':'已经可以逐渐区分短期触达与长期价值。'}</div>`;
+  let shown=all.filter(x=>(filter==='all'||x.level===filter)&&(!q||(x.text+' '+x.evidence+' '+x.variable).toLowerCase().includes(q)));
+  $('brainLedger').className='';$('brainLedger').innerHTML=shown.length?shown.map(brainCard).join(''):'<div class="empty">没有匹配的认知记录。</div>';
+}
+function brainRebuild(){
+  renderBrain();try{renderCommandCenter();renderGeneLibrary();renderDataCenter()}catch(e){};alert('已根据当前爆款、实验和作品数据重建账号认知。');
+}
+
+try{renderBrain()}catch(e){};
+
+function hubId(){let d=new Date(),p=n=>String(n).padStart(2,'0');return `RY-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${String(Date.now()).slice(-5)}`}
+function hubProjects(){return load('ry_content_projects')||[]}
+function hubCurrent(){let id=pipeVal('hubEditId');return hubProjects().find(x=>String(x.id)===String(id))||null}
+function hubNew(){
+  ['hubEditId','hubContentId','hubTitle','hubVariable','hubGene','hubHyp','hubSource'].forEach(x=>pipeSet(x,''));
+  pipeSet('hubStatus','选题中');pipeSet('hubPlatform','抖音');$('hubTimeline').innerHTML='<div class="empty">新项目尚未保存。</div>';showPage('hub')
+}
+function hubForm(){
+  let old=hubCurrent(), cid=pipeVal('hubContentId')||old?.contentId||hubId();
+  return {id:old?.id||Date.now(),contentId:cid,title:pipeVal('hubTitle'),status:pipeVal('hubStatus')||'选题中',platform:pipeVal('hubPlatform')||'抖音',variable:pipeVal('hubVariable'),gene:pipeVal('hubGene'),hypothesis:pipeVal('hubHyp'),source:pipeVal('hubSource'),created:old?.created||new Date().toISOString(),updated:new Date().toISOString(),events:old?.events||[]}
+}
+function hubEvent(p,type,text){
+  p.events=p.events||[];p.events.unshift({time:new Date().toISOString(),type,text});
+  if(p.events.length>30)p.events=p.events.slice(0,30);
+}
+function hubSave(silent=false){
+  let p=hubForm();if(!p.title){if(!silent)alert('先填写标题/选题。');return null}
+  let a=hubProjects(),i=a.findIndex(x=>x.id===p.id);
+  if(i>=0){let before=a[i];if(before.status!==p.status)hubEvent(p,'状态',`${before.status} → ${p.status}`);a[i]=p}else{hubEvent(p,'建档','创建内容项目');a.unshift(p)}
+  store('ry_content_projects',a);pipeSet('hubEditId',p.id);pipeSet('hubContentId',p.contentId);renderHub();if(!silent)alert(`已保存：${p.contentId}`);return p
+}
+function hubLoad(id){
+  let p=hubProjects().find(x=>x.id==id);if(!p)return;
+  pipeSet('hubEditId',p.id);pipeSet('hubContentId',p.contentId);pipeSet('hubTitle',p.title);pipeSet('hubStatus',p.status);pipeSet('hubPlatform',p.platform);pipeSet('hubVariable',p.variable);pipeSet('hubGene',p.gene);pipeSet('hubHyp',p.hypothesis);pipeSet('hubSource',p.source);
+  $('hubTimeline').className='';$('hubTimeline').innerHTML=(p.events||[]).length?p.events.map(e=>`<div class="reason"><b>${esc(e.type)}</b> · ${new Date(e.time).toLocaleString()}<br>${esc(e.text)}</div>`).join(''):'<div class="empty">暂无轨迹。</div>';showPage('hub')
+}
+function hubFindByTitle(t){t=(t||'').trim();return hubProjects().find(p=>p.title===t)}
+function hubMigrate(){
+  let a=hubProjects(), added=0;
+  function ensure(title,data={}){
+    if(!title||a.some(p=>p.title===title))return;
+    let p={id:Date.now()+added,contentId:hubId()+'-'+added,title,status:data.status||'制作中',platform:data.platform||'抖音',variable:data.variable||'',gene:data.gene||'',hypothesis:data.hypothesis||'',source:data.source||'旧数据迁移',created:new Date().toISOString(),updated:new Date().toISOString(),events:[]};
+    hubEvent(p,'迁移','由旧模块自动建立 Content ID');a.push(p);added++;
+  }
+  (load('ry_production_pipeline')||[]).forEach(x=>ensure(x.pipeFinalTitle||x.pipeTopic,{status:x.pipeStatus==='已发布'?'已发布':x.pipeStatus||'制作中',platform:x.pipePlatform,variable:x.pipeVariable,gene:x.pipeGene,hypothesis:x.pipeVariable,source:'发布流水线'}));
+  (load('ry_post_metrics')||[]).forEach(x=>ensure(x.title,{status:dcHas(x.stage7)?'复盘中':'已发布',platform:x.platform,variable:x.variable,gene:x.gene,hypothesis:x.hypothesis,source:'作品数据中心'}));
+  (load('ry_ideas')||[]).forEach(x=>ensure(x.title||x.name,{status:'选题中',source:x.source||'选题池'}));
+  store('ry_content_projects',a);hubLinkLegacy();renderHub();alert(`整理完成，新建 ${added} 个内容项目。`)
+}
+function hubLinkLegacy(){
+  let ps=hubProjects();
+  let pipes=load('ry_production_pipeline')||[];pipes.forEach(x=>{let p=ps.find(p=>p.title===(x.pipeFinalTitle||x.pipeTopic));if(p){x.contentId=p.contentId;x.projectId=p.id}});store('ry_production_pipeline',pipes);
+  let rows=load('ry_post_metrics')||[];rows.forEach(x=>{let p=ps.find(p=>p.title===x.title);if(p){x.contentId=p.contentId;x.projectId=p.id}});store('ry_post_metrics',rows);
+  let ideas=load('ry_ideas')||[];ideas.forEach(x=>{let p=ps.find(p=>p.title===(x.title||x.name));if(p){x.contentId=p.contentId;x.projectId=p.id}});store('ry_ideas',ideas);
+}
+function hubPushPipeline(){
+  let p=hubSave(true);if(!p)return;
+  pipeSet('pipeTopic',p.title);pipeSet('pipePlatform',p.platform);pipeSet('pipeVariable',p.variable);pipeSet('pipeGene',p.gene);
+  let a=hubProjects(),i=a.findIndex(x=>x.id===p.id);a[i].status='制作中';hubEvent(a[i],'制作','进入发布流水线');store('ry_content_projects',a);showPage('pipeline');renderHub()
+}
+function hubPushData(){
+  let p=hubSave(true);if(!p)return;
+  let rows=load('ry_post_metrics')||[],r=rows.find(x=>x.contentId===p.contentId)||rows.find(x=>x.title===p.title);
+  if(!r){r={id:Date.now(),contentId:p.contentId,projectId:p.id,title:p.title,platform:p.platform,type:'发现/宝藏',variable:p.variable,gene:p.gene,hypothesis:p.hypothesis,updated:new Date().toISOString()};rows.unshift(r);store('ry_post_metrics',rows)}
+  let a=hubProjects(),i=a.findIndex(x=>x.id===p.id);if(a[i].status!=='已闭环')a[i].status='已发布';hubEvent(a[i],'数据','进入作品数据中心');store('ry_content_projects',a);dcLoad(r.id)
+}
+function hubCloseLoop(){
+  let p=hubSave(true);if(!p)return;let a=hubProjects(),i=a.findIndex(x=>x.id===p.id);a[i].status='已闭环';hubEvent(a[i],'闭环','完成发布、数据与认知回流');store('ry_content_projects',a);hubLoad(p.id);renderHub()
+}
+function hubNextAction(p){
+  if(p.status==='选题中')return '确定实验变量 → 进入制作';
+  if(p.status==='制作中')return '完成发布前检查';
+  if(p.status==='待发布')return '发布并补作品链接';
+  if(p.status==='已发布')return '录入2h/24h数据';
+  if(p.status==='复盘中')return '补7d数据并写实验结论';
+  return '已完成闭环';
+}
+function renderHub(){
+  if(!$('hubList'))return;let a=hubProjects(),f=$('hubFilter')?.value||'all',q=(pipeVal('hubSearch')||'').toLowerCase();
+  $('hubN').textContent=a.length;$('hubMaking').textContent=a.filter(x=>x.status==='制作中'||x.status==='待发布').length;$('hubReview').textContent=a.filter(x=>x.status==='已发布'||x.status==='复盘中').length;$('hubDone').textContent=a.filter(x=>x.status==='已闭环').length;
+  let open=a.filter(x=>x.status!=='已闭环'), priority=open.sort((x,y)=>({复盘中:1,已发布:2,待发布:3,制作中:4,选题中:5}[x.status]||9)-({复盘中:1,已发布:2,待发布:3,制作中:4,选题中:5}[y.status]||9))[0];
+  $('hubToday').className='';$('hubToday').innerHTML=priority?`<div class="reason"><b>${esc(priority.title)}</b><br>${esc(hubNextAction(priority))}<br><span class="mini">${esc(priority.contentId)}</span></div><div class="actions"><button onclick="hubLoad(${priority.id})">继续这个项目</button></div>`:'<div class="empty">没有未完成项目，可以从今日决策新建。</div>';
+  let linkedPipe=(load('ry_production_pipeline')||[]).filter(x=>x.contentId).length,linkedData=(load('ry_post_metrics')||[]).filter(x=>x.contentId).length;
+  $('hubIntegrity').className='';$('hubIntegrity').innerHTML=`<div class="reason">制作单已关联 Content ID：${linkedPipe} 条</div><div class="reason">作品数据已关联 Content ID：${linkedData} 条</div><div class="reason">${a.length&&!linkedPipe&&!linkedData?'建议点击“整理旧数据”，把历史模块串起来。':'以后新项目尽量从这里进入，减少重复录入。'}</div>`;
+  let shown=a.filter(p=>(f==='all'||p.status===f)&&(!q||(p.title+' '+p.contentId+' '+p.variable).toLowerCase().includes(q)));
+  $('hubList').className='';$('hubList').innerHTML=shown.length?shown.map(p=>`<div class="idea"><div><span class="pill">${esc(p.status)}</span> <span class="status">${esc(p.contentId)}</span></div><h3>${esc(p.title)}</h3><p class="muted">变量：${esc(p.variable||'未定')}｜下一步：${esc(hubNextAction(p))}</p><div class="actions"><button onclick="hubLoad(${p.id})">打开项目</button></div></div>`).join(''):'<div class="empty">没有匹配项目。</div>';
+  try{if($('cmdProject'))$('cmdProject').innerHTML=priority?`<div class="reason"><b>${esc(priority.title)}</b><br>${esc(priority.status)} → ${esc(hubNextAction(priority))}<br><span class="mini">${esc(priority.contentId)}</span></div>`:'<div class="empty">暂无进行中项目。</div>'}catch(e){}
+}
+
+try{renderHub()}catch(e){};
+
+function osProjectPriority(a){
+  let order={复盘中:1,已发布:2,待发布:3,制作中:4,选题中:5};
+  return [...a].filter(x=>x.status!=='已闭环').sort((x,y)=>(order[x.status]||9)-(order[y.status]||9))[0]||null;
+}
+function osActionFor(p){
+  if(!p)return {title:'今天可以开一个新选题',why:'没有未完成内容项目，才适合开启新的内容。',after:'先去今日决策台，用外部信号 + 账号证据选一个值得验证的题。',page:'command',btn:'去做今日决策'};
+  if(p.status==='复盘中')return {title:`把「${p.title}」复盘闭环`,why:'这条内容已经走到最后一步。先把7天结果和实验结论写完，比继续开新坑更能提升账号认知。',after:'结论写回实验账本和账号大脑，再决定这个变量是否继续复刻。',page:'datacenter',btn:'补7天数据'};
+  if(p.status==='已发布')return {title:`给「${p.title}」补真实数据`,why:'已经发布但还没有完成数据回流。没有数据，前面的爆款分析和实验设计都无法形成学习。',after:'录入2h/24h数据，系统会和账号自身基准、同类型内容比较。',page:'datacenter',btn:'去录数据'};
+  if(p.status==='待发布')return {title:`把「${p.title}」发出去`,why:'内容已经进入待发布状态。此时继续研究新选题的收益低于完成发布。',after:'发布后补作品链接，并进入2h数据观察。',page:'pipeline',btn:'打开发布流水线'};
+  if(p.status==='制作中')return {title:`完成「${p.title}」`,why:'已经有正在制作的内容。优先完成标题、前三秒、证据和发布检查，避免选题越堆越多。',after:'通过发布前体检后进入待发布。',page:'pipeline',btn:'继续制作'};
+  return {title:`推进「${p.title}」`,why:'这是当前最靠前的未完成项目。',after:'确定实验变量后进入制作流水线。',page:'hub',btn:'打开项目'};
+}
+function osRefresh(){
+  if(!$('osActionTitle'))return;
+  try{renderHub();renderBrain();renderDataCenter()}catch(e){}
+  let projects=hubProjects(), open=projects.filter(x=>x.status!=='已闭环'), p=osProjectPriority(projects), act=osActionFor(p);
+  $('osActionTitle').textContent=act.title;$('osActionBody').className='';$('osActionBody').innerHTML=p?`<div class="reason"><span class="pill">${esc(p.status)}</span> <span class="status">${esc(p.contentId)}</span><br><b>${esc(p.title)}</b><br>实验变量：${esc(p.variable||'尚未确定')}</div>`:'<div class="reason">当前没有未完成内容项目。</div>';
+  $('osWhy').className='';$('osWhy').innerHTML=`<div class="reason">${esc(act.why)}</div>`;
+  $('osAfter').className='';$('osAfter').innerHTML=`<div class="reason">${esc(act.after)}</div>`;
+  $('osActionButtons').innerHTML=`<button class="btn" onclick="${p?`osGoProject(${p.id},'${act.page}')`:`showPage('${act.page}')`}">${esc(act.btn)}</button>`;
+  $('osOpen').textContent=open.length;
+  let rows=load('ry_post_metrics')||[];
+  let needData=projects.filter(x=>x.status==='已发布'||x.status==='复盘中').filter(p=>{let r=rows.find(x=>x.contentId===p.contentId||x.title===p.title);return !r||!dcHas(r.stage24)||(p.status==='复盘中'&&!dcHas(r.stage7))}).length;
+  $('osNeedData').textContent=needData;
+  let hs=load('ry_hypotheses')||[];$('osNeedTest').textContent=hs.filter(x=>x.status==='验证中'||x.status==='证据不足').length;
+  let brain=brainAll();$('osRules').textContent=brain.filter(x=>x.level==='已支持规律').length;
+
+  $('osQueue').className='';$('osQueue').innerHTML=open.length?open.slice(0,4).map(x=>`<div class="reason"><b>${esc(x.title)}</b><br>${esc(x.status)} → ${esc(hubNextAction(x))}</div>`).join(''):'<div class="empty">暂无进行中项目。</div>';
+
+  let h=hs.find(x=>x.status==='验证中')||hs.find(x=>x.status==='证据不足');
+  $('osExperiment').className='';$('osExperiment').innerHTML=h?`<div class="reason"><b>${esc(h.name)}</b><br>变量：${esc(h.variable||'未写')}<br>主指标：${esc(h.metric||'未写')}</div>`:'<div class="empty">当前没有待验证实验。</div>';
+
+  let g=null;try{g=cmdFreshGene()}catch(e){}
+  $('osExternal').className='';$('osExternal').innerHTML=g?`<div class="reason"><b>${esc(g.label)}：${esc(g.value)}</b><br>外部重复 ${g.count} 次｜${esc(g.lifecycle)}<br><span class="mini">只是机会，不是账号规律</span></div>`:'<div class="empty">没有足够重复的近期外部信号。</div>';
+
+  let debts=[];
+  projects.filter(x=>x.status==='已发布'||x.status==='复盘中').forEach(p=>{
+    let r=rows.find(x=>x.contentId===p.contentId||x.title===p.title);
+    if(!r)debts.push(`${p.title}：尚未建立数据记录`);
+    else if(!dcHas(r.stage24))debts.push(`${p.title}：缺24h数据`);
+    else if(p.status==='复盘中'&&!dcHas(r.stage7))debts.push(`${p.title}：缺7d数据`);
+  });
+  $('osDebt').className='';$('osDebt').innerHTML=debts.length?debts.slice(0,6).map(x=>`<div class="reason">${esc(x)}</div>`).join(''):'<div class="empty">当前没有关键数据欠账。</div>';
+
+  let rules=brain.filter(x=>x.level==='已支持规律');
+  $('osKnowledge').className='';$('osKnowledge').innerHTML=rules.length?rules.slice(0,4).map(x=>`<div class="reason"><b>已支持：</b>${esc(x.text)}<br><span class="mini">${x.sampleN||0}样本 · ${esc(x.source||'')}</span></div>`).join(''):'<div class="empty">还没有达到门槛的稳定账号规律。继续积累真实作品数据。</div>';
+}
+function osGoProject(id,page){
+  hubLoad(id);
+  let p=hubProjects().find(x=>x.id==id);
+  if(page==='pipeline'&&p){pipeSet('pipeTopic',p.title);pipeSet('pipePlatform',p.platform);pipeSet('pipeVariable',p.variable);pipeSet('pipeGene',p.gene);showPage('pipeline')}
+  else if(page==='datacenter'&&p){let r=(load('ry_post_metrics')||[]).find(x=>x.contentId===p.contentId||x.title===p.title);if(r)dcLoad(r.id);else hubPushData()}
+  else showPage(page);
+}
+function osStartToday(){osRefresh();let p=osProjectPriority(hubProjects()),a=osActionFor(p);if(p)osGoProject(p.id,a.page);else showPage('command')}
+
+try{osRefresh()}catch(e){};
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const side=document.querySelector('.sidebar');
+    if(side && !side.querySelector('.nav-group-label')){
+      const labels=[
+        ['oshome','TODAY'],
+        ['viral','DISCOVER'],
+        ['pipeline','CREATE'],
+        ['datacenter','LEARN'],
+        ['backup','SYSTEM']
+      ];
+      labels.forEach(([page,label])=>{
+        const b=side.querySelector(`[data-page="${page}"]`);
+        if(b){const d=document.createElement('div');d.className='nav-group-label';d.textContent=label;b.parentNode.insertBefore(d,b)}
+      });
+    }
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const visible=[...document.querySelectorAll('section.section')].find(s=>getComputedStyle(s).display!=='none');
+    if(!visible || visible.id==='today') showPage('simplehome');
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    flowInjectBar();
+    // Replace production save buttons with the integrated save path.
+    document.querySelectorAll('button[onclick="pipeSave()"]').forEach(b=>b.setAttribute('onclick','flowSavePipeline()'));
+    // Data save: retain original function, then update project status.
+    if(typeof dcSaveAll==='function' && !window._dcSaveAllBase){
+      window._dcSaveAllBase=dcSaveAll;
+      window.dcSaveAll=function(){window._dcSaveAllBase();try{flowAfterDataSave();flowRefreshBar()}catch(e){}}
+    }
+    // Learning commit: retain original behavior, then close the linked Content ID when conclusion exists.
+    if(typeof pipeCommitLearning==='function' && !window._pipeCommitBase){
+      window._pipeCommitBase=pipeCommitLearning;
+      window.pipeCommitLearning=function(){window._pipeCommitBase();try{flowCloseAfterLearning();flowRefreshBar()}catch(e){}}
+    }
+    // When a hub project is opened, it becomes the active project automatically.
+    if(typeof hubLoad==='function' && !window._hubLoadBase){
+      window._hubLoadBase=hubLoad;
+      window.hubLoad=function(id){window._hubLoadBase(id);try{flowSetActive(id)}catch(e){}}
+    }
+    // Command -> production now creates/links a Content ID automatically.
+    window.commandToProduction=function(){
+      let p=flowEnsureProjectFromDecision();
+      if(!p)return alert('先在选题池加入一个真实选题。');
+      flowOpenPipeline(p);
+    }
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const rows=load('ry_post_metrics')||[];
+    const historical=rows.filter(r=>r.stage7&&String(r.stage7.note||'').includes('历史已知数据')).length;
+    if(historical&&$('seedStatus'))$('seedStatus').innerHTML=`<div class="reason">当前已有 ${historical} 条历史作品数据。历史数据用于认识题材和长期结果，不冒充严格24h基准。</div>`;
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const oldSeed=window.seedAdd;
+    if(oldSeed)window.seedAdd=function(){oldSeed();try{renderAccountLearning()}catch(e){}};
+    const oldDC=window.dcSaveAll;
+    if(oldDC)window.dcSaveAll=function(){oldDC();try{renderAccountLearning()}catch(e){}};
+    renderAccountLearning();
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const baseSeed=window.seedAdd;
+    if(baseSeed && !window._seedGenePatched){
+      window._seedGenePatched=true;
+      window.seedAdd=function(){
+        let title=pipeVal('seedTitle');
+        let genes={hook:pipeVal('seedHook'),emotion:pipeVal('seedEmotion'),structure:pipeVal('seedStructure'),proof:pipeVal('seedProof')};
+        baseSeed();
+        if(title){
+          let rows=load('ry_post_metrics')||[],r=rows.find(x=>formalNorm(x.title)===formalNorm(title));
+          if(r){r.contentGenes=genes;store('ry_post_metrics',rows)}
+        }
+        ['seedHook','seedEmotion','seedStructure','seedProof'].forEach(x=>pipeSet(x,''));
+        try{renderAccountLearning();renderExpressionLearning()}catch(e){}
+      }
+    }
+    // CSV template/import now also accepts the four structured gene columns.
+    window.seedExportTemplate=function(){
+      let csv='\ufeff标题,发布日期,播放,点赞,收藏,评论,分享,涨粉,内容类型,备注,开头钩子,核心情绪,内容结构,主要证据\n';
+      csv+='示例标题,2026-10-01,20000,0,0,0,0,100,发现/宝藏,删除示例后填写,信息差,发现感,资源推荐,截图\n';
+      let blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='阮嘤_历史作品导入模板_V23.csv';a.click();URL.revokeObjectURL(u);
+    }
+    renderExpressionLearning();
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    const baseRender=window.renderAccountLearning;
+    if(baseRender && !window._nextLearnPatched){
+      window._nextLearnPatched=true;
+      window.renderAccountLearning=function(){baseRender();try{renderExpressionLearning();nextBuild()}catch(e){}}
+    }
+    nextBuild();
+  }catch(e){}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  try{
+    runFill();
+    const baseHub=window.renderHub;
+    if(baseHub && !window._runHubPatched){
+      window._runHubPatched=true;
+      window.renderHub=function(){baseHub();try{runFill()}catch(e){}}
+    }
+  }catch(e){}
+});
+</script>
+</body></html>
