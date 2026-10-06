@@ -32,7 +32,7 @@
 .health-ok{border-left:3px solid currentColor;padding-left:10px}
 .health-warn{border-left:3px solid currentColor;padding-left:10px}
 </style>
-</head><body><div class="app"><aside class="side"><div class="brand">◫ 阮嘤自媒体助手<small>本地版 · 数据只保存在你的浏览器</small></div><div class="account"><span class="avatar">阮</span><b>抖音 · 发现型账号</b><div class="muted" style="font-size:11px;margin-top:7px">从互联网挖出「原来还有这个」</div></div><div class="nav" id="nav"><button class="active" data-page="home">◫ 今日工作台</button><button data-page="data">◈ 账号数据库</button><button data-page="radar">✦ 选题雷达</button><button data-page="lab">🔥 爆款分析库</button><button data-page="genes">🧬 爆款基因库</button><button data-page="matrix">▦ 内容矩阵</button><button data-page="script">✎ 内容生产</button><button data-page="review">↻ 数据复盘</button><button data-page="strategy">⌘ 账号操盘</button><button data-page="experiment">⚗ 内容实验室</button><button data-page="profile">◎ 阮嘤资料库</button><button data-page="audience">◉ 人群研究</button><button data-page="materials">▣ 素材知识库</button><button data-page="learning">◇ 7天学习</button><button data-page="backup">⇩ 数据备份</button></div><div class="sidefoot">● 本地运行　<span style="color:#48d7bd">数据未上传</span></div></aside><main class="main">
+</head><body><div id="ryCloudTop" style="position:fixed;right:12px;bottom:12px;z-index:9999;background:#0c2527;border:1px solid #23565a;border-radius:999px;padding:7px 10px;font-size:12px;opacity:.9">☁️ Supabase</div><div class="app"><aside class="side"><div class="brand">◫ 阮嘤自媒体助手<small>本地版 · 数据只保存在你的浏览器</small></div><div class="account"><span class="avatar">阮</span><b>抖音 · 发现型账号</b><div class="muted" style="font-size:11px;margin-top:7px">从互联网挖出「原来还有这个」</div></div><div class="nav" id="nav"><button class="active" data-page="home">◫ 今日工作台</button><button data-page="data">◈ 账号数据库</button><button data-page="radar">✦ 选题雷达</button><button data-page="lab">🔥 爆款分析库</button><button data-page="genes">🧬 爆款基因库</button><button data-page="matrix">▦ 内容矩阵</button><button data-page="script">✎ 内容生产</button><button data-page="review">↻ 数据复盘</button><button data-page="strategy">⌘ 账号操盘</button><button data-page="experiment">⚗ 内容实验室</button><button data-page="profile">◎ 阮嘤资料库</button><button data-page="audience">◉ 人群研究</button><button data-page="materials">▣ 素材知识库</button><button data-page="learning">◇ 7天学习</button><button data-page="backup">⇩ 数据备份</button></div><div class="sidefoot">● 本地运行　<span style="color:#48d7bd">数据未上传</span></div></aside><main class="main">
 <section id="home" class="section active"><div class="top"><div><div class="eyebrow">今天，不要凭感觉发内容</div><h1>把你的数据、全网素材和个人判断，变成今天能执行的选题</h1></div><button class="btn" onclick="refreshBrief()">更新今日情报</button></div><div class="hero"><div><div class="eyebrow">当前账号结论</div><b>优先强化：发现感 × 实用价值 × 女性友好表达</b><p>不把账号锁死成书籍号。书、网站、APP、AI工具、GitHub、纪录片、官方资源，都可以成为“发现源”。</p></div><div class="tags"><span>宝藏发现</span><span>省时间</span><span>普通人可用</span><span>女性视角</span><span>真实体验</span></div></div><div class="stats"><div class="stat"><small>账号运行</small><strong id="days">7</strong><small>天 · 10/01 起</small></div><div class="stat"><small>涨粉</small><strong>100+</strong><small>首周已验证</small></div><div class="stat"><small>今日候选</small><strong id="ideaCount">6</strong><small>按账号匹配排序</small></div><div class="stat"><small>待复盘作品</small><strong id="pending">0</strong><small>录入数据后自动出现</small></div></div><div class="hint"><b>V6 判断原则：</b> 不再使用没有证据的“推荐分”。候选内容按「来源是否可信、需求是否明确、是否符合账号承诺、有没有可展示证据、执行成本」给出判断状态；没有数据就明确写“待验证”。当前版本不伪装实时联网。</div><div class="grid2"><div class="card"><h3>今日优先做</h3><div id="recs"></div></div><div><div class="card"><h3>你的内容公式</h3><p class="muted">发现一个多数人不知道、但立刻能用的东西 → 先制造“我怎么现在才知道” → 用证据/截图证明 → 给出具体使用场景 → 留一个可讨论的问题。</p><div class="flow"><div>发现</div><div>核源</div><div>判断</div><div>转译</div><div>发布</div><div>录数</div><div>复盘</div></div></div><div class="card"><h3>灵感收件箱</h3><textarea id="inbox" placeholder="看到任何书、网站、APP、帖子、GitHub、论文、产品……先丢这里，一字不改也可以。"></textarea><button class="btn ghost" style="margin-top:8px" onclick="saveInbox()">存进灵感箱</button><div id="inboxList"></div></div></div></div></section>
 <section id="data" class="section"><div class="top"><div><div class="eyebrow">账号数据库</div><h1>每发一条，就让系统更懂你的账号</h1></div><button class="btn" onclick="addPost()">保存作品</button></div><div class="card"><div class="formgrid"><div><small>发布时间</small><input id="date" type="date"></div><div><small>标题/选题</small><input id="title" placeholder="例如：我怎么现在才发现这个网站"></div><div><small>内容类型</small><select id="type"><option>书/资料</option><option>网站/工具</option><option>AI/科技</option><option>方法/经验</option><option>产品/生活</option></select></div><div><small>播放</small><input id="views" type="number"></div><div><small>点赞</small><input id="likes" type="number"></div><div><small>收藏</small><input id="saves" type="number"></div><div><small>评论</small><input id="comments" type="number"></div><div><small>涨粉</small><input id="follows" type="number"></div><div><small>首图/前3秒钩子</small><input id="hook" placeholder="一句话记录"></div><div><small>内容母题</small><input id="postMother" placeholder="如：早点知道 / 免费低成本 / 替你筛"></div><div><small>系列包装</small><input id="postSeries" placeholder="如：我怎么现在才发现"></div><div><small>证据方式</small><select id="postProof"><option>实测/截图</option><option>原始来源</option><option>前后对比</option><option>个人经历</option><option>清单整理</option><option>暂无明显证据</option></select></div><div><small>主要目标</small><select id="postGoal"><option>涨粉</option><option>收藏</option><option>播放</option><option>评论</option></select></div><div><small>这条只想验证什么</small><input id="postTest" placeholder="例：同类选题换首图，停留会不会更好"></div><div><small>关联假设</small><select id="postHypothesis"><option value="">不关联实验</option></select></div><div><small>实验版本</small><select id="postVariant"><option value="">无</option><option>A</option><option>B</option></select></div></div></div><div class="card"><table><thead><tr><th>日期</th><th>标题</th><th>类型</th><th>播放</th><th>赞</th><th>藏</th><th>评</th><th>涨粉</th><th>收藏率</th><th>互动率</th></tr></thead><tbody id="postRows"></tbody></table></div></section>
 <section id="radar" class="section"><div class="top"><div><div class="eyebrow">选题雷达</div><h1>先搜“东西”，再决定它值不值得变成内容</h1></div><button class="btn" onclick="addIdea()">新增候选</button></div><div class="card"><div class="formgrid"><div><small>候选东西</small><input id="ideaName" placeholder="书 / 网站 / APP / 工具 / 资源"></div><div><small>来源</small><input id="ideaSource" placeholder="X / 小红书 / GitHub / 官网 / 朋友"></div><div><small>为什么值得讲</small><input id="ideaWhy" placeholder="解决什么问题"></div></div></div><div id="ideaList"></div></section>
@@ -1330,4 +1330,91 @@ document.addEventListener('DOMContentLoaded',()=>{
   }catch(e){}
 });
 </script>
+
+<div class="card" id="ryCloudPanel">
+  <div class="eyebrow">CLOUD RADAR · 云端爆款雷达</div>
+  <h2>每日站外情报</h2>
+  <div id="ryCloudStatus" class="mini">准备连接 Supabase…</div>
+  <div id="ryCloudFeed" style="margin-top:12px"><div class="empty">正在读取云端情报。</div></div>
+  <div class="actions"><button onclick="ryCloudFetchViral()">刷新云端情报</button></div>
+</div>
+
+<script>
+/* CLOUD SYNC · Supabase viral_cases · read-only public client */
+const RY_SUPABASE_URL = 'https://zanfbtpuflmmxjnfczzr.supabase.co';
+const RY_SUPABASE_KEY = 'sb_publishable_qLIHpinoenojpf8plGcGAQ_PU-GZPsy';
+
+function ryCloudMap(x) {
+  return {
+    id: 'cloud-' + x.id,
+    cloudId: x.id,
+    platform: x.platform || '',
+    date: x.discovered_at || '',
+    link: x.source_url || '',
+    title: x.title || '',
+    object: x.content_object || '',
+    tags: Array.isArray(x.tags) ? x.tags.join(' / ') : '',
+    hook: x.hook_type || '',
+    first3: x.first_3_seconds || '',
+    structure: x.content_structure || '',
+    proof: x.proof_type || '',
+    audience: x.target_audience || '',
+    emotion: x.core_emotion || '',
+    need: x.core_need || '',
+    play: x.play_count ?? '',
+    save: x.save_count ?? '',
+    share: x.share_count ?? '',
+    logic: x.why_it_spreads || '',
+    copy: x.reusable_gene || '',
+    noCopy: x.do_not_copy || '',
+    adapt: x.ruanying_angle || '',
+    test: x.experiment_variable || '',
+    transfer: x.migration_value || '',
+    status: x.status || '云端情报',
+    sourceVerified: !!x.source_verified,
+    isCloud: true
+  };
+}
+
+async function ryCloudFetchViral() {
+  const box = document.getElementById('ryCloudStatus');
+  try {
+    if (box) box.textContent = '云端情报同步中…';
+    const endpoint = RY_SUPABASE_URL + '/rest/v1/viral_cases?select=*&order=discovered_at.desc,created_at.desc&limit=100';
+    const r = await fetch(endpoint, {
+      headers: {
+        'apikey': RY_SUPABASE_KEY,
+        'Authorization': 'Bearer ' + RY_SUPABASE_KEY
+      }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const rows = await r.json();
+    window.RY_CLOUD_VIRAL = rows.map(ryCloudMap);
+    if (box) box.textContent = '☁️ 云端已连接 · ' + rows.length + ' 条情报';
+    try { renderCloudViral(); } catch(e) {}
+    return window.RY_CLOUD_VIRAL;
+  } catch(e) {
+    window.RY_CLOUD_VIRAL = [];
+    if (box) box.textContent = '云端连接失败 · ' + e.message;
+    return [];
+  }
+}
+
+function renderCloudViral() {
+  const host = document.getElementById('ryCloudFeed');
+  if (!host) return;
+  const rows = window.RY_CLOUD_VIRAL || [];
+  host.innerHTML = rows.length ? rows.slice(0,20).map(x => `
+    <div class="reason">
+      <div><b>${esc(x.title)}</b> <span class="status">${esc(x.platform || '公开网络')}</span>${x.sourceVerified?' <span class="status">已核验</span>':''}</div>
+      <div class="mini">${esc(x.date || '')} · ${esc(x.object || x.need || '待拆解')}</div>
+      ${x.logic?`<div style="margin-top:6px">${esc(x.logic)}</div>`:''}
+      ${x.adapt?`<div class="mini" style="margin-top:6px">阮嘤迁移：${esc(x.adapt)}</div>`:''}
+      ${x.link?`<div style="margin-top:7px"><a href="${esc(x.link)}" target="_blank" rel="noopener">查看原始来源 ↗</a></div>`:''}
+    </div>`).join('') : '<div class="empty">云端已连接，但 viral_cases 目前还是空的。下一步把每日情报写入这里。</div>';
+}
+
+document.addEventListener('DOMContentLoaded', ryCloudFetchViral);
+</script>
+
 </body></html>
