@@ -32,7 +32,7 @@
 .health-ok{border-left:3px solid currentColor;padding-left:10px}
 .health-warn{border-left:3px solid currentColor;padding-left:10px}
 </style>
-</head><body><div class="app"><aside class="side"><div class="brand">◫ 阮嘤自媒体助手<small>本地版 · 数据只保存在你的浏览器</small></div><div class="account"><span class="avatar">阮</span><b>抖音 · 发现型账号</b><div class="muted" style="font-size:11px;margin-top:7px">从互联网挖出「原来还有这个」</div></div><div class="nav" id="nav"><button class="active" data-page="home">◫ 今日工作台</button><button data-page="data">◈ 账号数据库</button><button data-page="radar">✦ 选题雷达</button><button data-page="lab">🔥 爆款分析库</button><button data-page="genes">🧬 爆款基因库</button><button data-page="matrix">▦ 内容矩阵</button><button data-page="script">✎ 内容生产</button><button data-page="review">↻ 数据复盘</button><button data-page="strategy">⌘ 账号操盘</button><button data-page="experiment">⚗ 内容实验室</button><button data-page="profile">◎ 阮嘤资料库</button><button data-page="audience">◉ 人群研究</button><button data-page="materials">▣ 素材知识库</button><button data-page="learning">◇ 7天学习</button><button data-page="backup">⇩ 数据备份</button></div><div class="sidefoot">● 本地运行　<span style="color:#48d7bd">数据未上传</span></div></aside><main class="main">
+</head><body><div class="app"><aside class="side"><div class="brand">◫ 阮嘤自媒体助手<small>云端情报 + 本地账号学习 · S/A/B近期热度</small></div><div class="account"><span class="avatar">阮</span><b>抖音 · 发现型账号</b><div class="muted" style="font-size:11px;margin-top:7px">从互联网挖出「原来还有这个」</div></div><div class="nav" id="nav"><button class="active" data-page="home">◫ 今日工作台</button><button data-page="data">◈ 账号数据库</button><button data-page="radar">✦ 选题雷达</button><button data-page="lab">🔥 爆款分析库</button><button data-page="genes">🧬 爆款基因库</button><button data-page="matrix">▦ 内容矩阵</button><button data-page="script">✎ 内容生产</button><button data-page="review">↻ 数据复盘</button><button data-page="strategy">⌘ 账号操盘</button><button data-page="experiment">⚗ 内容实验室</button><button data-page="profile">◎ 阮嘤资料库</button><button data-page="audience">◉ 人群研究</button><button data-page="materials">▣ 素材知识库</button><button data-page="learning">◇ 7天学习</button><button data-page="backup">⇩ 数据备份</button></div><div class="sidefoot">● 云端情报已接入　<span style="color:#48d7bd">账号数据本地保存</span></div></aside><main class="main">
 <section id="home" class="section active"><div class="top"><div><div class="eyebrow">今天，不要凭感觉发内容</div><h1>把你的数据、全网素材和个人判断，变成今天能执行的选题</h1></div><button class="btn" onclick="refreshBrief()">更新今日情报</button></div><div class="hero"><div><div class="eyebrow">当前账号结论</div><b>优先强化：发现感 × 实用价值 × 女性友好表达</b><p>不把账号锁死成书籍号。书、网站、APP、AI工具、GitHub、纪录片、官方资源，都可以成为“发现源”。</p></div><div class="tags"><span>宝藏发现</span><span>省时间</span><span>普通人可用</span><span>女性视角</span><span>真实体验</span></div></div><div class="stats"><div class="stat"><small>账号运行</small><strong id="days">7</strong><small>天 · 10/01 起</small></div><div class="stat"><small>涨粉</small><strong>100+</strong><small>首周已验证</small></div><div class="stat"><small>今日候选</small><strong id="ideaCount">6</strong><small>按账号匹配排序</small></div><div class="stat"><small>待复盘作品</small><strong id="pending">0</strong><small>录入数据后自动出现</small></div></div><div class="hint"><b>V6 判断原则：</b> 不再使用没有证据的“推荐分”。候选内容按「来源是否可信、需求是否明确、是否符合账号承诺、有没有可展示证据、执行成本」给出判断状态；没有数据就明确写“待验证”。当前版本不伪装实时联网。</div><div class="grid2"><div class="card"><h3>今日优先做</h3><div id="recs"></div></div><div><div class="card"><h3>你的内容公式</h3><p class="muted">发现一个多数人不知道、但立刻能用的东西 → 先制造“我怎么现在才知道” → 用证据/截图证明 → 给出具体使用场景 → 留一个可讨论的问题。</p><div class="flow"><div>发现</div><div>核源</div><div>判断</div><div>转译</div><div>发布</div><div>录数</div><div>复盘</div></div></div><div class="card"><h3>灵感收件箱</h3><textarea id="inbox" placeholder="看到任何书、网站、APP、帖子、GitHub、论文、产品……先丢这里，一字不改也可以。"></textarea><button class="btn ghost" style="margin-top:8px" onclick="saveInbox()">存进灵感箱</button><div id="inboxList"></div></div></div></div></section>
 <section id="data" class="section"><div class="top"><div><div class="eyebrow">账号数据库</div><h1>每发一条，就让系统更懂你的账号</h1></div><button class="btn" onclick="addPost()">保存作品</button></div><div class="card"><div class="formgrid"><div><small>发布时间</small><input id="date" type="date"></div><div><small>标题/选题</small><input id="title" placeholder="例如：我怎么现在才发现这个网站"></div><div><small>内容类型</small><select id="type"><option>书/资料</option><option>网站/工具</option><option>AI/科技</option><option>方法/经验</option><option>产品/生活</option></select></div><div><small>播放</small><input id="views" type="number"></div><div><small>点赞</small><input id="likes" type="number"></div><div><small>收藏</small><input id="saves" type="number"></div><div><small>评论</small><input id="comments" type="number"></div><div><small>涨粉</small><input id="follows" type="number"></div><div><small>首图/前3秒钩子</small><input id="hook" placeholder="一句话记录"></div><div><small>内容母题</small><input id="postMother" placeholder="如：早点知道 / 免费低成本 / 替你筛"></div><div><small>系列包装</small><input id="postSeries" placeholder="如：我怎么现在才发现"></div><div><small>证据方式</small><select id="postProof"><option>实测/截图</option><option>原始来源</option><option>前后对比</option><option>个人经历</option><option>清单整理</option><option>暂无明显证据</option></select></div><div><small>主要目标</small><select id="postGoal"><option>涨粉</option><option>收藏</option><option>播放</option><option>评论</option></select></div><div><small>这条只想验证什么</small><input id="postTest" placeholder="例：同类选题换首图，停留会不会更好"></div><div><small>关联假设</small><select id="postHypothesis"><option value="">不关联实验</option></select></div><div><small>实验版本</small><select id="postVariant"><option value="">无</option><option>A</option><option>B</option></select></div></div></div><div class="card"><table><thead><tr><th>日期</th><th>标题</th><th>类型</th><th>播放</th><th>赞</th><th>藏</th><th>评</th><th>涨粉</th><th>收藏率</th><th>互动率</th></tr></thead><tbody id="postRows"></tbody></table></div></section>
 <section id="radar" class="section"><div class="top"><div><div class="eyebrow">选题雷达</div><h1>先搜“东西”，再决定它值不值得变成内容</h1></div><button class="btn" onclick="addIdea()">新增候选</button></div><div class="card"><div class="formgrid"><div><small>候选东西</small><input id="ideaName" placeholder="书 / 网站 / APP / 工具 / 资源"></div><div><small>来源</small><input id="ideaSource" placeholder="X / 小红书 / GitHub / 官网 / 朋友"></div><div><small>为什么值得讲</small><input id="ideaWhy" placeholder="解决什么问题"></div></div></div><div id="ideaList"></div></section>
@@ -274,13 +274,13 @@
 </section>
 <section id="lab" class="section"><div class="top"><div><div class="eyebrow">核心引擎 01 · 全网爆款分析库</div><h1>不是抄爆款，而是拆出可迁移的传播变量</h1></div><button class="btn" onclick="addViralCase()">保存完整拆解</button></div>
 <div class="hero"><div><b>全网规律 ≠ 阮嘤规律</b><p>先拆标题、结构、受众、情绪与传播动机，再把“可能有效的变量”转成你的实验选题。只有经过你自己的发布数据验证，才升级为账号规律。</p></div><div class="tags"><span>标题钩子</span><span>底层逻辑</span><span>受众</span><span>情绪</span><span>Tag</span><span>评论信号</span><span>迁移实验</span></div></div>
-<div class="stats"><div class="stat"><small>已拆爆款</small><strong id="viralCount">0</strong></div><div class="stat"><small>近7天案例</small><strong id="viralFresh">0</strong></div><div class="stat"><small>可迁移案例</small><strong id="viralTransfer">0</strong></div><div class="stat"><small>待验证外部规律</small><strong id="viralPatterns">0</strong></div></div><div class="grid2"><div class="card"><h3>🔥 今日外部情报判断</h3><p class="muted">不是“哪个视频播放高”，而是今天外部内容里，哪些变量值得拿到阮嘤账号测试。</p><div id="viralTodayDecision" class="empty">录入案例后，这里会自动汇总近7天最值得关注的情绪、受众需求、标题钩子和证据方式。</div></div><div class="card"><h3>🧭 爆款 → 阮嘤机会</h3><p class="muted">同时参考外部重复信号和你的账号认知，优先找“外面已出现、你还没验证”的机会。</p><div id="viralOpportunity" class="empty">当前还没有足够案例形成机会判断。</div></div></div>
+<div class="stats"><div class="stat"><small>已拆爆款</small><strong id="viralCount">0</strong></div><div class="stat"><small>近30天热度案例</small><strong id="viralFresh">0</strong></div><div class="stat"><small>可迁移案例</small><strong id="viralTransfer">0</strong></div><div class="stat"><small>待验证外部规律</small><strong id="viralPatterns">0</strong></div></div><div class="grid2"><div class="card"><h3>🔥 今日外部情报判断</h3><p class="muted">不是“哪个视频播放高”，而是今天外部内容里，哪些变量值得拿到阮嘤账号测试。</p><div id="viralTodayDecision" class="empty">这里优先汇总24小时/7天信号，并保留最近30天仍在传播或重新升温的案例。</div></div><div class="card"><h3>🧭 爆款 → 阮嘤机会</h3><p class="muted">同时参考外部重复信号和你的账号认知，优先找“外面已出现、你还没验证”的机会。</p><div id="viralOpportunity" class="empty">当前还没有足够案例形成机会判断。</div></div></div>
 <div class="card"><h3>① 今日爆款雷达 / 案例录入</h3><p class="muted">当前版本先建立结构化爆款库。真实联网抓取尚未接入，所以不会伪装成“自动搜到”。你看到真实案例后可直接录入，后续联网层接入时沿用同一数据结构。</p><div class="formgrid"><div><small>平台</small><select id="vcPlatform"><option>抖音</option><option>小红书</option><option>B站</option><option>视频号</option><option>其他</option></select></div><div><small>发布日期</small><input id="vcDate" type="date"></div><div><small>原始链接/来源</small><input id="vcLink" placeholder="可核验链接 / 账号名"></div><div><small>原始标题</small><input id="vcTitle" placeholder="保留原始标题，方便研究"></div><div><small>内容对象/主题</small><input id="vcObject" placeholder="书 / APP / 网站 / 方法 / 产品…"></div><div><small>Tag / 搜索关键词</small><input id="vcTags" placeholder="#信息差 #女生成长…"></div></div></div>
 <div class="grid2"><div class="card"><h3>② 包装与内容结构</h3><small>标题公式 / 封面钩子</small><textarea id="vcHook" placeholder="它用什么承诺、冲突、结果、信息差让人停下？"></textarea><small>前三秒</small><textarea id="vcFirst3" placeholder="第一句话/第一个画面释放了什么？"></textarea><small>信息释放顺序</small><textarea id="vcStructure" placeholder="结果→解释→证据→场景→行动…"></textarea><small>证据方式</small><textarea id="vcProof" placeholder="实测、截图、原始来源、前后对比、个人经历…"></textarea></div><div class="card"><h3>③ 人群 × 情绪 × 需求</h3><small>核心受众</small><textarea id="vcAudience" placeholder="不要只写年龄，写她正处于什么场景"></textarea><small>触发情绪</small><input id="vcEmotion" placeholder="惊喜 / 后悔没早知道 / 省钱快感 / 焦虑 / 被理解…"><small>痛点 / 欲望 / 用户任务</small><textarea id="vcNeed" placeholder="她为什么此刻需要它？"></textarea><small>评论区信号</small><textarea id="vcComments" placeholder="大家反复问什么、质疑什么、想要什么？"></textarea></div></div>
 <div class="grid2"><div class="card"><h3>④ 底层传播逻辑</h3><small>为什么可能获得播放</small><textarea id="vcPlay"></textarea><small>为什么可能被收藏</small><textarea id="vcSave"></textarea><small>为什么可能被评论/转发</small><textarea id="vcShare"></textarea><small>为什么可能让人关注作者</small><textarea id="vcFollow"></textarea><small>一句话底层逻辑</small><textarea id="vcLogic" placeholder="例：低认知门槛 + 强结果展示 + 可立即保存的实用价值"></textarea></div><div class="card"><h3>⑤ 迁移，不照搬</h3><small>真正值得复刻的变量</small><textarea id="vcCopy" placeholder="只写结构/机制，不抄原文"></textarea><small>不能照搬的部分</small><textarea id="vcNoCopy" placeholder="依赖作者身份、热点时机、独家经历…"></textarea><small>改造成阮嘤选题</small><textarea id="vcAdapt" placeholder="换对象、换场景，但保留底层机制"></textarea><small>准备验证什么</small><textarea id="vcTest" placeholder="例：‘后悔没早知道’情绪是否提高收藏率"></textarea><label><input id="vcTransfer" type="checkbox" style="width:auto"> 值得进入阮嘤实验池</label></div></div>
 <div class="card"><h3>⑥ 爆款规律库：跨案例找重复变量</h3><p class="muted">系统只统计重复出现的“外部信号”。它们不会自动成为你的账号规律，而是进入内容实验室等待验证。</p><div class="formgrid"><div><small>观察窗口</small><select id="viralWindow" onchange="renderViralCases()"><option value="7">近7天</option><option value="30">近30天</option><option value="9999">全部</option></select></div><div><small>规律维度</small><select id="viralDimension" onchange="renderViralCases()"><option value="all">全部维度</option><option value="emotion">情绪</option><option value="audience">受众</option><option value="need">需求</option><option value="tags">Tag/关键词</option><option value="proof">证据方式</option><option value="logic">底层逻辑</option><option value="hook">标题/钩子</option></select></div><div><small>研究原则</small><div class="mini" style="padding-top:10px">重复 ≠ 因果；外部规律 ≠ 阮嘤规律。</div></div></div><div id="viralPatternList" class="empty">至少录入2条案例后开始寻找重复变量。</div></div>
 <div class="grid2"><div class="card"><h3>⑦ 情绪 × 需求地图</h3><p class="muted">看爆款到底在满足什么心理，而不只看内容题材。</p><div id="viralEmotionMap" class="empty">等待案例。</div></div><div class="card"><h3>⑧ 受众 × 关注动机</h3><p class="muted">区分“这条内容有用”和“这个账号值得长期关注”。</p><div id="viralAudienceMap" class="empty">等待案例。</div></div></div>
-<div class="card"><h3>⑨ 今日值得测试的3个方向</h3><p class="muted">由近7天外部重复信号生成实验方向。这里只给“测试建议”，不会冒充已经验证的账号规律。</p><div id="viralTests" class="empty">录入足够案例后自动生成。</div></div>
+<div class="card"><h3>⑨ 今日值得测试的3个方向</h3><p class="muted">由近30天外部近期信号生成实验方向，24小时与7天信号优先。这里只给“测试建议”，不会冒充已经验证的账号规律。</p><div id="viralTests" class="empty">录入足够案例后自动生成。</div></div>
 <div class="card"><h3>⑩ 案例库</h3><div class="formgrid"><div><small>平台筛选</small><select id="viralFilter" onchange="renderViralCases()"><option>全部</option><option>抖音</option><option>小红书</option><option>B站</option><option>视频号</option><option>其他</option></select></div><div><small>关键词</small><input id="viralSearch" oninput="renderViralCases()" placeholder="搜标题 / 情绪 / Tag / 受众"></div><div><small>用途</small><div class="mini" style="padding-top:10px">点“转成我的选题”后会进入选题雷达；点“建立假设”进入内容实验室。</div></div></div><div id="viralCaseList"></div></div></section>
 
 <section id="genes" class="section">
@@ -588,7 +588,7 @@ AI工具/互联网新东西</textarea><h3>② 选题母题</h3><textarea id="mxT
 <div class="card"><h3>③ 假设看板</h3><div id="hypothesisList"></div></div>
 <div class="card"><h3>④ 最近作品的“变量指纹”</h3><div id="fingerprints" class="muted">录入作品时补上母题、系列、证据方式和实验目标，这里才有能力做真正的归因。</div></div><div class="grid2"><div class="card"><h3>⑤ 自动生成7天实验计划</h3><p class="muted">优先读取“验证中/证据不足”的假设，再从选题池与素材库挑对象。每天只安排一个主要变量。</p><button class="btn" onclick="generateExperimentPlan()">生成7天计划</button><div id="experimentPlan"></div></div><div class="card"><h3>⑥ A/B 对照设计器</h3><small>要验证什么</small><input id="abQuestion" placeholder="例：强结果首图是否比解释型首图更容易获得播放"><small>A版本</small><textarea id="abA" placeholder="例：首图直接展示最终结果"></textarea><small>B版本</small><textarea id="abB" placeholder="例：首图先解释问题"></textarea><small>必须保持不变</small><textarea id="abFixed" placeholder="选题、正文结构、发布时间段、证据强度尽量相同"></textarea><button class="btn ghost" onclick="saveAB()">保存A/B实验</button><div id="abList"></div></div></div></section>
 <section id="profile" class="section"><div class="top"><div><div class="eyebrow">阮嘤资料库</div><h1>先让系统知道“你是谁”，再决定你适合讲什么</h1></div><button class="btn" onclick="saveProfile()">保存资料</button></div><div class="grid2"><div class="card"><h3>个人内容资产</h3><small>你亲自经历过、能讲出细节的事情</small><textarea id="pfExp" placeholder="学习、找工作、实习、做账号、消费、踩坑、折腾互联网工具……"></textarea><small>你踩过的坑 / 后悔太晚知道的事</small><textarea id="pfPain"></textarea><small>你反复会做、会研究的事</small><textarea id="pfSkill"></textarea></div><div class="card"><h3>账号人格</h3><small>你希望别人为什么关注你</small><textarea id="pfFollow" placeholder="例如：她总能挖到我没见过但真的有用的东西"></textarea><small>坚决不做什么</small><textarea id="pfNo" placeholder="搬运、硬装专家、虚假夸张……"></textarea><small>未来想自然延伸到什么</small><textarea id="pfFuture" placeholder="书 / AI / APP / 网站 / 产品 / 生活方式……"></textarea><div id="profileSummary" class="reason"></div></div></div></section>
-<section id="audience" class="section"><div class="top"><div><div class="eyebrow">目标人群研究</div><h1>不是“18–25岁女性”，而是她为什么停下来、收藏、关注</h1></div><button class="btn" onclick="saveAudience()">保存画像</button></div><div class="card"><div class="formgrid"><div><small>人生阶段</small><textarea id="auStage" placeholder="大学生 / 初入职场 / 转型期……"></textarea></div><div><small>最近最烦什么</small><textarea id="auPain"></textarea></div><div><small>她想变成什么样</small><textarea id="auWant"></textarea></div><div><small>什么会让她停留</small><textarea id="auStop"></textarea></div><div><small>什么会让她收藏</small><textarea id="auSave"></textarea></div><div><small>什么会让她关注你</small><textarea id="auFollow"></textarea></div></div></div><div class="card"><h3>内容过滤器</h3><div id="audienceFilter" class="muted">填写画像后，这里会生成你的选题判断标准。</div></div></section>
+<section id="audience" class="section"><div class="top"><div><div class="eyebrow">目标人群研究</div><h1>不是“20–40岁女性”，而是她为什么停下来、收藏、关注</h1></div><button class="btn" onclick="saveAudience()">保存画像</button></div><div class="card"><div class="formgrid"><div><small>人生阶段</small><textarea id="auStage" placeholder="大学生 / 初入职场 / 转型期……"></textarea></div><div><small>最近最烦什么</small><textarea id="auPain"></textarea></div><div><small>她想变成什么样</small><textarea id="auWant"></textarea></div><div><small>什么会让她停留</small><textarea id="auStop"></textarea></div><div><small>什么会让她收藏</small><textarea id="auSave"></textarea></div><div><small>什么会让她关注你</small><textarea id="auFollow"></textarea></div></div></div><div class="card"><h3>内容过滤器</h3><div id="audienceFilter" class="muted">填写画像后，这里会生成你的选题判断标准。</div></div></section>
 <section id="materials" class="section"><div class="top"><div><div class="eyebrow">素材知识库</div><h1>所有发现先进入仓库，核源后再变成选题</h1></div><button class="btn" onclick="addMaterial()">收进素材库</button></div><div class="card"><div class="formgrid"><div><small>素材名称</small><input id="matName" placeholder="一个网站 / 一本书 / 一个观点"></div><div><small>原始来源</small><input id="matSource" placeholder="官网 / GitHub / 论文 / X / 小红书"></div><div><small>来源链接/定位</small><input id="matLink" placeholder="可粘贴链接或记录出处"></div></div><textarea id="matNote" placeholder="它讲了什么？你为什么觉得有意思？哪些地方需要核实？" style="margin-top:10px"></textarea></div><div id="materialList"></div></section>
 <section id="learning" class="section"><div class="top"><div><div class="eyebrow">7天学习闭环</div><h1>一条内容至少看三次：2小时、24小时、7天</h1></div></div><div class="card"><div class="flow"><div>发布</div><div>2h看停留</div><div>24h看收藏</div><div>7d看涨粉</div><div>找原因</div><div>沉淀规则</div><div>喂回选题</div></div></div><div id="learningList"></div></section>
 <section id="backup" class="section"><div class="top"><div><div class="eyebrow">数据安全</div><h1>先保证你的账号认知不会因为换手机或清缓存丢失</h1></div></div><div class="grid2"><div class="card"><h3>完整备份</h3><p class="muted">导出所有作品、素材、选题、画像、假设、实验计划和账号认知。建议每周备份一次。</p><button class="btn" onclick="exportBackup()">导出 JSON 备份</button></div><div class="card"><h3>恢复数据</h3><p class="muted">选择之前导出的 JSON。恢复会覆盖当前工作台同名数据。</p><input type="file" id="backupFile" accept="application/json"><button class="btn ghost" style="margin-top:10px" onclick="importBackup()">导入并恢复</button></div></div><div class="card"><h3>当前数据体检</h3><div id="backupHealth"></div></div></section></main></div><script>
@@ -1257,14 +1257,229 @@ document.addEventListener('DOMContentLoaded',()=>{
 /* V21: Supabase is read-only in the public page. No ingest secret is present here. */
 const RY_SUPABASE_URL='https://zanfbtpuflmmxjnfczzr.supabase.co';
 const RY_SUPABASE_KEY='sb_publishable_qLIHpinoenojpf8plGcGAQ_PU-GZPsy';
-const RY_VIRAL_ENDPOINT=RY_SUPABASE_URL+'/rest/v1/viral_cases?select=id,created_at,discovered_at,platform,title,source_url,tags,status,why_it_spreads,reusable_gene,ruanying_angle,ruanying_title&order=discovered_at.desc.nullslast,created_at.desc&limit=100';
+const RY_VIRAL_ENDPOINT=RY_SUPABASE_URL+'/rest/v1/viral_cases?select=*&order=signal_at.desc.nullslast,created_at.desc&limit=300';
 function cloudEsc(v){return String(v??'').replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[m]))}
-function cloudIsTest(r){return /测试|test/i.test([r.title,r.status,(Array.isArray(r.tags)?r.tags.join(' '):r.tags)].filter(Boolean).join(' '))}
-function cloudToLocal(r){return {id:'cloud-'+r.id,cloudId:r.id,platform:r.platform||'外部',date:(r.discovered_at||r.created_at||'').slice(0,10),link:r.source_url||'',title:r.title||'未命名情报',object:'',tags:Array.isArray(r.tags)?r.tags.join('、'):(r.tags||''),hook:'',first3:'',structure:'',proof:'',audience:'',emotion:'',need:'',comments:'',play:'',save:'',share:'',follow:'',logic:r.why_it_spreads||'',copy:r.reusable_gene||'',nocopy:'',adapt:r.ruanying_title||r.ruanying_angle||'',test:r.ruanying_angle||'',transfer:!!(r.reusable_gene||r.ruanying_angle||r.ruanying_title),cloud:true,created:r.created_at||''}}
+function cloudIsTest(r){return /^(test|测试)$/i.test(r.platform||'') || /^https?:\/\/(www\.)?example\.com\//i.test(r.source_url||'') || (r.tags||[]).some(t=>/^后端测试|^链路测试$/.test(t))}
+function cloudToLocal(r){return {
+ id:'cloud-'+r.id,cloudId:r.id,cloud:true,platform:r.platform||'外部',
+ date:(r.signal_at||'').slice(0,10),signalAt:r.signal_at||null,sourcePublishedAt:r.source_published_at||null,discoveredAt:r.discovered_at||null,
+ signalType:r.signal_type||'未知',signalConfidence:r.signal_confidence||'unknown',signalEvidence:r.signal_evidence||[],
+ audienceSegment:r.audience_segment||null,commercialLane:r.commercial_lane||null,commercialLevel:r.commercial_level||'unknown',
+ recommendationScore:r.recommendation_score==null?null:Number(r.recommendation_score),entityKey:r.entity_key,
+ link:r.canonical_url||r.source_url||'',title:r.title||'未命名情报',object:r.content_object||'',
+ tags:Array.isArray(r.tags)?r.tags.join('、'):(r.tags||''),hook:r.hook_type||'',first3:r.ruanying_first_3_seconds||r.first_3_seconds||'',
+ structure:r.content_structure||r.analysis_details?.content_structure||'',proof:r.proof_type||r.material_plan||'',
+ audience:r.target_audience||r.audience_segment||'',emotion:r.core_emotion||'',need:r.core_need||'',
+ comments:r.comment_count,play:r.play_count,save:r.save_count,share:r.share_count,follow:null,
+ logic:r.why_it_spreads||'',copy:r.reusable_gene||'',nocopy:r.do_not_copy||'',adapt:r.ruanying_title||r.ruanying_angle||'',
+ test:r.experiment_variable||'',transfer:!!(r.reusable_gene||r.ruanying_angle),created:r.created_at||''
+}}
 function cloudMerge(rows){let remote=rows.filter(r=>!cloudIsTest(r)).map(cloudToLocal);let local=(load('ry_viral_cases')||[]).filter(x=>!x.cloud);store('ry_viral_cases',[...remote,...local]);return remote.length}
 function cloudStatus(msg,kind=''){let e=document.getElementById('ryCloudStatus');if(e)e.innerHTML=`<span class="cloud-dot ${kind}"></span> ${cloudEsc(msg)}`}
-async function refreshCloudViral(silent=false){cloudStatus('正在读取 Supabase…');try{let res=await fetch(RY_VIRAL_ENDPOINT,{headers:{apikey:RY_SUPABASE_KEY,Authorization:'Bearer '+RY_SUPABASE_KEY}});if(!res.ok)throw new Error('HTTP '+res.status);let rows=await res.json();let n=cloudMerge(rows);localStorage.setItem('ry_cloud_last_sync',new Date().toISOString());cloudStatus(`云端已同步 ${n} 条真实情报 · 已自动排除测试记录`,'ok');try{renderViralCases();renderGeneLibrary();renderCommand();renderSimpleHome()}catch(e){};if(!silent)alert(`同步完成：${n} 条真实爆款情报已进入分析库。`);return rows}catch(e){cloudStatus('云端读取失败：'+e.message,'err');if(!silent)alert('Supabase 读取失败：'+e.message);return []}}
+async function refreshCloudViral(silent=false){cloudStatus('正在读取 Supabase…');try{let res=await fetch(RY_VIRAL_ENDPOINT,{headers:{apikey:RY_SUPABASE_KEY,Authorization:'Bearer '+RY_SUPABASE_KEY}});if(!res.ok)throw new Error('HTTP '+res.status);let rows=await res.json();let n=cloudMerge(rows);localStorage.setItem('ry_cloud_last_sync',new Date().toISOString());cloudStatus(`云端已同步 ${n} 条真实情报 · 已自动排除测试记录`,'ok');try{renderViralCases();renderGeneLibrary();renderCommand();renderSimpleHome();ry24render()}catch(e){};if(!silent)alert(`同步完成：${n} 条真实爆款情报已进入分析库。`);return rows}catch(e){cloudStatus('云端读取失败：'+e.message,'err');if(!silent)alert('Supabase 读取失败：'+e.message);return []}}
 function injectCloudUI(){let sec=document.getElementById('lab');if(!sec||document.getElementById('ryCloudStatus'))return;let top=sec.querySelector('.top');let box=document.createElement('div');box.className='cloudbar';box.innerHTML=`<button class="btn" onclick="refreshCloudViral()">☁ 同步云端爆款</button><span id="ryCloudStatus" class="cloud-note"><span class="cloud-dot"></span> 等待同步</span>`;top.insertAdjacentElement('afterend',box)}
 document.addEventListener('DOMContentLoaded',()=>{injectCloudUI();refreshCloudViral(true)});
+</script>
+
+<style id="ry-v21-upgrade">
+/* V21: mobile-first action UI + DNA split */
+.dna-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.dna-box{border:1px solid #1c3d45;background:#091a20;border-radius:9px;padding:12px}
+.dna-box b{display:block;margin-bottom:7px;color:#dff8f2}
+.factline{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.factchip{font-size:11px;padding:4px 7px;border-radius:999px;border:1px solid #28505a;color:#bfe0df}
+.factchip.fact{border-color:#47e2c3;color:#47e2c3}.factchip.obs{border-color:#6fb8ff;color:#9bd0ff}.factchip.hyp{border-color:#ffb86b;color:#ffca8f}
+.fresh-24{border-color:#47e2c3!important;color:#47e2c3!important}.fresh-7{border-color:#6fb8ff!important;color:#9bd0ff!important}.fresh-30{border-color:#8d7cff!important;color:#bdb3ff!important}
+@media(max-width:600px){
+  .main{padding:12px 12px calc(88px + env(safe-area-inset-bottom))}
+  .side{padding:12px 10px}.brand,.account{display:none}
+  .nav{display:flex!important;overflow-x:auto;gap:6px;padding-bottom:4px;scrollbar-width:none}
+  .nav button{min-width:max-content;width:auto!important;padding:10px 12px;min-height:44px}
+  .top{align-items:flex-start;gap:8px}.top h1{font-size:21px;line-height:1.25}
+  .top .btn{min-height:44px}
+  .stats{grid-template-columns:1fr 1fr!important}.stat{padding:12px}.stat strong{font-size:22px}
+  .formgrid,.meters,.flow,.dna-grid{grid-template-columns:1fr!important}
+  .decision{grid-template-columns:1fr!important;gap:4px}.decision .mini{margin-top:7px}
+  .actions button,.actions .btn{min-height:44px}
+  table{display:block;overflow-x:auto;white-space:nowrap}
+  .card{padding:13px}.hero{padding:14px}.cloudbar{align-items:flex-start;flex-direction:column}
+}
+@media(min-width:601px) and (max-width:1100px){
+  .main{padding:18px 20px 60px}.grid2{grid-template-columns:1fr}
+  .formgrid{grid-template-columns:1fr 1fr}.dna-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+<script id="ry-v21-upgrade-js">
+/* V21 intelligence layer: recent signals, DNA split, null metrics, evidence gating */
+function ryNumOrNull(id){
+  const el=document.getElementById(id); if(!el) return null;
+  const s=String(el.value??'').trim(); if(s==='') return null;
+  const n=Number(s); return Number.isFinite(n)?n:null;
+}
+function ryDateMs(c){ const d=c.signalAt||c.signal_at; const t=d?new Date(d).getTime():NaN; return Number.isFinite(t)?t:null; }
+function ryAgeDays(c){ const t=ryDateMs(c); return t===null?99999:Math.max(0,(Date.now()-t)/864e5); }
+function ryFresh(c){ const d=ryAgeDays(c); return d<=1?'24h':d<=7?'7d':d<=30?'30d':'旧'; }
+function ryRecentCases(a){ return (a||load('ry_viral_cases')||[]).filter(c=>ryAgeDays(c)<=30); }
+function rySplit(v){return String(v||'').split(/[、,，;；|/]/).map(x=>x.trim()).filter(Boolean)}
+function ryDna(c){
+  return {
+    topic:{object:c.object||'待拆',need:c.need||'待拆',audience:c.audience||'待拆',emotion:c.emotion||'待拆',value:(c.tags||'待拆')},
+    expression:{title:c.title||'待拆',cover:c.cover||c.hook||'待拆',hook:c.first3||c.hook||'待拆',structure:c.structure||'待拆',proof:c.proof||'待拆',cta:c.follow||c.comments||'待拆'}
+  };
+}
+function ryDnaHtml(c){
+  const d=ryDna(c);
+  return `<div class="dna-grid"><div class="dna-box"><b>题材 DNA</b>
+  <div class="mini">对象</div><div>${esc(d.topic.object)}</div><div class="mini">需求</div><div>${esc(d.topic.need)}</div>
+  <div class="mini">人群</div><div>${esc(d.topic.audience)}</div><div class="mini">情绪</div><div>${esc(d.topic.emotion)}</div>
+  <div class="mini">价值类型</div><div>${esc(d.topic.value)}</div></div>
+  <div class="dna-box"><b>表达 DNA</b><div class="mini">标题/首图</div><div>${esc(d.expression.cover)}</div>
+  <div class="mini">前三秒</div><div>${esc(d.expression.hook)}</div><div class="mini">结构</div><div>${esc(d.expression.structure)}</div>
+  <div class="mini">证据</div><div>${esc(d.expression.proof)}</div><div class="mini">CTA</div><div>${esc(d.expression.cta)}</div></div></div>`;
+}
+
+/* Missing metrics stay null instead of silently becoming zero. */
+addPost=function(){
+  let p={id:Date.now(),date:$('date').value,title:$('title').value,type:$('type').value,
+    views:ryNumOrNull('views'),likes:ryNumOrNull('likes'),saves:ryNumOrNull('saves'),comments:ryNumOrNull('comments'),follows:ryNumOrNull('follows'),
+    hook:$('hook').value,mother:$('postMother').value,series:$('postSeries').value,proof:$('postProof').value,goal:$('postGoal').value,
+    test:$('postTest').value,hypothesisId:$('postHypothesis')?.value||'',variant:$('postVariant')?.value||''};
+  if(!p.title)return alert('先写标题/选题');
+  let a=load('ry_posts');a.unshift(p);store('ry_posts',a);renderAll();alert('已保存。未填写指标会保持“未知”，不会当成0。');
+};
+
+/* A manual click cannot promote a hypothesis without repeated linked evidence. */
+setHypothesis=function(id,status){
+  let a=load('ry_hypotheses'),h=a.find(x=>x.id===id); if(!h)return;
+  let linked=load('ry_posts').filter(p=>String(p.hypothesisId)===String(id));
+  if(status==='支持' && linked.length<3){
+    h.status='证据不足'; store('ry_hypotheses',a); renderHypotheses();
+    return alert(`当前只关联 ${linked.length} 条作品。至少3个可比较样本后才能升级为“已支持规律”。`);
+  }
+  h.status=status;store('ry_hypotheses',a);renderHypotheses();
+};
+
+/* Cloud rows: only recent 30-day discovery/signal rows enter Today's intelligence. */
+const _cloudMergeV21=cloudMerge;
+cloudMerge=function(rows){
+ const remote=(rows||[]).filter(r=>!cloudIsTest(r)).map(cloudToLocal);
+ const local=(load('ry_viral_cases')||[]).filter(x=>!x.cloud);
+ store('ry_viral_cases',[...remote,...local]);return remote.length;
+};
+
+/* Deep viral analysis renderer: facts / observations / hypotheses + two-layer DNA. */
+renderViralCases=function(){
+  let all=load('ry_viral_cases'),a=ryRecentCases(all),f=$('viralFilter')?.value||'全部',q=($('viralSearch')?.value||'').toLowerCase();
+  $('viralCount').textContent=a.length;
+  $('viralFresh').textContent=a.length;
+  $('viralTransfer').textContent=a.filter(c=>c.transfer).length;
+  renderViralPatterns(a);
+  let list=a.filter(c=>(f==='全部'||c.platform===f)&&(!q||[c.title,c.object,c.tags,c.audience,c.emotion,c.logic,c.copy,c.adapt].join(' ').toLowerCase().includes(q)));
+  list.sort((x,y)=>ryAgeDays(x)-ryAgeDays(y));
+  $('viralCaseList').innerHTML=list.length?list.map(c=>{
+    const fr=ryFresh(c),fc=fr==='24h'?'fresh-24':fr==='7d'?'fresh-7':'fresh-30';
+    return `<div class="card idea"><div><span class="pill">${esc(c.platform)}</span> <span class="status ${fc}">${ryGrade(c)}级 · ${fr}</span>
+      <span class="status ${c.transfer?'strong':''}">${c.transfer?'可迁移候选':'研究案例'}</span></div>
+      <h3 style="margin-top:10px">${esc(c.title)}</h3>
+      <div class="factline"><span class="factchip fact">外部事实</span><span class="mini">来源/时间只按可核验字段展示；无可靠数据不补播放量。</span></div>
+      <p class="muted">${esc(c.object||'对象待拆')} · ${esc(c.tags||'标签待拆')}</p>
+       ${rySignalFacts(c)} ${ryDnaHtml(c)}
+      <div class="decision" style="margin-top:10px">
+        <span class="mini">系统观察</span><div>${esc(c.logic||'待拆：为什么它可能传播')}</div>
+        <span class="mini">可学</span><div>${esc(c.copy||'待拆')}</div>
+        <span class="mini">不能照搬</span><div>${esc(c.nocopy||'需要结合阮嘤账号重新验证，不能把外部热度直接当账号规律')}</div>
+        <span class="mini">阮嘤迁移</span><div>${esc(c.adapt||'待设计')}</div>
+        <span class="mini">待验证假设</span><div>${esc(c.test||'只选择一个变量进入实验')}</div>
+      </div>
+      <div class="actions"><button onclick="viralToIdea('${c.id}')">转成我的选题</button><button onclick="viralToHypothesis('${c.id}')">建立验证假设</button>
+      ${c.link?`<a class="btn ghost" href="${cloudEsc(c.link)}" target="_blank" rel="noopener noreferrer">打开原始来源</a>`:''}${c.cloud?'':`<button class="danger" onclick="deleteViral('${c.id}')">删除</button>`}</div></div>`;
+  }).join(''):'<div class="empty">最近30天没有可核验的热度信号。不会拿“创建时间新”或“历史总热度高”来凑数。</div>';
+};
+
+/* Today's 1-3 tests: newest transferable cases first; one control variable each. */
+function ryRenderTodayTests(){
+  const box=document.getElementById('viralTests'); if(!box)return;
+  const cases=ryRecentCases(load('ry_viral_cases')).filter(c=>c.transfer).sort((a,b)=>ryAgeDays(a)-ryAgeDays(b)).slice(0,3);
+  box.className='';
+  box.innerHTML=cases.length?cases.map((c,i)=>{
+    const dna=ryDna(c), variable=i%3===0?'标题/前三秒钩子':i%3===1?'证据强度':'题材对象';
+    const fixed=i%3===0?'题材、证据、结构尽量固定':i%3===1?'标题、题材、发布时间尽量固定':'表达结构、证据、CTA尽量固定';
+    return `<div class="idea"><span class="pill">实验 ${i+1}</span> <span class="status">${ryFresh(c)}</span>
+      <h3>${esc(c.adapt||c.title)}</h3>
+      <p><b>标题：</b>${esc(c.adapt||c.title)}</p>
+      <p><b>首图：</b>${esc(dna.expression.cover==='待拆'?'先给结果/利益点，不堆功能名':dna.expression.cover)}</p>
+      <p><b>前三秒：</b>${esc(dna.expression.hook==='待拆'?'直接展示结果或原始证据，再解释是什么':dna.expression.hook)}</p>
+      <p><b>证据素材：</b>${esc(dna.expression.proof==='待拆'?'原始来源 + 实测截图/录屏 + 限制条件':dna.expression.proof)}</p>
+      <p><b>为什么适合阮嘤：</b>${esc(c.copy||'符合“替普通人筛出真正值得知道的东西”的发现型承诺')}</p>
+      <div class="reason"><b>本次只测试：</b>${variable}<br><span class="mini">其余固定：${fixed}</span></div>
+      <p class="muted"><b>风险：</b>外部热度不是阮嘤账号规律；发布后重点回填收藏率、分享率、评论率、涨粉率。</p></div>`;
+  }).join(''):'<div class="empty">近期还没有足够的 S/A/B 级可迁移信号，今天不硬凑3个选题。</div>';
+}
+const _renderViralCasesV21=renderViralCases;
+renderViralCases=(function(fn){return function(){fn();ryRenderTodayTests();}})(renderViralCases);
+
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{try{renderViralCases();}catch(e){}},700);
+});
+</script>
+
+<script id="ry-v22-signal-rules">
+/* V22: freshness is based on latest verifiable heat/discovery signal, not original creation date. */
+function rySignalLevel(c){
+  const d=ryAgeDays(c);
+  return d<=1?{grade:'S',label:'24小时正在冒头'}:
+         d<=7?{grade:'A',label:'近7天明显传播'}:
+         d<=30?{grade:'B',label:'近30天火过/仍在升温'}:
+         {grade:'OUT',label:'超过30天'};
+}
+function rySignalGradeHtml(c){
+  const s=rySignalLevel(c);
+  const cls=s.grade==='S'?'fresh-24':s.grade==='A'?'fresh-7':'fresh-30';
+  return `<span class="status ${cls}">${s.grade}级 · ${s.label}</span>`;
+}
+</script>
+
+<style id="ry-v23-signal-ui">
+.signal-legend{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 12px}.signal-legend span{font-size:12px;border:1px solid #28505a;border-radius:999px;padding:5px 8px}
+.signal-note{font-size:12px;color:#9fb6ba;line-height:1.55}
+</style>
+<script id="ry-v23-signal-ui-js">
+function ryTag(c,prefix){const a=Array.isArray(c.tags)?c.tags:String(c.tags||'').split(',');const x=a.find(v=>String(v).startsWith(prefix));return x?String(x).slice(prefix.length):''}
+function ryEvidenceConfidence(c){return c.signalConfidence||'unknown'}
+function ryGrade(c){return rySignalLevel(c).grade}
+function ryCanCallHot(c){return ['high','medium'].includes(ryEvidenceConfidence(c))}
+function rySignalSummary(c){
+ const g=ryGrade(c),conf=ryEvidenceConfidence(c);
+ const label=g==='S'?'24h冒头':g==='A'?'7天传播':g==='B'?'30天热度':'超窗';
+ const proof=conf==='high'?'近期直接信号':conf==='medium'?'中等证据':conf==='low'?'弱信号·待二次验证':'证据待核验';
+ return `<div class="signal-legend"><span>${g}级 · ${label}</span><span>${proof}</span></div>`;
+}
+</script>
+<style id="v24">.ry24{border:1px solid #294b53;border-radius:16px;padding:14px;margin:12px 0}.ry24chips{display:flex;gap:6px;flex-wrap:wrap}.ry24chips span{font-size:12px;padding:5px 8px;border:1px solid #31555e;border-radius:999px}@media(max-width:600px){.ry24{padding:11px}}</style>
+<script id="v24js">
+const RY24={audience:"20–40岁女性",core:["大学/毕业期女性","初入职场女性"],expand:["品质生活女性","成长型女性"],lanes:["AI/软件/APP","美妆个护","生活方式/消费品牌","数码/办公效率","服饰","旅行/本地生活","教育/学习/求职","图书"]};
+function ry24tag(c,p){const a=Array.isArray(c.tags)?c.tags:String(c.tags||'').split(',');const x=a.find(v=>String(v).startsWith(p));return x?String(x).slice(p.length):''}
+function ry24aud(c){return c.audienceSegment||'受众待验证'} function ry24com(c){return c.commercialLane||'待验证'} function ry24lvl(c){return c.commercialLevel||'unknown'}
+function ry24score(c){if(Number.isFinite(c.recommendationScore))return c.recommendationScore;let s={S:6,A:4,B:2}[ryGrade(c)]||0;s+=({high:3,medium:2,low:0,unknown:1}[ry24lvl(c)]||0);s+=ryEvidenceConfidence(c)==='high'?4:ryEvidenceConfidence(c)==='medium'?2:-2;if(c.transfer)s+=2;return s}
+function ry24mission(c){if(ryGrade(c)==='S')return'拉新';if(ry24lvl(c)==='high')return'商业潜力';if(c.transfer)return'建信任';return'涨粉'}
+function ry24top(){return ryRecentCases().filter(c=>ryCanCallHot(c)&&ryGrade(c)!=='OUT').sort((a,b)=>ry24score(b)-ry24score(a)).slice(0,10)}
+function ry24render(){const m=document.querySelector('main')||document.querySelector('.main');if(!m)return;document.getElementById('ry24live')?.remove();const a=ry24top(),x=document.createElement('div');x.id='ry24live';x.innerHTML=`<div class="ry24"><b>阮嘤受众与商业模型</b><p class="muted">核心大盘：20–40岁女性。现阶段优先大学/毕业期与初入职场女性，但不把账号锁死在学生群体。</p><div class="ry24chips"><span>大学/毕业期女性</span><span>初入职场女性</span><span>品质生活女性</span><span>成长型女性</span></div><p class="muted">价值承诺：替她找、筛、试真正值得知道、值得用、值得买的东西。</p></div>`+(a.length?`<div class="ry24"><b>今日候选 · 最多10个</b><p class="muted">TOP 3优先执行，4–10作为备选。</p>${a.map((c,i)=>`<div style="padding:9px 0;border-top:1px solid #294b53"><b>${i<3?'TOP '+(i+1):'备选 '+(i+1)} · ${esc(c.title||'')}</b><div class="ry24chips"><span>${ryGrade(c)}级</span><span>${esc(ry24aud(c))}</span><span>${ry24mission(c)}</span><span>${esc(ry24com(c))}</span></div></div>`).join('')}</div>`:'');m.prepend(x)}
+document.addEventListener('DOMContentLoaded',()=>setTimeout(ry24render,350));
+</script>
+<script id="v24-production-contract">
+function rySignalFacts(c){
+ const fmt=v=>v?new Date(v).toLocaleString('zh-CN'):'未知';
+ const safe=v=>/^https?:\/\//.test(v||'')?v:'#';
+ return '<div class="reason"><b>可核验时间与证据</b><br>原始发布时间：'+esc(fmt(c.sourcePublishedAt))+
+ '<br>近期热度信号：'+esc(fmt(c.signalAt))+'<br>采集发现：'+esc(fmt(c.discoveredAt))+
+ '<br>信号类型：'+esc(c.signalType||'未知')+' · 可信度：'+esc(c.signalConfidence||'unknown')+
+ '<br>受众：'+esc(ry24aud(c))+' · 商业赛道：'+esc(ry24com(c))+' · 潜力：'+esc(ry24lvl(c))+
+ '<div class="mini">受众与商业字段是系统观察，需真实账号数据验证。</div>'+
+ (c.signalEvidence||[]).map(e=>'<p><a target="_blank" rel="noopener noreferrer" href="'+cloudEsc(safe(e.url))+'">'+esc(e.source||'来源')+'</a> · '+esc(fmt(e.signal_at))+
+ '<br>'+esc(e.summary||'')+'<br>公开指标：'+esc(Object.entries(e.metrics||{}).map(([k,v])=>k+'：'+(v==null?'未知':v)).join('；')||'未知')+'</p>').join('')+'</div>';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ const f=$('viralFilter');if(f)for(const name of ['GitHub','Hacker News','TechCrunch'])if(![...f.options].some(x=>x.value===name))f.add(new Option(name,name));
+});
 </script>
 </body></html>
