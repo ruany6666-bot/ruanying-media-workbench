@@ -1,437 +1,286 @@
+"""Public discovery -> verified attention evidence -> compatible V24 ingestion.
+No pushed_at, historical stars, or original creation date is a heat signal.
+"""
 import os
 import re
+import json
 import html
-import time
+import hashlib
+from datetime import datetime, timezone, timedelta
+from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode, quote
 import requests
 import feedparser
-from datetime import datetime, timezone, timedelta
-from urllib.parse import quote, urlparse
-
-INGEST_ENDPOINT = os.environ["INGEST_ENDPOINT"]
-INGEST_SECRET = os.environ["INGEST_SECRET"]
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-
-HEADERS = {
-    "User-Agent": "RuanyingDiscoveryBot/1.0"
-}
-
-# 阮嘤“发现型账号”的核心内容方向
-KEYWORDS = {
-    "AI工具": [
-        "AI tool", "AI app", "AI assistant", "AI productivity",
-        "open source AI", "free AI"
-    ],
-    "网站APP": [
-        "useful website", "useful app", "productivity app",
-        "free tool", "web app"
-    ],
-    "公开资源": [
-        "open source", "free resource", "awesome list",
-        "free course", "free ebook"
-    ],
-    "省钱效率": [
-        "free alternative", "open source alternative",
-        "save money", "productivity", "automation"
-    ],
-    "女性友好": [
-        "women safety app", "women productivity",
-        "women health app", "female safety"
-    ],
-    "学习成长": [
-        "learning tool", "study app", "book notes",
-        "reading app", "knowledge tool"
-    ],
-}
-
-POSITIVE_WORDS = [
-    "free", "open source", "useful", "tool", "app", "website",
-    "productivity", "alternative", "privacy", "local",
-    "learning", "resource", "automation", "github",
-    "免费", "开源", "工具", "效率", "资源", "学习"
-]
-
-NEGATIVE_WORDS = [
-    "crypto", "token", "casino", "betting", "nsfw",
-    "weapon", "adult"
-]
+from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 NOW = datetime.now(timezone.utc)
-MAX_AGE = timedelta(days=7)
-MAX_RESULTS = 18
+MAX_RESULTS = 10
+RUN_ID = os.getenv("GITHUB_RUN_ID") or NOW.strftime("local-%Y%m%dT%H%M%SZ")
+HEADERS = {"User-Agent": "RuanyingDiscovery/24 (+public research; no private data)"}
+SESSION = requests.Session()
+SESSION.headers.update(HEADERS)
+SESSION.mount("https://", HTTPAdapter(max_retries=Retry(total=2, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])))
+TOKEN = os.getenv("GITHUB_TOKEN", "")
+POSITIVE = ["ai", "tool", "app", "website", "productivity", "alternative", "privacy", "learning", "education", "study", "reading", "book", "course", "design", "career", "office", "travel", "health", "beauty", "fashion", "open source", "free", "automation", "resource"]
+NEGATIVE = ["casino", "betting", "nsfw", "weapon", "cryptocurrency", "crypto trading", "adult content"]
 
+def clean(v):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(str(v or "")))).strip()
 
-def clean_text(text):
-    if not text:
-        return ""
-    text = html.unescape(str(text))
-    text = re.sub(r"<[^>]+>", " ", text)
-    text = re.sub(r"\s+", " ", text)
-    return text.strip()
-
-
-def normalize_url(url):
-    if not url:
-        return ""
-    return url.split("#")[0].rstrip("/")
-
-
-def domain(url):
+def timestamp(v):
+    if not v:
+        return None
     try:
-        return urlparse(url).netloc.replace("www.", "")
-    except Exception:
-        return ""
+        d = datetime.fromisoformat(str(v).replace("Z", "+00:00"))
+        return d.replace(tzinfo=d.tzinfo or timezone.utc).astimezone(timezone.utc)
+    except (ValueError, TypeError):
+        return None
 
+def recent(v):
+    d = timestamp(v)
+    return d if d and NOW-timedelta(days=30) <= d <= NOW+timedelta(minutes=5) else None
 
-def relevant_score(title, description=""):
-    text = f"{title} {description}".lower()
+def grade(v):
+    d = recent(v)
+    if not d:
+        return "OUT"
+    age = NOW-d
+    return "S" if age <= timedelta(hours=24) else "A" if age <= timedelta(days=7) else "B"
 
-    if any(word in text for word in NEGATIVE_WORDS):
+def number(v):
+    if v is None or v == "":
+        return None
+    try:
+        n = int(v)
+        return n if n >= 0 else None
+    except (ValueError, TypeError):
+        return None
+
+def normalize_url(v):
+    u = urlsplit(str(v))
+    if u.scheme not in ("http", "https") or not u.hostname:
+        raise ValueError("invalid URL")
+    host = u.hostname.lower().removeprefix("www.")
+    path = u.path.rstrip("/")
+    if host == "github.com":
+        path = path.lower().removesuffix(".git")
+    query = [(k, val) for k, val in parse_qsl(u.query) if not k.lower().startswith("utm_") and k.lower() not in ("ref", "fbclid", "gclid")]
+    return urlunsplit(("https" if host in ("github.com", "news.ycombinator.com") else u.scheme, host, path, urlencode(sorted(query)), ""))
+
+def relevance(title, description=""):
+    text = (title+" "+description).lower()
+    if any(word in text for word in NEGATIVE):
         return -100
+    hits = sum(bool(re.search(r"\b"+re.escape(word)+r"\b", text)) for word in POSITIVE)
+    return min(20, hits*3)
 
-    score = 0
+def audience_commercial(text):
+    text = text.lower()
+    if any(w in text for w in ("course", "learning", "education", "study", "career", "job")):
+        return "大学/毕业期女性", "教育/学习/求职", "medium", "学习或求职效率"
+    if any(w in text for w in ("beauty", "skincare", "cosmetic")):
+        return "品质生活女性", "美妆个护", "medium", "消费信息筛选"
+    if any(w in text for w in ("travel", "trip", "local guide")):
+        return "品质生活女性", "旅行/本地生活", "medium", "旅行决策"
+    if any(w in text for w in ("book", "reading")):
+        return "成长型女性", "图书/成长", "medium", "阅读与成长"
+    if any(w in text for w in ("ai", "app", "software", "tool", "productivity", "automation")):
+        return "初入职场女性", "AI/软件/APP", "medium", "办公效率与工具筛选"
+    return "成长型女性", "生活方式/消费品牌", "unknown", "信息筛选；适配待人工验证"
 
-    for word in POSITIVE_WORDS:
-        if word.lower() in text:
-            score += 2
-
-    # “普通人能直接使用”的东西优先
-    for word in [
-        "free", "alternative", "tool", "app", "website",
-        "open source", "productivity", "privacy",
-        "免费", "替代", "工具", "网站", "开源"
-    ]:
-        if word in text:
-            score += 2
-
-    return score
-
-
-def classify(title, description=""):
-    text = f"{title} {description}".lower()
-
-    for category, words in KEYWORDS.items():
-        if any(word.lower() in text for word in words):
-            return category
-
-    return "互联网发现"
-
-
-def build_case(title, url, description, platform, discovered_at, signal=""):
-    category = classify(title, description)
-
-    why = (
-        f"外部观察：该内容来自 {platform} 的近期公开信号。"
-        f"题材属于「{category}」。"
-        "它具备新鲜感、可立即使用或可降低成本/时间成本中的至少一个传播条件。"
-        "当前仅作为候选情报，不把公开热度信号等同于阮嘤账号已验证规律。"
-    )
-
-    reusable = (
-        "可迁移基因：不要只介绍产品名称；优先转换成"
-        "「普通人原来的麻烦/成本 → 新发现 → 实际证据 → 谁适合用 → 限制」。"
-    )
-
-    angle = (
-        f"阮嘤角度：把「{title}」从科技/产品新闻改写成普通用户能立即理解的发现。"
-        "优先回答：它替我省什么、解决什么、为什么现在值得知道。"
-    )
-
-    ruanying_title = make_title(title, category)
-
+def build_case(title, url, description, evidence, published=None):
+    signal = recent(evidence["signal_at"])
+    if not signal:
+        return None
+    canonical = normalize_url(url)
+    aud, lane, level, need = audience_commercial(title+" "+description)
+    title = clean(title)[:300]
     return {
-        "platform": platform,
-        "title": clean_text(title)[:300],
-        "source_url": normalize_url(url),
-        "discovered_at": discovered_at,
-        "tags": [category, "自动发现", platform],
-        "status": "candidate",
-        "why_it_spreads": why,
-        "reusable_gene": reusable,
-        "ruanying_angle": angle,
-        "ruanying_title": ruanying_title,
+        "title": title, "source_url": canonical, "canonical_url": canonical,
+        "entity_key": "url:"+canonical, "platform": evidence["source"], "source_name": evidence["source"],
+        "source_published_at": published, "signal_at": signal.isoformat(),
+        "discovered_at": NOW.isoformat(), "signal_type": evidence["signal_type"],
+        "signal_confidence": "medium", "signal_evidence": [evidence],
+        "audience_segment": aud, "target_audience": "20–40岁女性；"+aud,
+        "commercial_lane": lane, "commercial_level": level,
+        "content_object": title, "core_need": need,
+        "tags": ["自动发现", "V24", lane], "status": "candidate", "source_verified": True,
+        "evidence_level": "外部观察", "collection_run_id": RUN_ID,
+        "why_it_spreads": evidence["summary"]+"。这是近期外部信号；传播原因与国内饱和度仍需验证。",
+        "reusable_gene": "具体麻烦 → 新发现 → 可核验实测 → 适合谁 → 限制；验证筛选信任价值。",
+        "do_not_copy": "不照搬海外热度、历史累计指标或因果结论；发布前核验适用条件与国内可用性。",
+        "ruanying_angle": "面向"+aud+"，围绕"+need+"筛选和实测；受众及商业判断只是启发式观察。",
+        "ruanying_title": "我替你筛了一遍，这个发现值得再看看："+title[:60],
+        "ruanying_first_3_seconds": "先展示一个真实使用结果，再讲限制和适用人群。",
+        "material_plan": "原始传播来源、官网、实测录屏、限制条件；未知数据不补数字。",
+        "experiment_variable": "结果型开头", "target_metric": "收藏率（未知时不计算）",
+        "analysis_details": {"description": clean(description)[:1500], "content_task": "建信任", "audience_basis": "文本关键词启发式，待真实账号数据验证", "commercial_basis": "赛道适配观察，不判断购买力", "cover_direction": "实测结果与使用场景", "content_structure": "需求、发现、证据、场景、限制", "domestic_saturation": None},
     }
 
-
-def make_title(title, category):
-    short = clean_text(title)
-    if len(short) > 60:
-        short = short[:57] + "..."
-
-    if category == "AI工具":
-        return f"这个AI工具，我差点因为名字普通错过了：{short}"
-    if category == "省钱效率":
-        return f"先别急着花钱，我发现了一个可能更省的替代：{short}"
-    if category == "公开资源":
-        return f"这个公开资源居然一直没人告诉我：{short}"
-    if category == "网站APP":
-        return f"我又挖到一个值得收藏的网站/APP：{short}"
-    if category == "女性友好":
-        return f"女生可以先收藏这个：{short}"
-    if category == "学习成长":
-        return f"如果你也总觉得学习效率低，看看这个：{short}"
-
-    return f"今天又挖到一个值得知道的东西：{short}"
-
+GH_METADATA = {}
+def github_metadata(url):
+    u = urlsplit(url)
+    parts = u.path.strip("/").split("/")
+    if u.hostname not in ("github.com", "www.github.com") or len(parts) != 2:
+        return {}
+    name = "/".join(parts).removesuffix(".git").lower()
+    if name not in GH_METADATA:
+        headers = {"Accept": "application/vnd.github+json"}
+        if TOKEN:
+            headers["Authorization"] = "Bearer "+TOKEN
+        try:
+            r = SESSION.get("https://api.github.com/repos/"+name, headers=headers, timeout=(10, 25), allow_redirects=False)
+            r.raise_for_status()
+            GH_METADATA[name] = r.json()
+        except requests.RequestException:
+            GH_METADATA[name] = {}
+    return GH_METADATA[name]
 
 def github_discovery():
-    results = []
-
-    if not GITHUB_TOKEN:
-        return results
-
-    headers = {
-        **HEADERS,
-        "Authorization": f"Bearer {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-    }
-
-    since = (NOW - timedelta(days=7)).date().isoformat()
-
-    queries = [
-        f"created:>{since} stars:>30",
-        f"pushed:>{since} stars:>200 topic:productivity",
-        f"pushed:>{since} stars:>100 topic:ai",
-        f"pushed:>{since} stars:>100 topic:education",
-    ]
-
-    for query in queries:
-        try:
-            r = requests.get(
-                "https://api.github.com/search/repositories",
-                headers=headers,
-                params={
-                    "q": query,
-                    "sort": "stars",
-                    "order": "desc",
-                    "per_page": 15,
-                },
-                timeout=20,
-            )
-            r.raise_for_status()
-
-            for repo in r.json().get("items", []):
-                title = repo.get("full_name", "")
-                desc = clean_text(repo.get("description", ""))
-                url = repo.get("html_url", "")
-
-                score = relevant_score(title, desc)
-                stars = repo.get("stargazers_count", 0)
-
-                if score < 2:
-                    continue
-
-                results.append({
-                    "score": score + min(stars / 100, 10),
-                    "case": build_case(
-                        title=title,
-                        url=url,
-                        description=desc,
-                        platform="GitHub",
-                        discovered_at=repo.get("created_at") or NOW.isoformat(),
-                        signal=f"{stars} stars",
-                    ),
-                })
-
-        except Exception as e:
-            print("GitHub discovery error:", e)
-
-    return results
-
-
-def hackernews_discovery():
-    results = []
-
-    queries = [
-        "AI tool",
-        "open source",
-        "productivity",
-        "free alternative",
-        "app",
-        "learning tool",
-    ]
-
-    cutoff = int((NOW - MAX_AGE).timestamp())
-
-    for query in queries:
-        try:
-            r = requests.get(
-                "https://hn.algolia.com/api/v1/search_by_date",
-                params={
-                    "query": query,
-                    "tags": "story",
-                    "numericFilters": f"created_at_i>{cutoff}",
-                    "hitsPerPage": 20,
-                },
-                headers=HEADERS,
-                timeout=20,
-            )
-            r.raise_for_status()
-
-            for item in r.json().get("hits", []):
-                title = clean_text(item.get("title"))
-                url = item.get("url") or (
-                    "https://news.ycombinator.com/item?id="
-                    + str(item.get("objectID", ""))
-                )
-
-                points = item.get("points") or 0
-                comments = item.get("num_comments") or 0
-                score = relevant_score(title)
-
-                if score < 2:
-                    continue
-
-                results.append({
-                    "score": score + min(points / 20, 8) + min(comments / 20, 4),
-                    "case": build_case(
-                        title=title,
-                        url=url,
-                        description=f"Hacker News points={points}, comments={comments}",
-                        platform="Hacker News",
-                        discovered_at=item.get("created_at") or NOW.isoformat(),
-                        signal=f"{points} points / {comments} comments",
-                    ),
-                })
-
-        except Exception as e:
-            print("HN discovery error:", e)
-
-    return results
-
-
-def rss_discovery():
-    results = []
-
-    feeds = [
-        ("Product Hunt", "https://www.producthunt.com/feed"),
-        ("TechCrunch", "https://techcrunch.com/feed/"),
-    ]
-
-    for platform, feed_url in feeds:
-        try:
-            feed = feedparser.parse(feed_url)
-
-            for entry in feed.entries[:30]:
-                title = clean_text(entry.get("title", ""))
-                desc = clean_text(
-                    entry.get("summary", "") or entry.get("description", "")
-                )
-                url = entry.get("link", "")
-
-                score = relevant_score(title, desc)
-
-                if score < 3:
-                    continue
-
-                published = (
-                    entry.get("published")
-                    or entry.get("updated")
-                    or NOW.isoformat()
-                )
-
-                results.append({
-                    "score": score,
-                    "case": build_case(
-                        title=title,
-                        url=url,
-                        description=desc,
-                        platform=platform,
-                        discovered_at=published,
-                    ),
-                })
-
-        except Exception as e:
-            print(f"{platform} feed error:", e)
-
-    return results
-
-
-def dedupe(items):
-    seen_urls = set()
-    seen_titles = set()
     output = []
-
-    for item in sorted(items, key=lambda x: x["score"], reverse=True):
-        case = item["case"]
-        url = normalize_url(case["source_url"])
-        title_key = re.sub(r"\W+", "", case["title"].lower())
-
-        if not url or not title_key:
-            continue
-
-        if url in seen_urls or title_key in seen_titles:
-            continue
-
-        seen_urls.add(url)
-        seen_titles.add(title_key)
-        output.append(item)
-
+    try:
+        r = SESSION.get("https://github.com/trending?since=daily", timeout=(10, 30))
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, "html.parser")
+        for article in soup.select("article.Box-row"):
+            link = article.select_one("h2 a")
+            if not link:
+                continue
+            name = clean(link.get_text()).replace(" / ", "/").replace(" ", "")
+            desc = clean(article.select_one("p").get_text()) if article.select_one("p") else ""
+            if relevance(name, desc) < 3:
+                continue
+            url = "https://github.com"+link.get("href", "")
+            short_growth = re.search(r"([\d,]+)\s+stars today", article.get_text(" ", strip=True))
+            day_stars = number(short_growth.group(1).replace(",", "")) if short_growth else None
+            meta = github_metadata(url)
+            ev = {"source": "GitHub", "url": "https://github.com/trending?since=daily", "entity_url": normalize_url(url), "signal_at": NOW.isoformat(), "signal_type": "github_trending_daily", "observed_at": NOW.isoformat(), "metrics": {"stars_today": day_stars}, "summary": "实际出现在 GitHub 今日 Trending；短期增长 "+(str(day_stars)+" stars today" if day_stars is not None else "未知"), "time_basis": "榜单实际观察时间"}
+            c = build_case(name, url, desc, ev, meta.get("created_at"))
+            if c:
+                output.append(c)
+    except requests.RequestException as e:
+        print("GitHub Trending unavailable:", type(e).__name__)
     return output
 
+def hackernews_discovery():
+    output, seen = [], set()
+    cutoff = int((NOW-timedelta(days=30)).timestamp())
+    for query in ("AI tool", "open source", "productivity", "learning", "app", "book"):
+        try:
+            r = SESSION.get("https://hn.algolia.com/api/v1/search", params={"query":query, "tags":"story", "numericFilters":f"created_at_i>{cutoff},points>=30", "hitsPerPage":40}, timeout=(10,25))
+            r.raise_for_status()
+            for item in r.json().get("hits", []):
+                ident = str(item.get("objectID", ""))
+                if not ident or ident in seen:
+                    continue
+                seen.add(ident)
+                title = clean(item.get("title"))
+                points, comments = number(item.get("points")), number(item.get("num_comments"))
+                if not recent(item.get("created_at")) or points is None or points < 30 or relevance(title) < 3:
+                    continue
+                discussion = "https://news.ycombinator.com/item?id="+ident
+                url = item.get("url") or discussion
+                meta = github_metadata(url)
+                ev = {"source":"Hacker News", "url":discussion, "entity_url":normalize_url(url), "signal_at":item["created_at"], "signal_type":"recent_discussion", "observed_at":NOW.isoformat(), "metrics":{"points":points,"comments":comments}, "summary":f"近30天 HN 讨论：{points} points；评论 "+(str(comments) if comments is not None else "未知"), "time_basis":"讨论发布时间；互动量为本次观察值"}
+                c = build_case(title,url,meta.get("description") or "",ev,meta.get("created_at"))
+                if c:
+                    output.append(c)
+        except (requests.RequestException, ValueError) as e:
+            print("HN source unavailable:", type(e).__name__)
+    return output
+
+def rss_discovery():
+    """Editorial coverage is medium evidence; a feed alone is never a ranked launch."""
+    output = []
+    try:
+        r = SESSION.get("https://techcrunch.com/feed/",timeout=(10,25))
+        r.raise_for_status()
+        for e in feedparser.parse(r.content).entries[:40]:
+            title, desc = clean(e.get("title")), clean(e.get("summary"))
+            t = e.get("published_parsed")
+            if not t or relevance(title,desc) < 9:
+                continue
+            at = datetime(*t[:6],tzinfo=timezone.utc).isoformat()
+            if not recent(at):
+                continue
+            ev={"source":"TechCrunch","url":e.get("link"),"signal_at":at,"signal_type":"recent_media_coverage","observed_at":NOW.isoformat(),"metrics":{},"summary":"TechCrunch 近期报道；不是播放量或购买力证据","time_basis":"报道发布时间"}
+            c=build_case(title,e.get("link"),desc,ev,at)
+            if c:
+                output.append(c)
+    except (requests.RequestException,ValueError) as e:
+        print("News source unavailable:",type(e).__name__)
+    return output
+
+def aggregate(cases):
+    entities={}
+    for c in cases:
+        if not c:
+            continue
+        key=c["entity_key"]
+        if key not in entities:
+            entities[key]=c
+            continue
+        old=entities[key]
+        evs={e["url"]+"|"+e["signal_at"]:e for e in old["signal_evidence"]+c["signal_evidence"]}
+        old["signal_evidence"]=list(evs.values())
+        if not old.get("source_published_at"):
+            old["source_published_at"]=c.get("source_published_at")
+    for c in entities.values():
+        evs=sorted(c["signal_evidence"],key=lambda e:timestamp(e["signal_at"]),reverse=True)
+        c["signal_at"],c["signal_type"]=evs[0]["signal_at"],evs[0]["signal_type"]
+        independent=len({e["source"] for e in evs})
+        c["signal_confidence"]="high" if independent>=2 else "medium"
+        freshness={"S":30,"A":22,"B":12}.get(grade(c["signal_at"]),0)
+        utility=relevance(c["title"],c["analysis_details"]["description"])
+        # Additive observed factors. Missing metrics are excluded, never multiplied by zero.
+        metric_bonus=0
+        for ev in evs:
+            metrics=ev["metrics"]
+            if metrics.get("stars_today") is not None:
+                metric_bonus=max(metric_bonus,min(10,metrics["stars_today"]/50))
+            if metrics.get("points") is not None:
+                metric_bonus=max(metric_bonus,min(10,metrics["points"]/30))
+        c["recommendation_score"]=round(freshness+(22 if independent>=2 else 14)+utility+min(8,independent*3)+metric_bonus+8,2)
+        c["why_it_spreads"]="；".join(e["summary"] for e in evs)+"。传播原因待实测验证。"
+        c["analysis_details"]["score_basis"]={"freshness":freshness,"confidence":22 if independent>=2 else 14,"text_relevance":utility,"independent_sources":independent,"observed_attention_bonus":metric_bonus,"editorial_fit":8,"unknown_factors":["国内饱和度","真实用户购买力","账号涨粉潜力"]}
+    return sorted((c for c in entities.values() if grade(c["signal_at"])!="OUT"),key=lambda c:c["recommendation_score"],reverse=True)[:MAX_RESULTS]
 
 def send_cases(cases):
     if not cases:
-        print("No qualified cases today.")
-        return
-
-    # Secret 曾含非 ASCII 字符，所以按已经跑通的协议 URI 编码
-    encoded_secret = quote(INGEST_SECRET, safe="")
-
-    headers = {
-        "Content-Type": "application/json",
-        "x-ingest-secret": encoded_secret,
-        "x-ingest-secret-encoding": "uri",
-    }
-
-    payload = {
-        "cases": cases
-    }
-
-    r = requests.post(
-        INGEST_ENDPOINT,
-        headers=headers,
-        json=payload,
-        timeout=45,
-    )
-
-    print("Ingest HTTP:", r.status_code)
-    print("Ingest response:", r.text[:2000])
-
+        return {"ok":True,"received":0,"inserted":0,"updated":0,"empty_day":True}
+    endpoint, secret=os.getenv("INGEST_ENDPOINT"),os.getenv("INGEST_SECRET")
+    if not endpoint or not secret:
+        raise RuntimeError("Missing ingestion configuration")
+    r=SESSION.post(endpoint,headers={"Content-Type":"application/json","x-ingest-secret":quote(secret,safe=""),"x-ingest-secret-encoding":"uri"},json={"cases":cases,"schema_version":24},timeout=(10,60))
+    print("Ingest HTTP:",r.status_code)
     r.raise_for_status()
-
+    result=r.json()
+    print("Ingest counts:",json.dumps({k:result.get(k) for k in ("ok","received","inserted","updated","skipped","inserted_ids","updated_ids")}))
+    if not result.get("ok") or result.get("received")!=len(cases) or result.get("inserted",0)+result.get("updated",0)+result.get("skipped",0)!=len(cases):
+        print("Ingest validation errors:",result.get("errors"))
+        raise RuntimeError("Incomplete ingestion")
+    return result
 
 def main():
-    print("Ruanying Daily Discovery started:", NOW.isoformat())
+    print("Ruanying V24 started:",NOW.isoformat())
+    cases=aggregate(github_discovery()+hackernews_discovery()+rss_discovery())
+    for i,c in enumerate(cases,1):
+        print(f"{i:02d}. {grade(c['signal_at'])} {c['title']} | evidence={len(c['signal_evidence'])}")
+    report={"schema_version":24,"run_id":RUN_ID,"discovered_at":NOW.isoformat(),"cases":cases}
+    os.makedirs("reports",exist_ok=True)
+    with open("reports/discovery.json","w",encoding="utf8") as f:
+        json.dump(report,f,ensure_ascii=False,indent=2)
+    result=send_cases(cases)
+    report["ingestion"]=result
+    with open("reports/discovery.json","w",encoding="utf8") as f:
+        json.dump(report,f,ensure_ascii=False,indent=2)
+    if os.getenv("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf8") as f:
+            f.write(f"## V24 discovery\nQualified: {len(cases)} | Inserted: {result.get('inserted',0)} | Updated: {result.get('updated',0)}\n")
+            for c in cases:
+                f.write(f"- **{grade(c['signal_at'])}** {c['title']} | {c['signal_confidence']} | {c['canonical_url']}\n")
+    print("Ruanying V24 completed.")
 
-    items = []
-
-    items.extend(github_discovery())
-    time.sleep(1)
-
-    items.extend(hackernews_discovery())
-    time.sleep(1)
-
-    items.extend(rss_discovery())
-
-    items = dedupe(items)
-
-    print("Qualified unique candidates:", len(items))
-
-    selected = items[:MAX_RESULTS]
-
-    for index, item in enumerate(selected, 1):
-        case = item["case"]
-        print(
-            f"{index:02d}. [{case['platform']}] "
-            f"score={item['score']:.1f} "
-            f"{case['title']}"
-        )
-
-    send_cases([item["case"] for item in selected])
-
-    print("Ruanying Daily Discovery finished.")
-
-
-if __name__ == "__main__":
+if __name__=="__main__":
     main()
